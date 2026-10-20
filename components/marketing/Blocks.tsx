@@ -1,12 +1,13 @@
 import { contact, site, solutions } from "@/content/site";
 import { ContactForm } from "../interactive/ContactForm";
-import { ArrowRight, Check } from "../ui/Icons";
+import { ArrowRight, Check, Close, solutionIcons } from "../ui/Icons";
 import { SectionHead } from "./Sections";
 
 /** Úvod podstránky: nadpis H1 a krátky popis. */
 export function PageHero({ eyebrow, title, lead }: { eyebrow: string; title: string; lead?: string }) {
   return (
     <section className="page-hero">
+      <HeroMotif />
       <div className="container">
         <p className="eyebrow">{eyebrow}</p>
         <h1 className="page-hero__title">{title}</h1>
@@ -48,17 +49,27 @@ export function SolutionsTeaser() {
       <div className="container">
         <SectionHead eyebrow="Riešenia" title={solutions.title} lead={solutions.lead} id="teaser-title" />
         <ul className="grid grid--3" style={{ listStyle: "none" }}>
-          {solutions.items.map((s) => (
+          {solutions.items.map((s) => {
+            const Icon = solutionIcons[s.id];
+            return (
             <li key={s.id}>
               <a className="link-card" href={`/riesenia#${s.id}`}>
-                <span className="link-card__label">{s.label}</span>
+                <span className="link-card__head">
+                  {Icon && (
+                    <span className="icon-tile">
+                      <Icon />
+                    </span>
+                  )}
+                  <span className="link-card__label">{s.label}</span>
+                </span>
                 <span className="link-card__title">{s.title}</span>
                 <span className="link-card__more">
                   Ako to funguje <ArrowRight size={16} />
                 </span>
               </a>
             </li>
-          ))}
+            );
+          })}
         </ul>
       </div>
     </section>
@@ -150,6 +161,96 @@ export function ContactSection() {
           </p>
         </div>
         <ContactForm />
+      </div>
+    </section>
+  );
+}
+
+/** Dekorácia v úvode podstránok: motív prepojených bodov z loga. */
+function HeroMotif() {
+  const pts: [number, number][] = [
+    [40, 250], [120, 190], [200, 214], [280, 140], [360, 160], [440, 80],
+  ];
+  return (
+    <svg className="page-hero__motif" viewBox="0 0 520 300" aria-hidden="true">
+      <defs>
+        <pattern id="motif-dots" width="20" height="20" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1.4" className="page-hero__dot" />
+        </pattern>
+      </defs>
+      <rect className="page-hero__dots" width="520" height="300" fill="url(#motif-dots)" />
+      <polyline points={pts.map((p) => p.join(",")).join(" ")} className="page-hero__line" />
+      {pts.slice(0, -1).map(([x, y]) => (
+        <circle key={`${x}-${y}`} cx={x} cy={y} r="7" className="page-hero__node" />
+      ))}
+      <circle cx="440" cy="80" r="38" className="page-hero__ring page-hero__ring--outer" />
+      <circle cx="440" cy="80" r="26" className="page-hero__ring" />
+      <circle cx="440" cy="80" r="13" className="page-hero__goal" />
+    </svg>
+  );
+}
+
+const before = [
+  "Faktúra príde e-mailom a niekto ju ručne prepíše",
+  "Schválenie putuje cez preposielané e-maily",
+  "Údaje sa znova zapisujú do účtovníctva",
+  "Report pre vedenie sa skladá na konci mesiaca",
+];
+const after = [
+  "Údaje z faktúry sa vyťažia a priradia samé",
+  "Vedúci schváli jedným kliknutím",
+  "Zápis do účtovníctva prebehne automaticky",
+  "Report je vždy aktuálny",
+];
+
+/** Porovnanie procesu pred a po automatizácii. */
+export function BeforeAfter() {
+  return (
+    <section className="section section--tint" aria-labelledby="ba-title">
+      <div className="container">
+        <SectionHead
+          eyebrow="Pred a po"
+          title="Ten istý proces, dva spôsoby"
+          lead="Na príklade spracovania faktúr: rovnaký výsledok, ale bez prepisovania a čakania."
+          id="ba-title"
+        />
+        <div className="ba">
+          <div className="ba__col ba__col--before">
+            <p className="ba__label">Dnes</p>
+            <ul>
+              {before.map((t) => (
+                <li key={t}>
+                  <span className="ba__mark">
+                    <Close size={14} />
+                  </span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+            <p className="ba__foot">Hodiny ručnej práce každý týždeň</p>
+          </div>
+          <div className="ba__arrow" aria-hidden="true">
+            <ArrowRight size={22} />
+          </div>
+          <div className="ba__col ba__col--after">
+            <p className="ba__label">S automatizáciou</p>
+            <ul>
+              {after.map((t) => (
+                <li key={t}>
+                  <span className="ba__mark">
+                    <Check size={14} />
+                  </span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+            <p className="ba__foot">Človek rieši len výnimky</p>
+          </div>
+        </div>
+        <p className="ba__note">
+          Ilustračný príklad. Koľko by ste ušetrili vy, si orientačne vyčíslite v{" "}
+          <a href="/kalkulacka">kalkulačke</a>.
+        </p>
       </div>
     </section>
   );

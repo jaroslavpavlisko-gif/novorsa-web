@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import type { Solution } from "@/content/site";
-import { Check } from "../ui/Icons";
+import { Check, solutionIcons } from "../ui/Icons";
 
 export function SolutionTabs({ items }: { items: Solution[] }) {
   const [active, setActive] = useState(0);
@@ -46,6 +46,7 @@ export function SolutionTabs({ items }: { items: Solution[] }) {
   };
 
   const current = items[active];
+  const CurrentIcon = solutionIcons[current.id];
 
   return (
     <div ref={rootRef} className="tabs">
@@ -79,6 +80,11 @@ export function SolutionTabs({ items }: { items: Solution[] }) {
         tabIndex={0}
       >
         <div>
+          {CurrentIcon && (
+            <span className="icon-tile icon-tile--lg">
+              <CurrentIcon size={28} />
+            </span>
+          )}
           <h3>{current.title}</h3>
           <p>{current.text}</p>
         </div>

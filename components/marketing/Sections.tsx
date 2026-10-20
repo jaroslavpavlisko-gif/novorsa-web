@@ -1,5 +1,5 @@
 import { faq, integrations, outcomes, pains, showcases, trust, why, workProcess } from "@/content/site";
-import { Check, Globe, Key, Plus, Shield, User } from "../ui/Icons";
+import { Globe, Key, Plus, Shield, User, painIcons, whyIcons } from "../ui/Icons";
 
 export function SectionHead({ eyebrow, title, lead, id }: { eyebrow: string; title: string; lead?: string; id: string }) {
   return (
@@ -46,13 +46,21 @@ export function Pains() {
       <div className="container">
         <SectionHead eyebrow="Kde sa stráca čas" title={pains.title} lead={pains.lead} id="pains-title" />
         <ul className="grid grid--3" style={{ listStyle: "none" }}>
-          {pains.items.map((p, i) => (
-            <li key={p.title} className="card">
-              <span className="card__num">{String(i + 1).padStart(2, "0")}</span>
+          {pains.items.map((p, i) => {
+            const Icon = painIcons[i % painIcons.length];
+            return (
+            <li key={p.title} className="card card--icon">
+              <span className="card__top">
+                <span className="icon-tile">
+                  <Icon />
+                </span>
+                <span className="card__num">{String(i + 1).padStart(2, "0")}</span>
+              </span>
               <h3>{p.title}</h3>
               <p>{p.text}</p>
             </li>
-          ))}
+            );
+          })}
         </ul>
       </div>
     </section>
@@ -185,17 +193,18 @@ export function Why({ head = true }: { head?: boolean }) {
           </h2>
         )}
         <ul className="grid grid--3" style={{ listStyle: "none", marginBottom: 20 }}>
-          {why.items.map((w) => (
-            <li key={w.title} className="card" style={{ background: "var(--bg)" }}>
-              <h3 style={{ display: "flex", gap: 10, alignItems: "center" }}>
-                <span style={{ color: "var(--accent)" }}>
-                  <Check />
+          {why.items.map((w, i) => {
+            const Icon = whyIcons[i % whyIcons.length];
+            return (
+              <li key={w.title} className="card card--icon" style={{ background: "var(--bg)" }}>
+                <span className="icon-tile">
+                  <Icon />
                 </span>
-                {w.title}
-              </h3>
-              <p>{w.text}</p>
-            </li>
-          ))}
+                <h3>{w.title}</h3>
+                <p>{w.text}</p>
+              </li>
+            );
+          })}
         </ul>
         <div className="why">
           <div className="founder">
