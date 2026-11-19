@@ -1,6 +1,6 @@
 import { contact, site, solutions } from "@/content/site";
 import { ContactForm } from "../interactive/ContactForm";
-import { ArrowRight, Check } from "../ui/Icons";
+import { ArrowRight, Check, Close } from "../ui/Icons";
 import { SectionHead } from "./Sections";
 
 /** Úvod podstránky: nadpis H1 a krátky popis. */
@@ -150,6 +150,69 @@ export function ContactSection() {
           </p>
         </div>
         <ContactForm />
+      </div>
+    </section>
+  );
+}
+
+const before = [
+  "Potenciálnych klientov obchodníci hľadajú ručne",
+  "Informácie o firmách sa zbierajú z rôznych portálov",
+  "Podklady sú neúplné a každý ich pripravuje inak",
+  "Údaje sa do CRM zapisujú ručne, ak vôbec",
+];
+const after = [
+  "AI priebežne vyhľadáva firmy podľa vašich kritérií",
+  "Ku každej pripraví analýzu: financie, vývoj, plánované aktivity",
+  "Obchodník schváli lead a dostane podklady s návrhom postupu",
+  "Všetko sa zapíše do CRM s kompletnou históriou",
+];
+
+/** Porovnanie procesu pred a po automatizácii. */
+export function BeforeAfter() {
+  return (
+    <section className="section section--surface" aria-labelledby="ba-title">
+      <div className="container">
+        <SectionHead
+          eyebrow="Pred a po"
+          title="Ten istý proces, dva spôsoby"
+          lead="Na príklade generovania obchodných leadov: od vyhľadania firmy po zápis do CRM."
+          id="ba-title"
+        />
+        <div className="ba">
+          <div className="ba__col ba__col--before">
+            <p className="ba__label">Dnes</p>
+            <ul>
+              {before.map((t) => (
+                <li key={t}>
+                  <span className="ba__mark" aria-hidden="true">
+                    <Close size={13} />
+                  </span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+            <p className="ba__foot">Viac času nad rešeršou než nad obchodom</p>
+          </div>
+          <div className="ba__col ba__col--after">
+            <p className="ba__label">S automatizáciou</p>
+            <ul>
+              {after.map((t) => (
+                <li key={t}>
+                  <span className="ba__mark" aria-hidden="true">
+                    <Check size={13} />
+                  </span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+            <p className="ba__foot">Viac času na reálny obchod</p>
+          </div>
+        </div>
+        <p className="ba__note">
+          Ilustračný príklad. Koľko času by ste ušetrili vy, si orientačne vyčíslite v{" "}
+          <a href="/kalkulacka">kalkulačke</a>.
+        </p>
       </div>
     </section>
   );

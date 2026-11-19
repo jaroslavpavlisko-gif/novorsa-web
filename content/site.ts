@@ -27,8 +27,9 @@ export const nav = [
 ];
 
 export const hero = {
-  eyebrow: "Automatizácia procesov · AI · Prepojenie systémov",
-  title: "Vaši ľudia robia prácu, ktorú môže robiť technológia.",
+  eyebrow: "Automatizácia procesov a AI pre firmy",
+  title: "Vaši ľudia robia prácu, ktorú môže",
+  titleAccent: "robiť technológia.",
   lead: "Zmapujeme, kde vaša firma stráca čas ručnou prácou, a zavedieme automatizáciu, AI a prepojenie systémov tam, kde sa to naozaj oplatí. Najprv biznis a návratnosť, potom technológia.",
   primaryCta: { label: "Zistiť, čo vieme automatizovať", href: "/kontakt" },
   secondaryCta: { label: "Ako pracujeme", href: "/ako-pracujeme" },
@@ -47,23 +48,38 @@ export const pains = {
   lead: "Väčšina firiem nestráca čas na veľkých veciach, ale na desiatkach malých úkonov, ktoré sa opakujú každý deň.",
   items: [
     { title: "Prepisovanie údajov", text: "Údaje z e-mailov, PDF a tabuliek sa ručne prenášajú do systémov." },
-    { title: "Schvaľovanie cez Excel", text: "Žiadosti a faktúry putujú cez preposielané e-maily a nikto nevie, kde sa zasekli." },
+    { title: "Schvaľovanie rôznymi kanálmi", text: "Žiadosti, objednávky a faktúry putujú cez preposielané e-maily, správy a ďalšie kanály a nikto nevie, kde sa zasekli." },
     { title: "Reporty na celý deň", text: "Prehľady pre vedenie sa každý mesiac skladajú ručne z niekoľkých zdrojov." },
     { title: "Pomalá odpoveď klientom", text: "Dopyty a leady čakajú na reakciu príliš dlho a časť z nich sa stratí." },
-    { title: "Tri systémy, tri pravdy", text: "Rovnaké údaje žijú v CRM, účtovníctve a tabuľkách a navzájom nesedia." },
+    { title: "Údaje, ktoré si odporujú", text: "Rovnaké údaje žijú v CRM, účtovníctve a tabuľkách a navzájom nesedia." },
     { title: "HR a administratíva", text: "Životopisy, nástupy a žiadosti zamestnancov zaberajú ľuďom väčšinu dňa." },
   ],
 };
 
 export const outcomes = {
   title: "Čo sa zmení",
-  lead: "Výsledok nemeriame počtom nasadených nástrojov, ale tým, čo pocíti vaša firma.",
+  lead: "Výsledok nemeriame počtom nasadených nástrojov a automatizácií, ale tým, čo pocíti vaša firma.",
   items: [
-    { title: "Uvoľnené hodiny", text: "Ľudia sa vrátia k práci, ktorá potrebuje ich úsudok." },
-    { title: "Rýchlejšia odozva", text: "Klient dostane odpoveď v minútach, nie v dňoch." },
-    { title: "Menej chýb", text: "Údaje sa neprepisujú, takže sa nemajú kde pokaziť." },
-    { title: "Reporting bez námahy", text: "Prehľady vznikajú samé a sú vždy aktuálne." },
-    { title: "Rast bez administratívy", text: "Viac zákaziek nemusí znamenať viac ľudí v back-office." },
+    {
+      title: "Kapacita pre prácu s pridanou hodnotou",
+      text: "Rutinné úkony prevezmú automatizované procesy. Tím sa sústredí na činnosti, ktoré vyžadujú odborný úsudok a kontakt s klientom.",
+    },
+    {
+      title: "Kratší čas reakcie",
+      text: "Dopyty, žiadosti a schvaľovania sa spracúvajú priebežne, bez čakania vo frontách a e-mailových schránkach.",
+    },
+    {
+      title: "Spoľahlivé a konzistentné údaje",
+      text: "Údaje sa medzi systémami prenášajú automaticky. Klesá chybovosť a rozhodnutia stoja na rovnakých číslach.",
+    },
+    {
+      title: "Transparentnosť a kontrola",
+      text: "Každý krok má záznam o tom, kto, čo a kedy urobil. Úzke miesta v procese sú viditeľné včas.",
+    },
+    {
+      title: "Rast bez rastu réžie",
+      text: "Firma zvládne väčší objem zákaziek bez úmerného nárastu administratívy a back-office.",
+    },
   ],
 };
 
@@ -76,9 +92,9 @@ export const solutions: { title: string; lead: string; items: Solution[] } = {
     {
       id: "obchod",
       label: "Obchod",
-      title: "Žiadny dopyt nezostane bez odpovede",
-      text: "Leady sa samé zapíšu do CRM, doplnia sa o údaje o firme a obchodník dostane pripomienku v správnej chvíli.",
-      examples: ["Smerovanie a obohatenie leadov", "Automatický follow-up po stretnutí", "Prehľad pipeline bez ručného zápisu", "Návrhy ponúk z historických dát"],
+      title: "Viac kvalifikovaných leadov a efektívnejší obchodný proces",
+      text: "AI priebežne vyhľadáva a vyhodnocuje potenciálnych klientov, pripraví analýzu firmy a návrh postupu. Obchodník sa venuje len tým najperspektívnejším.",
+      examples: ["Vyhľadávanie a kvalifikácia leadov", "Analýza firmy pred prvým kontaktom", "Automatický zápis a follow-up v CRM", "Prehľad pipeline bez ručného zápisu"],
     },
     {
       id: "hr",
@@ -90,16 +106,16 @@ export const solutions: { title: string; lead: string; items: Solution[] } = {
     {
       id: "financie",
       label: "Financie",
-      title: "Faktúry, ktoré sa spracujú samé",
+      title: "Automatizované spracovanie dokladov",
       text: "Doklady sa prečítajú, priradia, pošlú na schválenie a zapíšu do účtovníctva. Človek rieši len výnimky.",
       examples: ["Vyťaženie údajov z faktúr", "Schvaľovanie výdavkov s históriou", "Párovanie platieb", "Mesačný reporting pre vedenie"],
     },
     {
       id: "prevadzka",
       label: "Prevádzka",
-      title: "Odovzdávky bez stratených informácií",
-      text: "Úlohy prechádzajú medzi tímami s kompletnými údajmi a každý vie, v akom stave sú.",
-      examples: ["Objednávky a stav skladu", "Odovzdávanie úloh medzi tímami", "Digitálne kontrolné zoznamy", "Upozornenia na odchýlky"],
+      title: "Riadenie procesov s prehľadom v každom kroku",
+      text: "Úlohy a požiadavky prechádzajú medzi tímami s kompletnými údajmi, stav každej je viditeľný a odchýlky sa ukážu včas.",
+      examples: ["Objednávky a stav skladu", "Riadenie úloh naprieč tímami", "Digitálne kontrolné zoznamy", "Upozornenia na odchýlky"],
     },
     {
       id: "servis",
@@ -111,7 +127,7 @@ export const solutions: { title: string; lead: string; items: Solution[] } = {
     {
       id: "vedenie",
       label: "Vedenie",
-      title: "Čísla, keď ich potrebujete",
+      title: "Správne čísla, keď ich potrebujete",
       text: "Manažérske prehľady sa skladajú z vašich systémov automaticky a obsahujú aj stručné zhrnutie.",
       examples: ["Dashboardy z viacerých systémov", "Týždenné zhrnutie kľúčových čísel", "Upozornenia na riziká", "Podklady na porady bez príprav"],
     },

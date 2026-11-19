@@ -2,10 +2,11 @@ import { hero } from "@/content/site";
 import { ArrowRight } from "../ui/Icons";
 
 const steps = [
-  { title: "Faktúra prijatá e-mailom", meta: "dodavatel_0425.pdf", tag: "automaticky", kind: "auto" },
-  { title: "Údaje vyťažené a priradené", meta: "IČO · suma · stredisko", tag: "AI", kind: "ai" },
-  { title: "Schválenie vedúcim", meta: "jedno kliknutie v Teams", tag: "človek", kind: "human" },
-  { title: "Zapísané do účtovníctva", meta: "report pre vedenie aktualizovaný", tag: "hotovo", kind: "done" },
+  { title: "Vyhľadanie potenciálnych klientov", meta: "registre · weby · databázy podľa vašich kritérií", tag: "AI", kind: "ai" },
+  { title: "Analýza spoločnosti", meta: "finančné zdravie · história · plánované aktivity", tag: "AI", kind: "ai" },
+  { title: "Schválenie obchodníkom", meta: "vyhodnotenie leadu jedným kliknutím", tag: "človek", kind: "human" },
+  { title: "Príprava podkladov a postupu", meta: "profil firmy · návrh oslovenia", tag: "AI", kind: "ai" },
+  { title: "Zápis do CRM", meta: "kompletná história a tracking", tag: "hotovo", kind: "done" },
 ] as const;
 
 export function Hero() {
@@ -15,7 +16,8 @@ export function Hero() {
         <div className="hero__copy">
           <p className="eyebrow">{hero.eyebrow}</p>
           <h1 id="hero-title" className="hero__title">
-            {hero.title}
+            {hero.title}{" "}
+            <em>{hero.titleAccent}</em>
           </h1>
           <p className="hero__lead">{hero.lead}</p>
           <div className="hero__actions">
@@ -29,10 +31,10 @@ export function Hero() {
           <p className="hero__note">{hero.note}</p>
         </div>
 
-        <figure className="flow" aria-label="Príklad automatizovaného procesu: spracovanie faktúry od e-mailu po účtovníctvo">
+        <figure className="flow" aria-label="Príklad automatizovaného procesu: generovanie obchodných leadov od vyhľadania firmy po zápis do CRM">
           <div className="flow__top">
-            <span>Automatizovaný proces · faktúry</span>
-            <span className="flow__live">beží</span>
+            <span>Automatizovaný proces · obchodné leady</span>
+            <span className="flow__live">beží online</span>
           </div>
           <ol className="flow__steps">
             {steps.map((s, i) => (
@@ -51,16 +53,16 @@ export function Hero() {
           </ol>
           <figcaption className="flow__caption">
             <span className="flow__stat">
-              <strong>Bez prepisovania</strong>
-              <span>údaje idú samé</span>
+              <strong>Beží nonstop</strong>
+              <span>bez potreby zásahov</span>
             </span>
             <span className="flow__stat">
               <strong>Človek rozhoduje</strong>
-              <span>pri dôležitých krokoch</span>
+              <span>o finálnom leade</span>
             </span>
             <span className="flow__stat">
-              <strong>Záznam o všetkom</strong>
-              <span>kto, čo a kedy</span>
+              <strong>Kompletný tracking</strong>
+              <span>minimum administratívy</span>
             </span>
           </figcaption>
         </figure>

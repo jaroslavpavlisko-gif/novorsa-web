@@ -1,17 +1,18 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { Manrope } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { site } from "@/content/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 import "./subpages.css";
+import "./theme.css";
 
-const manrope = Manrope({
+const dmSans = DM_Sans({
   subsets: ["latin", "latin-ext"],
-  weight: ["500", "600", "700", "800"],
-  variable: "--font-manrope",
+  axes: ["opsz"],
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F7F6F2",
+  themeColor: "#0C1D1E",
 };
 
 const orgJsonLd = {
@@ -61,7 +62,7 @@ const orgJsonLd = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="sk" className={manrope.variable}>
+    <html lang="sk" className={dmSans.variable}>
       <body>
         <a className="skip-link" href="#obsah">
           Preskočiť na obsah

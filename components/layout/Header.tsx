@@ -33,7 +33,7 @@ export function Header() {
   return (
     <header className="header" data-scrolled={scrolled || open}>
       <div className="container header__inner">
-        <Logo />
+        <Logo onDark />
         <nav className="nav" aria-label="Hlavná navigácia">
           <ul className="nav__list">
             {nav.map((item) => (
