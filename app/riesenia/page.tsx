@@ -6,7 +6,7 @@ import { CtaBand, PageHero } from "@/components/marketing/Blocks";
 
 export const metadata: Metadata = {
   title: "Riešenia",
-  description: "Automatizácia a AI pre obchod, HR, financie, prevádzku, zákaznícky servis a vedenie firmy.",
+  description: "Automatizácia a AI pre obchod, HR, financie, prevádzku, nákup a vedenie firmy.",
   alternates: { canonical: "/riesenia" },
 };
 

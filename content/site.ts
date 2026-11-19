@@ -118,11 +118,11 @@ export const solutions: { title: string; lead: string; items: Solution[] } = {
       examples: ["Automatizácia rutinných úloh", "Zoskupovanie a odovzdávanie informácií medzi tímami", "Projektové riadenie zákaziek", "Prehľad o stave úloh a termínov"],
     },
     {
-      id: "servis",
-      label: "Zákaznícky servis",
-      title: "Rýchle odpovede, ľudský prístup",
-      text: "Požiadavky sa roztriedia, pripravia sa návrhy odpovedí a zložité prípady idú rovno správnemu človeku.",
-      examples: ["Triedenie a smerovanie požiadaviek", "Návrhy odpovedí na schválenie", "Znalostný asistent pre tím", "Prehľad spokojnosti zákazníkov"],
+      id: "nakup",
+      label: "Nákup a dodávatelia",
+      title: "Nákup s prehľadom od dopytu po objednávku",
+      text: "Dopyty sa rozpošlú automaticky, ponuky sa porovnajú na jednom mieste a objednávka prejde schválením bez naháňania.",
+      examples: ["Rozposielanie dopytov dodávateľom", "Porovnanie cenových ponúk", "Schvaľovanie objednávok", "Prehľad o dodávateľoch a zmluvách"],
     },
     {
       id: "vedenie",
@@ -272,5 +272,5 @@ export const contact = {
   title: "Zistite, čo sa dá vo vašej firme automatizovať",
   lead: "Napíšte nám, čo vám berie najviac času. Ozveme sa do dvoch pracovných dní a dohodneme si úvodnú konzultáciu zadarmo.",
   sizes: ["1–9 ľudí", "10–49 ľudí", "50–249 ľudí", "250 a viac"],
-  areas: ["Obchod a CRM", "HR a nábor", "Financie a administratíva", "Prevádzka", "Zákaznícky servis", "Reporting pre vedenie", "Zatiaľ neviem"],
+  areas: ["Obchod a CRM", "HR a nábor", "Financie a administratíva", "Prevádzka", "Nákup a dodávatelia", "Reporting pre vedenie", "Zatiaľ neviem"],
 };
