@@ -1,3 +1,5 @@
+import type React from "react";
+
 type IconProps = { size?: number };
 
 const base = (size: number) => ({
@@ -68,3 +70,19 @@ export const Globe = ({ size = 20 }: IconProps) => (
     <path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z" />
   </svg>
 );
+
+const line = (size: number, children: React.ReactNode) => <svg {...base(size)}>{children}</svg>;
+
+export const IconTarget = ({ size = 22 }: IconProps) =>
+  line(size, <><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1" /></>);
+export const IconClock = ({ size = 22 }: IconProps) =>
+  line(size, <><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></>);
+export const IconDatabase = ({ size = 22 }: IconProps) =>
+  line(size, <><ellipse cx="12" cy="5.5" rx="7.5" ry="2.5" /><path d="M4.5 5.5v6c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5v-6" /><path d="M4.5 11.5v6c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5v-6" /></>);
+export const IconEye = ({ size = 22 }: IconProps) =>
+  line(size, <><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" /><circle cx="12" cy="12" r="3" /></>);
+export const IconTrend = ({ size = 22 }: IconProps) =>
+  line(size, <><path d="m3 17 6-6 4 4 8-8" /><path d="M15 7h6v6" /></>);
+
+/** Ikony pre body sekcie „Čo sa zmení“ v poradí podľa content/site.ts. */
+export const outcomeIcons = [IconTarget, IconClock, IconDatabase, IconEye, IconTrend];

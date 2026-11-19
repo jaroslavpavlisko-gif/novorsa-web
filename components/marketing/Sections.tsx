@@ -1,5 +1,5 @@
 import { faq, integrations, outcomes, pains, showcases, trust, why, workProcess } from "@/content/site";
-import { Check, Globe, Key, Plus, Shield, User } from "../ui/Icons";
+import { Check, Globe, Key, Plus, Shield, User, outcomeIcons } from "../ui/Icons";
 
 export function SectionHead({ eyebrow, title, lead, id }: { eyebrow: string; title: string; lead?: string; id: string }) {
   return (
@@ -59,18 +59,26 @@ export function Pains() {
   );
 }
 
+/** Čo sa zmení: hlavný prínos vo veľkej karte, ostatné body v menších kartách. */
 export function Outcomes() {
   return (
-    <section className="section section--surface" aria-labelledby="outcomes-title">
-      <div className="container outcomes-wrap">
-        <SectionHead eyebrow="Výsledok" title={outcomes.title} lead={outcomes.lead} id="outcomes-title" />
-        <ul className="outcomes">
-          {outcomes.items.map((o) => (
-            <li key={o.title} className="outcome">
-              <h3>{o.title}</h3>
-              <p>{o.text}</p>
-            </li>
-          ))}
+    <section className="section section--dark" aria-labelledby="outcomes-title">
+      <div className="container">
+        <SectionHead eyebrow="Výsledok" title={outcomes.title} id="outcomes-title" />
+        <ul className="ogrid">
+          {outcomes.items.map((o, i) => {
+            const Icon = outcomeIcons[i % outcomeIcons.length];
+            return (
+              <li key={o.title} className={i === 0 ? "ocard ocard--main" : "ocard"}>
+                <span className="ocard__icon">
+                  <Icon size={i === 0 ? 26 : 22} />
+                </span>
+                <h3>{o.title}</h3>
+                <p>{o.text}</p>
+                {i === 0 && <p className="ocard__tag">{outcomes.mainTag}</p>}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>

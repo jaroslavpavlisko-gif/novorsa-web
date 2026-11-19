@@ -58,7 +58,7 @@ export const pains = {
 
 export const outcomes = {
   title: "Čo sa zmení",
-  lead: "Výsledok nemeriame počtom nasadených nástrojov a automatizácií, ale tým, čo pocíti vaša firma.",
+  mainTag: "Hlavný prínos každého projektu",
   items: [
     {
       title: "Kapacita pre prácu s pridanou hodnotou",

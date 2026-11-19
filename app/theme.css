@@ -1,19 +1,21 @@
 /* =====================================================================
-   Dizajn C – „Tmavá prémiová“
-   Písmo DM Sans, tmavé petrolejové úvody, svetlé piesková plocha,
-   mäkké biele karty. Tento súbor prepisuje základ z globals.css
+   Dizajn C1 – „Rytmus“
+   Písmo DM Sans, tmavé petrolejové úvody. Pod nimi sa striedajú
+   biele, mätové a tmavé sekcie, výzva je v petrolejovom páse. Tento súbor prepisuje základ z globals.css
    a subpages.css; farby a písmo meníte v sekcii tokenov nižšie.
    ===================================================================== */
 
 :root {
-  --bg: #f2efe9;
+  --bg: #ffffff;
   --surface: #ffffff;
-  --surface-2: #e9e5dc;
+  --surface-2: #eef2f1;
+  --tint: #f3f6f5;
+  --mint: #e5efed;
   --ink: #14191a;
   --ink-2: #263032;
   --muted: #5b6264;
-  --line: #e2ddd3;
-  --line-strong: #cfc8ba;
+  --line: #dfe6e4;
+  --line-strong: #c6d2cf;
   --accent: #0f6e6e;
   --accent-hover: #0b5656;
   --accent-soft: #dfece9;
@@ -710,4 +712,165 @@ h4 {
 .prose h2,
 .notfound h1 {
   font-weight: 500;
+}
+
+/* =====================================================================
+   C1 – Rytmus sekcií: biela → mätová → tmavá
+   ===================================================================== */
+.section {
+  background: #fff;
+}
+
+.section--surface {
+  background: var(--mint);
+}
+
+.section--dark {
+  background: var(--dark);
+}
+
+/* karty na bielom pozadí sú jemne tónované, na mätovom biele */
+.card,
+.link-card,
+.tab-panel,
+.roi__form,
+.chip {
+  background: var(--tint);
+  box-shadow: none;
+}
+
+.section--surface .card,
+.section--surface .link-card,
+.section--surface .chip {
+  background: #fff !important;
+}
+
+.card__num {
+  color: #9cc9c3;
+}
+
+.checklist li {
+  background: #fff;
+}
+
+.link-card:hover {
+  box-shadow: 0 22px 40px -30px rgb(20 60 60 / 0.35);
+}
+
+/* Pred a po na mätovej */
+.ba__col--before {
+  background: #fff;
+}
+
+/* Čo sa zmení – hlavný prínos + 4 karty */
+.ogrid {
+  list-style: none;
+  display: grid;
+  gap: 16px;
+}
+
+.ocard {
+  background: rgb(255 255 255 / 0.04);
+  border: 1px solid rgb(255 255 255 / 0.08);
+  border-radius: 20px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ocard__icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: rgb(111 208 199 / 0.12);
+  color: var(--accent-on-dark);
+  margin-bottom: 28px;
+}
+
+.ocard h3 {
+  font-size: 19.5px;
+  margin-bottom: 8px;
+}
+
+.ocard p {
+  color: var(--on-dark-muted);
+  font-size: 15px;
+}
+
+.ocard--main {
+  background: linear-gradient(160deg, #17403f, #0f2c2d);
+  border-color: rgb(111 208 199 / 0.18);
+  padding: 34px;
+}
+
+.ocard--main .ocard__icon {
+  width: 56px;
+  height: 56px;
+  background: var(--accent-on-dark);
+  color: var(--dark);
+}
+
+.ocard--main h3 {
+  font-size: clamp(24px, 2.4vw, 30px);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin: 28px 0 14px;
+}
+
+.ocard--main p {
+  color: #b5c8c6;
+  font-size: 16.5px;
+}
+
+.ocard--main .ocard__tag {
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+  color: var(--accent-on-dark);
+  font-size: 14.5px;
+  font-weight: 500;
+}
+
+@media (min-width: 640px) {
+  .ogrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .ocard--main {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ogrid {
+    grid-template-columns: 1.1fr 1fr 1fr;
+  }
+  .ocard--main {
+    grid-column: auto;
+    grid-row: span 2;
+  }
+  .ocard--main h3 {
+    margin-top: auto;
+  }
+}
+
+/* Výzva v petrolejovom páse */
+.cta-band {
+  background: var(--accent);
+  color: #fff;
+}
+
+.cta-band p {
+  color: #cfe7e3;
+}
+
+.cta-band .btn--primary {
+  background: #fff;
+  color: var(--accent);
+}
+
+.cta-band .btn--primary:hover {
+  background: var(--mint);
+  color: var(--accent-hover);
 }
