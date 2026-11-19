@@ -874,3 +874,46 @@ h4 {
   background: var(--mint);
   color: var(--accent-hover);
 }
+
+/* Integrácie v troch skupinách */
+.igroups {
+  list-style: none;
+  display: grid;
+  gap: 16px;
+}
+
+.igroup {
+  background: var(--tint);
+  border-radius: var(--radius);
+  padding: 30px;
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.igroup h3 {
+  font-size: 20px;
+}
+
+.igroup > p {
+  color: var(--muted);
+  font-size: 15.5px;
+  margin-bottom: 14px;
+}
+
+.igroup .chips {
+  gap: 8px;
+}
+
+.igroup .chip {
+  background: #fff;
+  min-height: 40px;
+  padding: 0 16px;
+  font-size: 14.5px;
+}
+
+@media (min-width: 900px) {
+  .igroups {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

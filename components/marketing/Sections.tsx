@@ -169,10 +169,18 @@ export function Integrations() {
     <section className="section" aria-labelledby="integrations-title">
       <div className="container">
         <SectionHead eyebrow="Integrácie" title={integrations.title} lead={integrations.lead} id="integrations-title" />
-        <ul className="chips">
-          {integrations.items.map((i) => (
-            <li key={i} className="chip">
-              {i}
+        <ul className="igroups">
+          {integrations.groups.map((g) => (
+            <li key={g.title} className="igroup">
+              <h3>{g.title}</h3>
+              <p>{g.text}</p>
+              <ul className="chips" aria-label={g.title}>
+                {g.items.map((i) => (
+                  <li key={i} className="chip">
+                    {i}
+                  </li>
+                ))}
+              </ul>
             </li>
           ))}
         </ul>

@@ -188,19 +188,22 @@ export const showcases = {
 export const integrations = {
   title: "Pracujeme s tým, čo už máte",
   lead: "Technológiu vyberáme podľa problému, nie naopak. Väčšinou nepotrebujete nový systém, ale prepojiť tie existujúce.",
-  items: [
-    "Microsoft 365",
-    "Google Workspace",
-    "CRM systémy",
-    "ERP systémy",
-    "Účtovné systémy",
-    "HR a náborové systémy",
-    "n8n",
-    "Make",
-    "Power Automate",
-    "API a webhooky",
-    "Databázy",
-    "Jazykové modely (AI)",
+  groups: [
+    {
+      title: "Vaše firemné systémy",
+      text: "Prepojíme nástroje, ktoré už denne používate.",
+      items: ["Microsoft 365", "Google Workspace", "CRM", "ERP a účtovníctvo", "HR systémy"],
+    },
+    {
+      title: "Automatizácia procesov",
+      text: "Overené platformy, ktoré spájajú systémy a riadia tok úloh.",
+      items: ["Power Automate", "n8n", "API prepojenia"],
+    },
+    {
+      title: "Umelá inteligencia",
+      text: "Model vyberáme podľa úlohy, bezpečnosti a miesta spracovania dát.",
+      items: ["OpenAI (ChatGPT)", "Anthropic Claude", "Google Gemini", "Microsoft Copilot", "Mistral AI (EÚ)"],
+    },
   ],
 };
 
@@ -240,7 +243,7 @@ export const faq = {
     },
     {
       q: "S akými systémami pracujete?",
-      a: "S bežnými firemnými systémami: Microsoft 365, Google Workspace, CRM, ERP, účtovné a HR systémy. Prepájame ich cez API, webhooky alebo nástroje ako n8n, Make či Power Automate. Konkrétnu možnosť prepojenia vždy overíme v audite.",
+      a: "S bežnými firemnými systémami: Microsoft 365, Google Workspace, CRM, ERP, účtovné a HR systémy. Prepájame ich cez API, webhooky alebo platformy ako Power Automate či n8n. Konkrétnu možnosť prepojenia vždy overíme v audite.",
     },
     {
       q: "Ako dlho trvá projekt?",
