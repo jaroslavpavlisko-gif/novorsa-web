@@ -114,8 +114,8 @@ export const solutions: { title: string; lead: string; items: Solution[] } = {
       id: "prevadzka",
       label: "Prevádzka",
       title: "Riadenie procesov s prehľadom v každom kroku",
-      text: "Úlohy a požiadavky prechádzajú medzi tímami s kompletnými údajmi, stav každej je viditeľný a odchýlky sa ukážu včas.",
-      examples: ["Objednávky a stav skladu", "Riadenie úloh naprieč tímami", "Digitálne kontrolné zoznamy", "Upozornenia na odchýlky"],
+      text: "Rutinné úlohy bežia automaticky, informácie sa zbierajú na jednom mieste a dostanú sa k správnym ľuďom včas. Zákazky a projekty máte pod kontrolou od zadania po odovzdanie.",
+      examples: ["Automatizácia rutinných úloh", "Zoskupovanie a odovzdávanie informácií medzi tímami", "Projektové riadenie zákaziek", "Prehľad o stave úloh a termínov"],
     },
     {
       id: "servis",
