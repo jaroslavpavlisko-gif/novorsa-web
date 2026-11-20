@@ -1,0 +1,14 @@
+# Dependabot: raz týždenne skontroluje knižnice webu a pripraví aktualizácie.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "07:00"
+      timezone: "Europe/Bratislava"
+    open-pull-requests-limit: 5
+    groups:
+      next-a-react:
+        patterns: ["next", "react", "react-dom", "@types/react", "@types/react-dom"]

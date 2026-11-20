@@ -1,6 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
+import { checkBotId } from "botid/server";
 import { contact } from "@/content/site";
 
 export type ContactState = {
@@ -50,6 +51,21 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
 
   if (Object.keys(errors).length > 0) {
     return { status: "error", message: "Skontrolujte, prosím, označené polia.", errors, values };
+  }
+
+  // Vercel BotID: neviditeľné overenie, že formulár odoslal človek, nie robot.
+  try {
+    const verification = await checkBotId();
+    if (verification.isBot) {
+      return {
+        status: "error",
+        message: "Správu sa nepodarilo overiť. Napíšte nám, prosím, priamo na info@novorsa.sk.",
+        values,
+      };
+    }
+  } catch (e) {
+    // Ak overenie zlyhá technicky, formulár nezablokujeme a chybu zapíšeme do logu.
+    console.error("BotID: overenie zlyhalo", e);
   }
 
   const h = await headers();
