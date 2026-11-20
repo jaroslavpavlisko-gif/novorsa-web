@@ -205,7 +205,7 @@ export const caseStudies: { title: string; lead: string; items: CaseStudy[] } = 
         headline: "Top preverené leady",
         text: "Radar pravidelne identifikuje a pripraví najperspektívnejšie firmy so skóre, overenými zdrojmi a návrhom oslovenia. Obchodník venuje čas stretnutiam, nie rešerši.",
       },
-      stack: ["Claude", "Microsoft 365", "FinStat"],
+      stack: ["Claude", "Microsoft 365", "CRM"],
     },
   ],
 };
