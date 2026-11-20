@@ -189,10 +189,10 @@ export const caseStudies: { title: string; lead: string; items: CaseStudy[] } = 
     },
     {
       area: "Obchod",
-      title: "AI radar obchodných príležitostí",
+      title: "AI radar top obchodných príležitostí",
       company: "Firma v oblasti služieb, cca 70 zamestnancov",
-      meta: [{ label: "Stav", value: "Pilotná prevádzka" }],
-      goal: "Pravidelné a jednotné vyhľadávanie nových obchodných príležitostí, ktorému obchodníci môžu dôverovať.",
+      meta: [{ label: "Implementácia", value: "2 týždne" }],
+      goal: "Nájsť top príležitosti pre jednu špecifickú službu. Nie čo najviac leadov, ale tie najperspektívnejšie: kvalita namiesto kvantity.",
       steps: [
         "Vyhľadávanie firiem podľa signálov skutočnej potreby",
         "Analýza prevádzky a preverenie finančného zdravia",
@@ -201,8 +201,8 @@ export const caseStudies: { title: string; lead: string; items: CaseStudy[] } = 
         "Podklady na stretnutie a návrh oslovenia",
       ],
       result: {
-        headline: "Preverené príležitosti každý týždeň",
-        text: "Obchodník dostane firmu so skóre, overenými zdrojmi a návrhom oslovenia. Čas venuje stretnutiam, nie rešerši.",
+        headline: "Top preverené leady",
+        text: "Radar pravidelne identifikuje a pripraví najperspektívnejšie firmy so skóre, overenými zdrojmi a návrhom oslovenia. Obchodník venuje čas stretnutiam, nie rešerši.",
       },
       stack: ["Claude", "Microsoft 365", "FinStat"],
     },
