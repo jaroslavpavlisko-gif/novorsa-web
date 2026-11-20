@@ -199,6 +199,7 @@ export const caseStudies: { title: string; lead: string; items: CaseStudy[] } = 
         "Bodové hodnotenie podľa kritérií klienta",
         "Schválenie obchodníkom: o každej firme rozhoduje človek",
         "Podklady na stretnutie a návrh oslovenia",
+        "Automatický zápis schválených leadov do CRM s kompletnými informáciami a podkladmi",
       ],
       result: {
         headline: "Top preverené leady",
