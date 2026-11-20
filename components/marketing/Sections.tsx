@@ -141,7 +141,7 @@ export function Showcases() {
                   </div>
                   {c.duration && (
                     <div>
-                      <dt>Trvanie</dt>
+                      <dt>Implementácia</dt>
                       <dd>{c.duration}</dd>
                     </div>
                   )}
@@ -153,8 +153,8 @@ export function Showcases() {
                 </div>
               </div>
               <div className="case__body">
-                <h4>Východisko</h4>
-                <p>{c.challenge}</p>
+                <h4>Zadanie</h4>
+                <p className="case__goal">{c.goal}</p>
                 <h4>Riešenie</h4>
                 <ol className="case__steps">
                   {c.steps.map((s, i) => (

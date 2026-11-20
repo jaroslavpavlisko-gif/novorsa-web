@@ -159,7 +159,7 @@ export type CaseStudy = {
   title: string;
   company: string;
   duration?: string;
-  challenge: string;
+  goal: string;
   steps: string[];
   result: { headline: string; text: string };
   stack: string[];
@@ -172,23 +172,20 @@ export const caseStudies: { title: string; lead: string; items: CaseStudy[] } = 
     {
       area: "Obchod",
       title: "Automatizované spracovanie obchodných leadov",
-      company: "[typ firmy a veľkosť]",
-      duration: "[trvanie projektu]",
-      challenge:
-        "[Východisko: čo nefungovalo. Návrh: Potenciálni klienti boli roztrúsení v dokumentoch na SharePointe a v e-mailoch. Obchodníci ich ručne dohľadávali, preverovali a zapisovali do CRM.]",
+      company: "Firma v oblasti služieb, cca 100 zamestnancov",
+      duration: "2 dni",
+      goal: "Automatické spracovanie nových leadov a ich kompletná evidencia v CRM, bez ručnej práce obchodníkov.",
       steps: [
-        "AI agent zbiera potenciálne leady z dokumentov na SharePointe a z e-mailov v Outlooku",
-        "Údaje o každej firme zapíše do jednotnej štruktúry",
-        "Ďalší agent preverí finančné zdravie firmy a výsledok doplní k leadu",
-        "Lead dostane bodové hodnotenie podľa kritérií klienta a zaradí sa do skupiny",
-        "Systém dohľadá a overí kontaktnú osobu",
-        "Lead sa automaticky zapíše do CRM so súhrnom, skóre a zdrojom, pridelí sa obchodníkovi a ten dostane e-mail",
+        "Zozbieranie dát o potenciálnych klientoch z firemných zdrojov",
+        "Analýza a vyhodnotenie leadov podľa kritérií klienta",
+        "Automatický zápis do CRM",
+        "Priradenie obchodníkovi s kompletnými informáciami",
       ],
       result: {
-        headline: "[hlavný výsledok, napr. číslo]",
-        text: "[stručný popis výsledku]",
+        headline: "5 hodín týždenne",
+        text: "ušetrí každý obchodník na vyhľadávaní, preverovaní a zapisovaní leadov.",
       },
-      stack: ["Microsoft 365", "SharePoint", "Outlook", "AI agenti (Grok)", "CRM", "MCP prepojenie"],
+      stack: ["Microsoft 365", "AI agenti", "CRM"],
     },
   ],
 };
