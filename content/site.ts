@@ -158,7 +158,7 @@ export type CaseStudy = {
   area: string;
   title: string;
   company: string;
-  duration?: string;
+  meta: { label: string; value: string }[];
   goal: string;
   steps: string[];
   result: { headline: string; text: string };
@@ -173,7 +173,7 @@ export const caseStudies: { title: string; lead: string; items: CaseStudy[] } = 
       area: "Obchod",
       title: "Automatizované spracovanie obchodných leadov",
       company: "Firma v oblasti služieb, cca 100 zamestnancov",
-      duration: "2 dni",
+      meta: [{ label: "Implementácia", value: "2 dni" }],
       goal: "Automatické spracovanie nových leadov a ich kompletná evidencia v CRM, bez ručnej práce obchodníkov.",
       steps: [
         "Zozbieranie dát o potenciálnych klientoch z firemných zdrojov",
@@ -186,6 +186,25 @@ export const caseStudies: { title: string; lead: string; items: CaseStudy[] } = 
         text: "ušetrí každý obchodník na vyhľadávaní, preverovaní a zapisovaní leadov.",
       },
       stack: ["Microsoft 365", "Grok bot", "CRM"],
+    },
+    {
+      area: "Obchod",
+      title: "AI radar obchodných príležitostí",
+      company: "Firma v oblasti služieb, cca 70 zamestnancov",
+      meta: [{ label: "Stav", value: "Pilotná prevádzka" }],
+      goal: "Pravidelné a jednotné vyhľadávanie nových obchodných príležitostí, ktorému obchodníci môžu dôverovať.",
+      steps: [
+        "Vyhľadávanie firiem podľa signálov skutočnej potreby",
+        "Analýza prevádzky a preverenie finančného zdravia",
+        "Bodové hodnotenie podľa kritérií klienta",
+        "Schválenie obchodníkom: o každej firme rozhoduje človek",
+        "Podklady na stretnutie a návrh oslovenia",
+      ],
+      result: {
+        headline: "Preverené príležitosti každý týždeň",
+        text: "Obchodník dostane firmu so skóre, overenými zdrojmi a návrhom oslovenia. Čas venuje stretnutiam, nie rešerši.",
+      },
+      stack: ["Claude", "Microsoft 365", "FinStat"],
     },
   ],
 };

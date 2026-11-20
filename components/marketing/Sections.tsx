@@ -139,12 +139,12 @@ export function Showcases() {
                     <dt>Klient</dt>
                     <dd>{c.company}</dd>
                   </div>
-                  {c.duration && (
-                    <div>
-                      <dt>Implementácia</dt>
-                      <dd>{c.duration}</dd>
+                  {c.meta.map((m) => (
+                    <div key={m.label}>
+                      <dt>{m.label}</dt>
+                      <dd>{m.value}</dd>
                     </div>
-                  )}
+                  ))}
                 </dl>
                 <div className="case__result">
                   <span className="case__result-label">Výsledok</span>
