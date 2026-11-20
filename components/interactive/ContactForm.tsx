@@ -61,7 +61,7 @@ export function ContactForm() {
         </div>
         <div className="input-wrap">
           <label htmlFor="size">Veľkosť firmy</label>
-          <select id="size" name="size" className="select" required defaultValue={v.size ?? ""} {...field("size")}>
+          <select key={`size-${v.size ?? ""}`} id="size" name="size" className="select" required defaultValue={v.size ?? ""} {...field("size")}>
             <option value="" disabled>
               Vyberte
             </option>
@@ -75,7 +75,7 @@ export function ContactForm() {
         </div>
         <div className="input-wrap">
           <label htmlFor="area">Čo chcete zlepšiť</label>
-          <select id="area" name="area" className="select" required defaultValue={v.area ?? ""} {...field("area")}>
+          <select key={`area-${v.area ?? ""}`} id="area" name="area" className="select" required defaultValue={v.area ?? ""} {...field("area")}>
             <option value="" disabled>
               Vyberte oblasť
             </option>
