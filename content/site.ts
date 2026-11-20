@@ -167,7 +167,7 @@ export type CaseStudy = {
 
 export const caseStudies: { title: string; lead: string; items: CaseStudy[] } = {
   title: "Úspešné projekty",
-  lead: "Vybrané projekty z našej praxe. Na žiadosť klientov neuvádzame ich názvy.",
+  lead: "Vybrané projekty z našej praxe.",
   items: [
     {
       area: "Obchod",
