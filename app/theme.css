@@ -917,3 +917,145 @@ h4 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+/* Úspešné projekty (case study) */
+.cases {
+  list-style: none;
+  display: grid;
+  gap: 20px;
+}
+
+.case {
+  display: grid;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.case__side {
+  background: var(--dark);
+  color: var(--on-dark);
+  padding: 32px;
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+
+.case__side .badge--accent {
+  justify-self: start;
+  background: rgb(111 208 199 / 0.12);
+  color: var(--accent-on-dark);
+}
+
+.case__side h3 {
+  font-size: clamp(24px, 2.4vw, 30px);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.case__meta {
+  margin: 0;
+  display: grid;
+  gap: 10px;
+  padding: 16px 0;
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+  border-bottom: 1px solid rgb(255 255 255 / 0.1);
+}
+
+.case__meta div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 14.5px;
+}
+
+.case__meta dt {
+  color: #86a09f;
+}
+
+.case__meta dd {
+  margin: 0;
+  text-align: right;
+}
+
+.case__result {
+  background: linear-gradient(160deg, #17403f, #0f2c2d);
+  border: 1px solid rgb(111 208 199 / 0.18);
+  border-radius: 16px;
+  padding: 22px;
+  display: grid;
+  gap: 6px;
+}
+
+.case__result-label {
+  font-size: 13px;
+  color: var(--accent-on-dark);
+}
+
+.case__result strong {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.case__result p {
+  color: #b5c8c6;
+  font-size: 15px;
+}
+
+.case__body {
+  padding: 32px;
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.case__body h4 {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.case__body h4 + p {
+  margin-bottom: 18px;
+}
+
+.case__steps {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.case__steps li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  align-items: start;
+  font-size: 15.5px;
+}
+
+.case__steps span {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media (min-width: 900px) {
+  .case {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+  .case__side,
+  .case__body {
+    padding: 44px;
+  }
+}

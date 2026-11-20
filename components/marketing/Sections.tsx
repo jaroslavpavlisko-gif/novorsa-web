@@ -1,4 +1,4 @@
-import { faq, integrations, outcomes, pains, showcases, trust, why, workProcess } from "@/content/site";
+import { caseStudies, faq, integrations, outcomes, pains, trust, why, workProcess } from "@/content/site";
 import { Check, Globe, Key, Plus, Shield, User, outcomeIcons } from "../ui/Icons";
 
 export function SectionHead({ eyebrow, title, lead, id }: { eyebrow: string; title: string; lead?: string; id: string }) {
@@ -122,40 +122,56 @@ export function Process({ head = true }: { head?: boolean }) {
   );
 }
 
+/** Úspešné projekty: stručné case study bez názvu klienta. */
 export function Showcases() {
   return (
-    <section id="ukazky" className="section section--surface" aria-labelledby="showcase-title">
+    <section id="ukazky" className="section section--surface" aria-labelledby="cases-title">
       <div className="container">
-        <SectionHead eyebrow="Príklady" title={showcases.title} lead={showcases.lead} id="showcase-title" />
-        <ul className="grid grid--3" style={{ listStyle: "none" }}>
-          {showcases.items.map((c) => (
-            <li key={c.title} className="showcase" style={{ background: "var(--bg)" }}>
-              <div className="showcase__top">
+        <SectionHead eyebrow="Z praxe" title={caseStudies.title} lead={caseStudies.lead} id="cases-title" />
+        <ul className="cases">
+          {caseStudies.items.map((c) => (
+            <li key={c.title} className="case">
+              <div className="case__side">
                 <span className="badge badge--accent">{c.area}</span>
-                <span className="badge">Ilustračný príklad</span>
+                <h3>{c.title}</h3>
+                <dl className="case__meta">
+                  <div>
+                    <dt>Klient</dt>
+                    <dd>{c.company}</dd>
+                  </div>
+                  {c.duration && (
+                    <div>
+                      <dt>Trvanie</dt>
+                      <dd>{c.duration}</dd>
+                    </div>
+                  )}
+                </dl>
+                <div className="case__result">
+                  <span className="case__result-label">Výsledok</span>
+                  <strong>{c.result.headline}</strong>
+                  <p>{c.result.text}</p>
+                </div>
               </div>
-              <h3>{c.title}</h3>
-              <dl>
-                <div>
-                  <dt>Problém</dt>
-                  <dd>{c.problem}</dd>
-                </div>
-                <div>
-                  <dt>Riešenie</dt>
-                  <dd>{c.solution}</dd>
-                </div>
-                <div>
-                  <dt>Očakávaný výsledok</dt>
-                  <dd className="result">{c.result}</dd>
-                </div>
-              </dl>
-              <ul className="stack" aria-label="Použité nástroje">
-                {c.stack.map((s) => (
-                  <li key={s} className="badge">
-                    {s}
-                  </li>
-                ))}
-              </ul>
+              <div className="case__body">
+                <h4>Východisko</h4>
+                <p>{c.challenge}</p>
+                <h4>Riešenie</h4>
+                <ol className="case__steps">
+                  {c.steps.map((s, i) => (
+                    <li key={s}>
+                      <span aria-hidden="true">{i + 1}</span>
+                      {s}
+                    </li>
+                  ))}
+                </ol>
+                <ul className="stack" aria-label="Použité nástroje">
+                  {c.stack.map((s) => (
+                    <li key={s} className="badge">
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </li>
           ))}
         </ul>

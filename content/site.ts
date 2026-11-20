@@ -154,33 +154,41 @@ export const roi = {
     "Orientačný odhad, nie garantovaná úspora. Počítame so 48 pracovnými týždňami a úväzkom 1 920 hodín ročne. Uvoľnená kapacita sa nerovná automaticky úspore nákladov.",
 };
 
-export const showcases = {
-  title: "Ukážkové riešenia",
-  lead: "Takto vyzerajú typické projekty. Ide o ilustračné príklady, nie o referencie konkrétnych klientov.",
+export type CaseStudy = {
+  area: string;
+  title: string;
+  company: string;
+  duration?: string;
+  challenge: string;
+  steps: string[];
+  result: { headline: string; text: string };
+  stack: string[];
+};
+
+export const caseStudies: { title: string; lead: string; items: CaseStudy[] } = {
+  title: "Úspešné projekty",
+  lead: "Vybrané projekty z našej praxe. Na žiadosť klientov neuvádzame ich názvy.",
   items: [
     {
-      area: "HR a nábor",
-      title: "Predvýber životopisov bez prepisovania",
-      problem: "Personalista ručne číta desiatky životopisov a prepisuje údaje do tabuľky.",
-      solution: "AI vyťaží údaje, porovná ich s kritériami pozície a pripraví poradie. Personalista vidí odôvodnenie a rozhoduje.",
-      result: "Personalista sa venuje pohovorom namiesto triedenia.",
-      stack: ["E-mail", "ATS", "AI", "Microsoft 365"],
-    },
-    {
-      area: "Financie",
-      title: "Faktúry od e-mailu po účtovníctvo",
-      problem: "Faktúry prichádzajú v PDF, ručne sa prepisujú a schvaľovanie sa zasekáva v e-mailoch.",
-      solution: "Doklad sa prečíta, priradí k nákladovému stredisku, pošle na schválenie a po potvrdení zapíše do účtovníctva.",
-      result: "Účtovníčka rieši len výnimky a nejasné doklady.",
-      stack: ["E-mail", "AI čítanie dokladov", "Schvaľovanie", "Účtovný systém"],
-    },
-    {
       area: "Obchod",
-      title: "Follow-up, na ktorý sa nezabudne",
-      problem: "Dopyty z webu a e-mailu čakajú na odpoveď a časť z nich sa stratí.",
-      solution: "Dopyt sa zapíše do CRM, doplní sa o údaje o firme a obchodník dostane návrh odpovede a pripomienku.",
-      result: "Každý dopyt má odpoveď a vlastníka.",
-      stack: ["Webový formulár", "CRM", "AI", "Notifikácie"],
+      title: "Automatizované spracovanie obchodných leadov",
+      company: "[typ firmy a veľkosť]",
+      duration: "[trvanie projektu]",
+      challenge:
+        "[Východisko: čo nefungovalo. Návrh: Potenciálni klienti boli roztrúsení v dokumentoch na SharePointe a v e-mailoch. Obchodníci ich ručne dohľadávali, preverovali a zapisovali do CRM.]",
+      steps: [
+        "AI agent zbiera potenciálne leady z dokumentov na SharePointe a z e-mailov v Outlooku",
+        "Údaje o každej firme zapíše do jednotnej štruktúry",
+        "Ďalší agent preverí finančné zdravie firmy a výsledok doplní k leadu",
+        "Lead dostane bodové hodnotenie podľa kritérií klienta a zaradí sa do skupiny",
+        "Systém dohľadá a overí kontaktnú osobu",
+        "Lead sa automaticky zapíše do CRM so súhrnom, skóre a zdrojom, pridelí sa obchodníkovi a ten dostane e-mail",
+      ],
+      result: {
+        headline: "[hlavný výsledok, napr. číslo]",
+        text: "[stručný popis výsledku]",
+      },
+      stack: ["Microsoft 365", "SharePoint", "Outlook", "AI agenti (Grok)", "CRM", "MCP prepojenie"],
     },
   ],
 };
@@ -202,7 +210,7 @@ export const integrations = {
     {
       title: "Umelá inteligencia",
       text: "Model vyberáme podľa úlohy, bezpečnosti a miesta spracovania dát.",
-      items: ["OpenAI (ChatGPT)", "Anthropic Claude", "Google Gemini", "Microsoft Copilot", "Mistral AI (EÚ)"],
+      items: ["OpenAI (ChatGPT)", "Anthropic Claude", "Google Gemini", "xAI Grok", "Microsoft Copilot", "Mistral AI (EÚ)"],
     },
   ],
 };

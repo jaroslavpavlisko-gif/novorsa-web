@@ -17,7 +17,7 @@ export function ContactForm() {
       <div className="form" role="status">
         <p className="form__status form__status--ok">{state.message}</p>
         <p style={{ color: "var(--muted)" }}>
-          Medzitým si môžete prejsť <a href="/riesenia#ukazky">ukážkové riešenia</a> alebo{" "}
+          Medzitým si môžete prejsť <a href="/riesenia#ukazky">úspešné projekty</a> alebo{" "}
           <a href="/kalkulacka">vyčísliť ďalší proces</a>.
         </p>
       </div>
