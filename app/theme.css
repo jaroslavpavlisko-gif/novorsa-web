@@ -1079,3 +1079,27 @@ h4 {
   line-height: 1.6;
   color: #6f8786;
 }
+
+/* Postup: nadpisy, texty a výstupy krokov zarovnané do spoločných riadkov */
+@media (min-width: 1024px) {
+  .steps {
+    grid-template-rows: repeat(4, auto);
+    row-gap: 14px;
+  }
+  .step {
+    grid-row: span 4;
+    display: grid;
+    grid-template-rows: subgrid;
+    gap: 0;
+  }
+  .step > div {
+    display: contents;
+  }
+  .step h3 {
+    margin: 10px 0 6px;
+  }
+  .step__out {
+    margin-top: 6px;
+    align-self: start;
+  }
+}
