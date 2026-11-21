@@ -7,7 +7,7 @@ export const site = {
   description:
     "Novorsa mapuje, kde vaša firma stráca čas ručnou prácou, a zavádza automatizáciu, AI a prepojenie systémov tam, kde sa to oplatí.",
   email: "info@novorsa.sk",
-  phone: "", // doplniť, napr. "+421 900 000 000"
+  phone: "+421 903 526 823",
   linkedin: "", // doplniť URL firemného profilu
   company: {
     name: "JP Business Solutions s. r. o.",

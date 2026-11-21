@@ -49,6 +49,7 @@ const orgJsonLd = {
   legalName: site.company.name,
   url: site.url,
   email: site.email,
+  telephone: site.phone,
   description: site.description,
   logo: `${site.url}/icon.svg`,
   identifier: { "@type": "PropertyValue", propertyID: "IČO", value: site.company.ico },
