@@ -284,23 +284,23 @@ export const faq = {
   items: [
     {
       q: "Je to bezpečné a v súlade s GDPR?",
-      a: "Pri každom projekte riešime, aké údaje sa spracúvajú, kde sú uložené a kto k nim má prístup. Spracúvame len nevyhnutné údaje, prednostne na serveroch v EÚ. AI nástroje nasadzujeme spravidla priamo na vašich firemných účtoch, takže údaje zostávajú pod vašou kontrolou. Ak pri práci prídeme do styku s osobnými údajmi, uzatvoríme s vami zmluvu o ich spracúvaní. Konkrétne nastavenie vždy prispôsobíme vašim pravidlám.",
+      a: "Pri každom projekte riešime, aké údaje sa spracúvajú, kde sú uložené a kto k nim má prístup. Spracúvame len nevyhnutné údaje, prednostne na serveroch v EÚ a v súlade s platnou legislatívou. Konkrétne nastavenie vždy prispôsobíme vašim pravidlám.",
     },
     {
       q: "S akými systémami pracujete?",
-      a: "S bežnými firemnými systémami: Microsoft 365, Google Workspace, CRM, ERP, účtovné a HR systémy. Prepájame ich cez API, webhooky alebo platformy ako Power Automate či n8n. Konkrétnu možnosť prepojenia vždy overíme v audite.",
+      a: "S bežnými firemnými systémami: Microsoft 365, Google Workspace, CRM, ERP, účtovné a HR systémy či ATS (náborové systémy). Prepájame ich cez API, webhooky alebo platformy ako Power Automate či n8n. Konkrétnu možnosť prepojenia vždy overíme v audite.",
     },
     {
       q: "Ako dlho trvá projekt?",
-      a: "Audit zvyčajne trvá niekoľko týždňov podľa veľkosti firmy. Prvý pilot spúšťame tak, aby ste výsledok videli čo najskôr. Presný harmonogram dostanete po úvodnom rozhovore.",
+      a: "Audit zvyčajne trvá od niekoľkých dní po niekoľko týždňov podľa veľkosti firmy a zložitosti procesov. Prvý pilot spúšťame tak, aby ste výsledok videli čo najskôr. Presný harmonogram dostanete po úvodnom rozhovore.",
     },
     {
       q: "Čo keď sa AI pomýli?",
-      a: "Počítame s tým. AI nasadzujeme tam, kde chybu včas zachytíme, a pri dôležitých krokoch vždy rozhoduje človek. Riešenie pred spustením testujeme na vašich reálnych prípadoch.",
+      a: "Počítame s tým. AI nasadzujeme tam, kde chybu včas zachytíme, a pri dôležitých krokoch vždy rozhoduje človek. Riešenie pred spustením testujeme na vašich reálnych prípadoch a po spustení ho priebežne vyhodnocujeme a zlepšujeme.",
     },
     {
       q: "Potrebujeme vlastné IT oddelenie?",
-      a: "Nie. Návrh, zavedenie aj správu vieme zabezpečiť my. Ak máte vlastné IT, radi s ním spolupracujeme a odovzdáme mu dokumentáciu.",
+      a: "Nie je to nevyhnutné. Návrh, zavedenie aj správu vieme zabezpečiť my. Ak máte vlastné IT, radi s ním spolupracujeme a odovzdáme mu dokumentáciu.",
     },
     {
       q: "Koľko to stojí?",
