@@ -2,6 +2,7 @@
 
 import { headers } from "next/headers";
 import { checkBotId } from "botid/server";
+import { checkRateLimit } from "@vercel/firewall";
 import { contact, site } from "@/content/site";
 import { salutation } from "@/lib/salutation";
 import { LIMITS } from "@/lib/formLimits";
@@ -143,8 +144,9 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
   }
 
   // Potvrdenie odosielateľovi. Chyba tu už neruší odoslaný dopyt.
-  // Posiela sa len po úspešnom overení BotID a najviac 2× za hodinu na tú istú adresu.
-  if (botCheckOk && !rateLimited(`to:${values.email.toLowerCase()}`, 2, 60 * 60 * 1000)) {
+  // Posiela sa len po úspešnom overení BotID a najviac 2× za 10 minút na tú istú adresu
+  // (pravidlo „Limit potvrdzujúcich e-mailov“ vo Vercel Firewall, spoločné pre všetky inštancie).
+  if (botCheckOk && !(await confirmationLimited(values.email.toLowerCase(), h))) {
     // Text zámerne neobsahuje popis z formulára, aby sa formulár nedal zneužiť na rozosielanie cudzieho obsahu.
     try {
       const res = await fetch("https://api.resend.com/emails", {
@@ -169,6 +171,22 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
   }
 
   return { status: "ok", message: "Ďakujeme! Správa dorazila a ozveme sa do dvoch pracovných dní." };
+}
+
+/** Spoločný limit potvrdení na jednu adresu cez Vercel Firewall; pri výpadku záložný limit v pamäti. */
+async function confirmationLimited(email: string, h: Awaited<ReturnType<typeof headers>>): Promise<boolean> {
+  try {
+    const request = new Request(`${site.url}/kontakt`, { method: "POST", headers: new Headers(Array.from(h.entries())) });
+    const { rateLimited: limited } = await checkRateLimit("kontakt-potvrdenie", {
+      request,
+      rateLimitKey: email,
+      timeout: 1500,
+    });
+    return limited;
+  } catch (e) {
+    console.error("Firewall limit potvrdení: kontrola zlyhala", e instanceof Error ? e.name : "unknown");
+    return rateLimited(`to:${email}`, 2, 10 * 60 * 1000);
+  }
 }
 
 /** Veta o prijatí dopytu; pri „Zatiaľ neviem“ bez názvu oblasti. */
