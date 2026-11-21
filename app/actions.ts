@@ -4,15 +4,18 @@ import { headers } from "next/headers";
 import { checkBotId } from "botid/server";
 import { contact, site } from "@/content/site";
 import { salutation } from "@/lib/salutation";
+import { LIMITS } from "@/lib/formLimits";
 import { EMAIL_LOGO_PNG_BASE64 } from "@/lib/emailLogo";
 
 export type ContactState = {
   status: "idle" | "ok" | "error";
   message?: string;
-  errors?: Partial<Record<"firstName" | "lastName" | "company" | "ico" | "email" | "area" | "message", string>>;
+  errors?: Partial<Record<"firstName" | "lastName" | "company" | "ico" | "email" | "phone" | "area" | "message", string>>;
   values?: Record<string, string>;
 };
 
+// Záložný limit v pamäti jednej inštancie. Hlavný spoločný limit pre všetky inštancie
+// je pravidlo „Limit kontaktného formulára“ vo Vercel Firewall (5 odoslaní z IP za 10 minút).
 // Jednoduchý limit požiadaviek na jednu inštanciu servera (ochrana pred zahltením).
 const hits = new Map<string, number[]>();
 function rateLimited(key: string, limit = 5, windowMs = 10 * 60 * 1000) {
@@ -43,19 +46,29 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
   if (get("website")) return { status: "ok", message: "Ďakujeme, ozveme sa do dvoch pracovných dní." };
 
   const errors: ContactState["errors"] = {};
-  if (values.firstName.length < 2) errors.firstName = "Napíšte, prosím, svoje meno.";
-  if (values.lastName.length < 2) errors.lastName = "Napíšte, prosím, svoje priezvisko.";
-  if (values.company.length < 2) errors.company = "Napíšte, prosím, názov spoločnosti.";
+  // Jednoriadkové polia: bez zalomení riadkov a riadiacich znakov, s horným limitom dĺžky.
+  const singleLine = (s: string) => !/[\u0000-\u001f\u007f]/.test(s);
+  const tooLong = (s: string, max: number) => s.length > max || !singleLine(s);
+  if (tooLong(values.firstName, LIMITS.firstName)) errors.firstName = "Meno je príliš dlhé alebo obsahuje nepovolené znaky.";
+  if (tooLong(values.lastName, LIMITS.lastName)) errors.lastName = "Priezvisko je príliš dlhé alebo obsahuje nepovolené znaky.";
+  if (tooLong(values.company, LIMITS.company)) errors.company = "Názov spoločnosti je príliš dlhý alebo obsahuje nepovolené znaky.";
+  if (tooLong(values.email, LIMITS.email)) errors.email = "E-mailová adresa je príliš dlhá.";
+  if (tooLong(values.phone, LIMITS.phone) || (values.phone && !/^[+\d\s()/-]{6,}$/.test(values.phone)))
+    errors.phone = "Skontrolujte, prosím, telefónne číslo.";
+  if (!errors.firstName && values.firstName.length < 2) errors.firstName = "Napíšte, prosím, svoje meno.";
+  if (!errors.lastName && values.lastName.length < 2) errors.lastName = "Napíšte, prosím, svoje priezvisko.";
+  if (!errors.company && values.company.length < 2) errors.company = "Napíšte, prosím, názov spoločnosti.";
   if (values.ico && !/^\d{6,8}$/.test(values.ico.replace(/\s/g, ""))) errors.ico = "IČO má 6 až 8 číslic.";
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(values.email)) errors.email = "Skontrolujte, prosím, e-mailovú adresu.";
+  if (!errors.email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(values.email)) errors.email = "Skontrolujte, prosím, e-mailovú adresu.";
   if (!contact.areas.includes(values.area)) errors.area = "Vyberte oblasť.";
-  if (values.message.length > 4000) errors.message = "Popis je príliš dlhý (max. 4 000 znakov).";
+  if (values.message.length > LIMITS.message) errors.message = "Popis je príliš dlhý (max. 4 000 znakov).";
 
   if (Object.keys(errors).length > 0) {
     return { status: "error", message: "Skontrolujte, prosím, označené polia.", errors, values };
   }
 
   // Vercel BotID: neviditeľné overenie, že formulár odoslal človek, nie robot.
+  let botCheckOk = true;
   try {
     const verification = await checkBotId();
     if (verification.isBot) {
@@ -66,8 +79,10 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
       };
     }
   } catch (e) {
-    // Ak overenie zlyhá technicky, formulár nezablokujeme a chybu zapíšeme do logu.
-    console.error("BotID: overenie zlyhalo", e);
+    // Ak overenie zlyhá technicky, dopyt neztratíme: interný e-mail odíde,
+    // ale automatické potvrdenie na zadanú adresu sa nepošle (nedá sa zneužiť na rozosielanie).
+    botCheckOk = false;
+    console.error("BotID: overenie zlyhalo", e instanceof Error ? e.name : "unknown");
   }
 
   const h = await headers();
@@ -116,7 +131,7 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
       }),
     });
     if (!res.ok) {
-      console.error("Resend chyba", res.status, await res.text());
+      console.error("Resend chyba", res.status, res.headers.get("x-request-id") ?? "");
       throw new Error("send failed");
     }
   } catch {
@@ -128,26 +143,29 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
   }
 
   // Potvrdenie odosielateľovi. Chyba tu už neruší odoslaný dopyt.
-  // Text zámerne neobsahuje popis z formulára, aby sa formulár nedal zneužiť na rozosielanie cudzieho obsahu.
-  try {
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        from: `Novorsa <${to}>`,
-        to: [values.email],
-        reply_to: to,
-        subject: "Ďakujeme za správu | Novorsa",
-        html: confirmationHtml(values.firstName, values.lastName, values.area),
-        text: confirmationText(values.firstName, values.lastName, values.area),
-        attachments: [
-          { filename: "novorsa.png", content: EMAIL_LOGO_PNG_BASE64, content_id: "novorsa-logo", content_type: "image/png" },
-        ],
-      }),
-    });
-    if (!res.ok) console.error("Resend potvrdenie chyba", res.status, await res.text());
-  } catch (e) {
-    console.error("Resend potvrdenie výnimka", e);
+  // Posiela sa len po úspešnom overení BotID a najviac 2× za hodinu na tú istú adresu.
+  if (botCheckOk && !rateLimited(`to:${values.email.toLowerCase()}`, 2, 60 * 60 * 1000)) {
+    // Text zámerne neobsahuje popis z formulára, aby sa formulár nedal zneužiť na rozosielanie cudzieho obsahu.
+    try {
+      const res = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          from: `Novorsa <${to}>`,
+          to: [values.email],
+          reply_to: to,
+          subject: "Ďakujeme za správu | Novorsa",
+          html: confirmationHtml(values.firstName, values.lastName, values.area),
+          text: confirmationText(values.firstName, values.lastName, values.area),
+          attachments: [
+            { filename: "novorsa.png", content: EMAIL_LOGO_PNG_BASE64, content_id: "novorsa-logo", content_type: "image/png" },
+          ],
+        }),
+      });
+      if (!res.ok) console.error("Resend potvrdenie chyba", res.status, res.headers.get("x-request-id") ?? "");
+    } catch (e) {
+      console.error("Resend potvrdenie výnimka", e instanceof Error ? e.name : "unknown");
+    }
   }
 
   return { status: "ok", message: "Ďakujeme! Správa dorazila a ozveme sa do dvoch pracovných dní." };
