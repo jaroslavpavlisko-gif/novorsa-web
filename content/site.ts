@@ -143,7 +143,7 @@ export const workProcess = {
     { title: "Audit a vyčíslenie", text: "Zmapujeme procesy a ku každej príležitosti vyčíslime čas, náklady a náročnosť.", out: "Mapa príležitostí a plán" },
     { title: "Návrh riešenia", text: "Navrhneme postup, systémy a miesta, kde rozhoduje človek.", out: "Architektúra a rozpočet" },
     { title: "Pilot", text: "Jeden proces s najvyššou návratnosťou spustíme v ostrej prevádzke.", out: "Merateľný výsledok" },
-    { title: "Zavedenie", text: "Rozšírime riešenie, zaškolíme ľudí a odovzdáme dokumentáciu.", out: "Riešenie vo vašom vlastníctve" },
+    { title: "Zavedenie", text: "Rozšírime riešenie, zaškolíme ľudí a odovzdáme dokumentáciu.", out: "Riešenie patrí vám" },
     { title: "Monitoring a zlepšovanie", text: "Sledujeme chod, riešime výnimky a hľadáme ďalšie úspory.", out: "Pravidelný report" },
   ],
 };
