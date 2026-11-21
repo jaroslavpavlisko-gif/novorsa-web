@@ -173,7 +173,7 @@ export const caseStudies: { title: string; lead: string; items: CaseStudy[] } = 
     {
       area: "Obchod",
       title: "Automatizované spracovanie obchodných leadov",
-      company: "Firma v oblasti služieb, cca 100 zamestnancov",
+      company: "Firma v oblasti služieb, 100 zamestnancov",
       meta: [{ label: "Implementácia", value: "2 dni" }],
       goal: "Automatické spracovanie nových leadov a ich kompletná evidencia v CRM, bez ručnej práce obchodníkov.",
       steps: [
@@ -191,7 +191,7 @@ export const caseStudies: { title: string; lead: string; items: CaseStudy[] } = 
     {
       area: "Obchod",
       title: "AI radar top obchodných príležitostí",
-      company: "Firma v oblasti služieb, cca 70 zamestnancov",
+      company: "Firma v oblasti služieb, 70 zamestnancov",
       meta: [{ label: "Implementácia", value: "2 týždne" }],
       goal: "Nájsť top príležitosti pre jednu špecifickú službu. Nie čo najviac leadov, ale tie najperspektívnejšie: kvalita namiesto kvantity.",
       steps: [
@@ -209,10 +209,10 @@ export const caseStudies: { title: string; lead: string; items: CaseStudy[] } = 
       stack: ["Claude", "Microsoft 365", "CRM"],
     },
     {
-      area: "Prevádzka a HR",
+      area: "Prevádzka",
       title: "AI asistent pre tím prevádzky nad evidenciou zamestnancov",
-      company: "Personálna agentúra, dočasné pridelenie zamestnancov",
-      meta: [{ label: "Používatelia", value: "Tím prevádzky, 5 pobočiek" }],
+      company: "Personálna agentúra, 60 zamestnancov",
+      meta: [{ label: "Implementácia", value: "1 týždeň" }],
       goal: "Dať konzultantom prevádzky spoľahlivého asistenta, ktorý odpovedá nad firemnou evidenciou zamestnancov, pripravuje reporty a vypĺňa tlačivá. Každý pracuje so svojimi projektmi a len s nevyhnutnými osobnými údajmi.",
       steps: [
         "Napojenie na ročné evidencie zamestnancov v SharePointe s jednotnými pravidlami čítania údajov",
