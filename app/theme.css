@@ -1354,3 +1354,6 @@ h4 {
 .apps-link .link-card__label { color: var(--accent-on-dark); }
 .apps-link__title { font-size: 18px; font-weight: 500; }
 .apps-link .link-card__more { color: var(--accent-on-dark); white-space: nowrap; }
+
+/* Potvrdenie po odoslaní formulára: bez natiahnutia na výšku stĺpca */
+.form[role="status"] { align-self: start; align-content: start; }
