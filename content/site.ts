@@ -237,7 +237,7 @@ export const integrations = {
     {
       title: "Vaše firemné systémy",
       text: "Prepojíme nástroje, ktoré už denne používate.",
-      items: ["Microsoft 365", "Google Workspace", "CRM", "ERP a účtovníctvo", "HR systémy"],
+      items: ["Microsoft 365", "Google Workspace", "CRM", "ERP a účtovníctvo", "HR systémy", "ATS (náborové systémy)"],
     },
     {
       title: "Automatizácia procesov",
