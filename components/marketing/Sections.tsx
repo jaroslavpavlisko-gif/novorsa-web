@@ -113,8 +113,9 @@ export function Process({ head = true }: { head?: boolean }) {
         <div className="human-note">
           <User />
           <p>
-            <strong>Pri dôležitých krokoch rozhoduje človek.</strong> Schvaľovanie platieb, odpovede klientom či výber
-            kandidátov nastavíme tak, aby posledné slovo mala zodpovedná osoba a všetko malo záznam.
+            <strong>Pri dôležitých krokoch rozhoduje človek.</strong> AI pripraví podklady, ale o tom, ktorý lead
+            osloviť, či je dokument hotový alebo čo odíde klientovi, rozhodne vždy zodpovedná osoba. Každý krok má
+            záznam.
           </p>
         </div>
       </div>
