@@ -147,6 +147,8 @@ export function ContactSection() {
             {site.company.street}, {site.company.city}
             <br />
             IČO {site.company.ico}
+            <br />
+            {site.company.register.charAt(0).toUpperCase() + site.company.register.slice(1)}
           </p>
         </div>
         <ContactForm />

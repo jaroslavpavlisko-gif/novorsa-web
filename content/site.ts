@@ -15,6 +15,7 @@ export const site = {
     street: "Kukučínova 4257/4",
     city: "900 25 Chorvátsky Grob",
     country: "Slovenská republika",
+    register: "zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel: Sro, vložka č. 170377/B",
   },
 };
 

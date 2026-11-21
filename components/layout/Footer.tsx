@@ -45,27 +45,20 @@ export function Footer() {
                   <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
                 </>
               )}
-              <br />
-              <br />
-              {site.company.name}
-              <br />
-              {site.company.street}
-              <br />
-              {site.company.city}
-              <br />
-              IČO {site.company.ico}
             </address>
           </div>
         </div>
         <div className="footer__bottom">
-          <span>
-            © {year} {site.company.name} · Novorsa je obchodná značka spoločnosti
-          </span>
-          <span style={{ display: "flex", gap: 20 }}>
+          <span>© {year} Novorsa</span>
+          <span className="footer__links">
             <a href="/ochrana-osobnych-udajov">Ochrana osobných údajov</a>
             <a href="/cookies">Cookies</a>
           </span>
         </div>
+        <p className="footer__legal">
+          Novorsa je obchodná značka spoločnosti {site.company.name} · {site.company.street}, {site.company.city} · IČO{" "}
+          {site.company.ico} · {site.company.register}
+        </p>
       </div>
     </footer>
   );
