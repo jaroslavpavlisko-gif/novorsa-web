@@ -4,21 +4,35 @@ name: Kontrola
 on:
   push:
     branches: [main, dizajn-c]
-    paths-ignore: [package.json]
   pull_request:
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Preskočiť, ak sa čaká na automatický lockfile
+        id: guard
+        run: |
+          changed=$(git diff HEAD^ HEAD --name-only 2>/dev/null || true)
+          if echo "$changed" | grep -qx package.json && ! echo "$changed" | grep -qx package-lock.json; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Zmena balíkov bez lockfile: kontrolu spustí až commit s lockfile."
+          fi
       - uses: actions/setup-node@v4
+        if: steps.guard.outputs.skip != 'true'
         with:
           node-version: 24
           cache: npm
-      - run: npm ci --no-fund
+      - if: steps.guard.outputs.skip != 'true'
+        run: npm ci --no-fund
       - name: Kontrola zraniteľností (len vysoké a kritické)
+        if: steps.guard.outputs.skip != 'true'
         run: npm audit --omit=dev --audit-level=high
-      - run: npm run build
+      - if: steps.guard.outputs.skip != 'true'
+        run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: "1"

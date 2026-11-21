@@ -1,4 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "npm ci"
+  "installCommand": "npm ci",
+  "ignoreCommand": "if git diff HEAD^ HEAD --name-only | grep -qx package.json && ! git diff HEAD^ HEAD --name-only | grep -qx package-lock.json; then echo 'Zmena balíkov bez lockfile: čakám na automatický lockfile.'; exit 0; else exit 1; fi"
 }

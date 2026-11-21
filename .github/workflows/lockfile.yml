@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   lockfile:
@@ -21,6 +22,8 @@ jobs:
           node-version: 24
       - run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
       - name: Uložiť zmenený lockfile
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           if [ -n "$(git status --porcelain package-lock.json)" ]; then
             git config user.name "github-actions[bot]"
@@ -28,6 +31,7 @@ jobs:
             git add package-lock.json
             git commit -m "Aktualizovaný package-lock.json"
             git push
+            gh workflow run ci.yml --ref "${GITHUB_REF_NAME}"
           else
             echo "package-lock.json je aktuálny"
           fi
