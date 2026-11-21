@@ -254,13 +254,13 @@ export const integrations = {
 
 export const why = {
   title: "Prečo Novorsa",
-  lead: "Za Novorsou stojí prax v ekonomickom a HR poradenstve. Rozumieme riadeniu firmy, nie len nástrojom.",
+  lead: "Za Novorsou stojí prax v ekonomickom a HR poradenstve. Rozumieme samotnému riadeniu firmy, nielen nástrojom.",
   items: [
     { title: "Najprv biznis", text: "Začíname procesom a číslami, technológia prichádza na rad až potom." },
     { title: "Merateľná návratnosť", text: "Každý projekt má vopred dohodnutý cieľ a spôsob merania." },
     { title: "Bezpečnosť a kontrola", text: "Prístupové práva, záznamy o činnosti a schválenie človekom pri dôležitých krokoch." },
     { title: "Dokumentácia a vlastníctvo", text: "Riešenie, prístupy aj návod patria vám." },
-    { title: "Nezávislosť od dodávateľov", text: "Nie sme viazaní na jeden nástroj, vyberáme ten správny." },
+    { title: "Nezávislosť od dodávateľov", text: "Nie sme viazaní na jeden nástroj, z viacerých dostupných vyberáme ten správny pre vás." },
     { title: "Dlhodobá podpora", text: "Po spustení riešenie sledujeme a ďalej zlepšujeme." },
   ],
   founder: {
@@ -316,6 +316,5 @@ export const faq = {
 export const contact = {
   title: "Zistite, čo sa dá vo vašej firme automatizovať",
   lead: "Napíšte nám, čo vám berie najviac času. Ozveme sa do dvoch pracovných dní a dohodneme si úvodnú konzultáciu zadarmo.",
-  sizes: ["1–9 ľudí", "10–49 ľudí", "50–249 ľudí", "250 a viac"],
   areas: ["Obchod a CRM", "HR a nábor", "Financie a administratíva", "Prevádzka", "Nákup a dodávatelia", "Reporting pre vedenie", "Zatiaľ neviem"],
 };

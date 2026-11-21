@@ -39,63 +39,63 @@ export function ContactForm() {
 
       <div className="form__grid">
         <div className="input-wrap">
-          <label htmlFor="name">Meno a priezvisko</label>
-          <input id="name" name="name" className="input" autoComplete="name" required defaultValue={v.name} {...field("name")} />
-          {err.name && <span id="name-error" className="error">{err.name}</span>}
+          <label htmlFor="firstName">Meno</label>
+          <input id="firstName" name="firstName" className="input" autoComplete="given-name" required defaultValue={v.firstName} {...field("firstName")} />
+          {err.firstName && <span id="firstName-error" className="error">{err.firstName}</span>}
         </div>
         <div className="input-wrap">
-          <label htmlFor="company">Firma</label>
+          <label htmlFor="lastName">Priezvisko</label>
+          <input id="lastName" name="lastName" className="input" autoComplete="family-name" required defaultValue={v.lastName} {...field("lastName")} />
+          {err.lastName && <span id="lastName-error" className="error">{err.lastName}</span>}
+        </div>
+        <div className="input-wrap">
+          <label htmlFor="company">Spoločnosť</label>
           <input id="company" name="company" className="input" autoComplete="organization" required defaultValue={v.company} {...field("company")} />
           {err.company && <span id="company-error" className="error">{err.company}</span>}
         </div>
         <div className="input-wrap">
-          <label htmlFor="email">Pracovný e-mail</label>
+          <label htmlFor="ico">
+            IČO <span className="opt">(nepovinné)</span>
+          </label>
+          <input id="ico" name="ico" className="input" inputMode="numeric" autoComplete="off" defaultValue={v.ico} {...field("ico")} />
+          {err.ico && <span id="ico-error" className="error">{err.ico}</span>}
+        </div>
+        <div className="input-wrap">
+          <label htmlFor="email">E-mail</label>
           <input id="email" name="email" type="email" className="input" autoComplete="email" required defaultValue={v.email} {...field("email")} />
           {err.email && <span id="email-error" className="error">{err.email}</span>}
         </div>
         <div className="input-wrap">
           <label htmlFor="phone">
-            Telefón <span className="opt">(nepovinné)</span>
+            Telefónne číslo <span className="opt">(nepovinné)</span>
           </label>
           <input id="phone" name="phone" type="tel" className="input" autoComplete="tel" defaultValue={v.phone} />
-        </div>
-        <div className="input-wrap">
-          <label htmlFor="size">Veľkosť firmy</label>
-          <select key={`size-${v.size ?? ""}`} id="size" name="size" className="select" required defaultValue={v.size ?? ""} {...field("size")}>
-            <option value="" disabled>
-              Vyberte
-            </option>
-            {contact.sizes.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
-            ))}
-          </select>
-          {err.size && <span id="size-error" className="error">{err.size}</span>}
-        </div>
-        <div className="input-wrap">
-          <label htmlFor="area">Čo chcete zlepšiť</label>
-          <select key={`area-${v.area ?? ""}`} id="area" name="area" className="select" required defaultValue={v.area ?? ""} {...field("area")}>
-            <option value="" disabled>
-              Vyberte oblasť
-            </option>
-            {contact.areas.map((a) => (
-              <option key={a} value={a}>
-                {a}
-              </option>
-            ))}
-          </select>
-          {err.area && <span id="area-error" className="error">{err.area}</span>}
         </div>
       </div>
 
       <div className="input-wrap">
-        <label htmlFor="message">Čo vášmu tímu berie najviac času?</label>
+        <label htmlFor="area">Čo chcete zlepšiť?</label>
+        <select key={`area-${v.area ?? ""}`} id="area" name="area" className="select" required defaultValue={v.area ?? ""} {...field("area")}>
+          <option value="" disabled>
+            Vyberte oblasť
+          </option>
+          {contact.areas.map((a) => (
+            <option key={a} value={a}>
+              {a}
+            </option>
+          ))}
+        </select>
+        {err.area && <span id="area-error" className="error">{err.area}</span>}
+      </div>
+
+      <div className="input-wrap">
+        <label htmlFor="message">
+          Čo vášmu tímu berie najviac času? <span className="opt">(nepovinné)</span>
+        </label>
         <textarea
           id="message"
           name="message"
           className="textarea"
-          required
           placeholder="Napr. faktúry prepisujeme ručne do účtovníctva, trvá to dvom ľuďom pol dňa týždenne."
           defaultValue={v.message}
           {...field("message")}

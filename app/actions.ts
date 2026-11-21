@@ -7,7 +7,7 @@ import { contact } from "@/content/site";
 export type ContactState = {
   status: "idle" | "ok" | "error";
   message?: string;
-  errors?: Partial<Record<"name" | "company" | "email" | "size" | "area" | "message" | "consent", string>>;
+  errors?: Partial<Record<"firstName" | "lastName" | "company" | "ico" | "email" | "area" | "message" | "consent", string>>;
   values?: Record<string, string>;
 };
 
@@ -27,11 +27,12 @@ const escape = (s: string) =>
 export async function sendContact(_prev: ContactState, formData: FormData): Promise<ContactState> {
   const get = (k: string) => String(formData.get(k) ?? "").trim();
   const values = {
-    name: get("name"),
+    firstName: get("firstName"),
+    lastName: get("lastName"),
     company: get("company"),
+    ico: get("ico"),
     email: get("email"),
     phone: get("phone"),
-    size: get("size"),
     area: get("area"),
     message: get("message"),
   };
@@ -40,12 +41,12 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
   if (get("website")) return { status: "ok", message: "Ďakujeme, ozveme sa do dvoch pracovných dní." };
 
   const errors: ContactState["errors"] = {};
-  if (values.name.length < 2) errors.name = "Napíšte, prosím, svoje meno.";
-  if (values.company.length < 2) errors.company = "Napíšte, prosím, názov firmy.";
+  if (values.firstName.length < 2) errors.firstName = "Napíšte, prosím, svoje meno.";
+  if (values.lastName.length < 2) errors.lastName = "Napíšte, prosím, svoje priezvisko.";
+  if (values.company.length < 2) errors.company = "Napíšte, prosím, názov spoločnosti.";
+  if (values.ico && !/^\d{6,8}$/.test(values.ico.replace(/\s/g, ""))) errors.ico = "IČO má 6 až 8 číslic.";
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(values.email)) errors.email = "Skontrolujte, prosím, e-mailovú adresu.";
-  if (!contact.sizes.includes(values.size)) errors.size = "Vyberte veľkosť firmy.";
   if (!contact.areas.includes(values.area)) errors.area = "Vyberte oblasť.";
-  if (values.message.length < 10) errors.message = "Napíšte aspoň krátky popis (min. 10 znakov).";
   if (values.message.length > 4000) errors.message = "Popis je príliš dlhý (max. 4 000 znakov).";
   if (formData.get("consent") !== "on") errors.consent = "Bez súhlasu vám nemôžeme odpovedať.";
 
@@ -88,17 +89,17 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
   }
 
   const rows: [string, string][] = [
-    ["Meno", values.name],
-    ["Firma", values.company],
+    ["Meno", `${values.firstName} ${values.lastName}`],
+    ["Spoločnosť", values.company],
+    ["IČO", values.ico || "–"],
     ["E-mail", values.email],
     ["Telefón", values.phone || "–"],
-    ["Veľkosť firmy", values.size],
     ["Oblasť", values.area],
   ];
   const html = `<h2>Nový dopyt z webu Novorsa</h2><table cellpadding="6">${rows
     .map(([k, v]) => `<tr><td><strong>${k}</strong></td><td>${escape(v)}</td></tr>`)
-    .join("")}</table><p><strong>Popis:</strong></p><p>${escape(values.message).replace(/\n/g, "<br>")}</p>`;
-  const text = `${rows.map(([k, v]) => `${k}: ${v}`).join("\n")}\n\nPopis:\n${values.message}`;
+    .join("")}</table><p><strong>Popis:</strong></p><p>${values.message ? escape(values.message).replace(/\n/g, "<br>") : "–"}</p>`;
+  const text = `${rows.map(([k, v]) => `${k}: ${v}`).join("\n")}\n\nPopis:\n${values.message || "–"}`;
 
   try {
     const res = await fetch("https://api.resend.com/emails", {

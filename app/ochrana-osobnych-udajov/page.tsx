@@ -25,8 +25,8 @@ export default function PrivacyPage() {
         <h2>Aké údaje spracúvame a prečo</h2>
         <ul>
           <li>
-            <strong>Kontaktný formulár:</strong> meno, firma, pracovný e-mail, telefón (ak ho uvediete), veľkosť firmy,
-            oblasť a text správy. Účel: odpovedať na váš dopyt a pripraviť úvodnú konzultáciu.
+            <strong>Kontaktný formulár:</strong> meno, priezvisko, spoločnosť, IČO a telefónne číslo (ak ich uvediete),
+            e-mail, oblasť a text správy (ak ho uvediete). Účel: odpovedať na váš dopyt a pripraviť úvodnú konzultáciu.
           </li>
           <li>
             <strong>Návštevnosť webu:</strong> anonymné štatistiky bez cookies (počet zobrazení, krajina, typ zariadenia),
