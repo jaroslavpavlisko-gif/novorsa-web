@@ -246,11 +246,22 @@ export function Why({ head = true }: { head?: boolean }) {
         </ul>
         <div className="why">
           <div className="founder">
-            <div className="founder__photo">Fotka</div>
+            <div className="founder__photo founder__photo--initials" aria-hidden="true">
+              {why.founder.initials}
+            </div>
             <div>
               <strong>{why.founder.name}</strong>
               <span className="role">{why.founder.role}</span>
               <p>{why.founder.text}</p>
+              <p className="founder__projects-title">{why.founder.projectsTitle}</p>
+              <ul className="founder__projects">
+                {caseStudies.items.map((c) => (
+                  <li key={c.title}>
+                    <a href="/riesenia#ukazky">{c.title}</a>
+                    <span>{c.company}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
           <div className="notfit">

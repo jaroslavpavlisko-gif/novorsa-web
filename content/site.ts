@@ -279,9 +279,11 @@ export const why = {
     { title: "Dlhodobá podpora", text: "Po spustení riešenie sledujeme a ďalej zlepšujeme." },
   ],
   founder: {
-    name: "[Meno zakladateľa]",
+    name: "Jaroslav Pavlisko",
+    initials: "JP",
     role: "Zakladateľ · procesy a automatizácia",
-    text: "[Krátky profil: prax v ekonomickom a HR poradenstve, roky skúseností, zameranie. Doplníme.]",
+    text: "Jaroslav Pavlisko má 10 rokov praxe v ekonomickom a HR poradenstve so zameraním na riadenie firiem, optimalizáciu procesov a HR procesy. Silné procesné a analytické myslenie mu pomáha rýchlo nájsť miesta, kde firma stráca čas, a vyčísliť, čo prinesie ich zlepšenie. Novorsu založil, aby firmám pomohol využiť automatizáciu a AI tam, kde reálne šetria čas, s dôrazom na návratnosť a bezpečné nasadenie.",
+    projectsTitle: "Vybrané projekty",
   },
   notFit: {
     title: "Kedy pre vás nie sme vhodní",
