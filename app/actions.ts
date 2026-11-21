@@ -2,7 +2,7 @@
 
 import { headers } from "next/headers";
 import { checkBotId } from "botid/server";
-import { contact } from "@/content/site";
+import { contact, site } from "@/content/site";
 
 export type ContactState = {
   status: "idle" | "ok" | "error";
@@ -125,5 +125,58 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
     };
   }
 
+  // Potvrdenie odosielateľovi. Chyba tu už neruší odoslaný dopyt.
+  // Text zámerne neobsahuje popis z formulára, aby sa formulár nedal zneužiť na rozosielanie cudzieho obsahu.
+  try {
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from: `Novorsa <${to}>`,
+        to: [values.email],
+        reply_to: to,
+        subject: "Ďakujeme za správu | Novorsa",
+        html: confirmationHtml(values.firstName, values.area),
+        text: confirmationText(values.firstName, values.area),
+      }),
+    });
+    if (!res.ok) console.error("Resend potvrdenie chyba", res.status, await res.text());
+  } catch (e) {
+    console.error("Resend potvrdenie výnimka", e);
+  }
+
   return { status: "ok", message: "Ďakujeme! Správa dorazila a ozveme sa do dvoch pracovných dní." };
+}
+
+function confirmationText(name: string, area: string) {
+  return `Dobrý deň, ${name},
+
+ďakujeme za vašu správu. Dopyt v oblasti „${area}“ sme prijali a ozveme sa vám do dvoch pracovných dní.
+
+Ak chcete niečo doplniť, stačí odpovedať na tento e-mail.
+
+S pozdravom
+Jaroslav Pavlisko
+Novorsa · ${site.company.name}
+${site.email} · ${site.phone}
+${site.url}`;
+}
+
+function confirmationHtml(name: string, area: string) {
+  const n = escape(name);
+  const a = escape(area);
+  return `<!doctype html><html lang="sk"><body style="margin:0;background:#f3f5f4;font-family:Arial,Helvetica,sans-serif;color:#1c2a2b">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f3f5f4;padding:32px 12px"><tr><td align="center">
+<table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden">
+<tr><td style="background:#0c1d1e;padding:22px 32px;color:#e9efee;font-size:20px;font-weight:bold;letter-spacing:.2px">novorsa</td></tr>
+<tr><td style="padding:32px;font-size:15px;line-height:1.6">
+<p style="margin:0 0 16px">Dobrý deň, ${n},</p>
+<p style="margin:0 0 16px">ďakujeme za vašu správu. Dopyt v oblasti <strong>${a}</strong> sme prijali a <strong>ozveme sa vám do dvoch pracovných dní</strong>.</p>
+<p style="margin:0 0 24px">Ak chcete niečo doplniť, stačí odpovedať na tento e-mail.</p>
+<p style="margin:0">S pozdravom<br><strong>Jaroslav Pavlisko</strong><br>Novorsa</p>
+</td></tr>
+<tr><td style="padding:18px 32px;background:#f7f8f7;font-size:12.5px;color:#5d6b6b;line-height:1.6">
+<a href="mailto:${site.email}" style="color:#1d6f6b">${site.email}</a> · <a href="tel:${site.phone.replace(/\s/g, "")}" style="color:#1d6f6b">${site.phone}</a> · <a href="${site.url}" style="color:#1d6f6b">novorsa.sk</a><br>
+Novorsa je značka spoločnosti ${escape(site.company.name)}
+</td></tr></table></td></tr></table></body></html>`;
 }
