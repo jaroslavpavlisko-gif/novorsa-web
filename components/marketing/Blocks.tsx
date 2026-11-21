@@ -1,4 +1,4 @@
-import { contact, site, solutions } from "@/content/site";
+import { contact, customApps, site, solutions } from "@/content/site";
 import { ContactForm } from "../interactive/ContactForm";
 import { ArrowRight, Check, Close } from "../ui/Icons";
 import { SectionHead } from "./Sections";
@@ -60,6 +60,50 @@ export function SolutionsTeaser() {
             </li>
           ))}
         </ul>
+        <a className="apps-link" href={`/riesenia#${customApps.id}`}>
+          <span>
+            <span className="link-card__label">{customApps.label}</span>
+            <span className="apps-link__title">Keď hotové nástroje nestačia, vyvinieme aplikáciu presne pre váš proces.</span>
+          </span>
+          <span className="link-card__more">
+            Viac <ArrowRight size={16} />
+          </span>
+        </a>
+      </div>
+    </section>
+  );
+}
+
+/** Firemné aplikácie na mieru: prierezová služba pod oddeleniami. */
+export function CustomApps() {
+  return (
+    <section id={customApps.id} className="section section--flush-top" aria-labelledby="apps-title">
+      <div className="container">
+        <div className="apps">
+          <div className="apps__intro">
+            <span className="badge badge--accent">Vývoj na mieru</span>
+            <h2 id="apps-title">{customApps.title}</h2>
+            <p>{customApps.text}</p>
+            <ul className="apps__points">
+              {customApps.points.map((p) => (
+                <li key={p}>
+                  <Check /> {p}
+                </li>
+              ))}
+            </ul>
+            <a className="btn btn--primary" href="/kontakt">
+              {customApps.cta} <ArrowRight />
+            </a>
+          </div>
+          <ul className="apps__types">
+            {customApps.types.map((t) => (
+              <li key={t.title}>
+                <strong>{t.title}</strong>
+                <span>{t.text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

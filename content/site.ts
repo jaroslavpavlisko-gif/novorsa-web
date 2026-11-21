@@ -135,6 +135,21 @@ export const solutions: { title: string; lead: string; items: Solution[] } = {
   ],
 };
 
+export const customApps = {
+  id: "aplikacie",
+  label: "Aplikácie na mieru",
+  title: "Firemné aplikácie na mieru",
+  text: "Keď hotové nástroje nestačia, navrhneme a vyvinieme aplikáciu presne pre váš proces. Spolu s naším vývojovým partnerom zabezpečíme celý projekt od návrhu až po spustenie a podporu.",
+  types: [
+    { title: "Interné aplikácie", text: "schvaľovanie, evidencie, plánovanie a nástroje pre tímy" },
+    { title: "Klientske portály", text: "objednávky, dokumenty a stav zákaziek pre vašich klientov" },
+    { title: "Webové a mobilné aplikácie", text: "pre zamestnancov v\u00a0kancelárii aj v\u00a0teréne" },
+    { title: "Prepojenie systémov", text: "jedna aplikácia nad CRM, ERP a ďalšími nástrojmi" },
+  ],
+  points: ["Aplikácia patrí vám", "Napojená na systémy, ktoré už používate", "S AI tam, kde dáva zmysel"],
+  cta: "Prebrať nápad na aplikáciu",
+};
+
 export const workProcess = {
   title: "Ako pracujeme",
   lead: "Začíname malým, merateľným krokom. Ďalej pokračujeme len vtedy, keď prvý krok priniesol výsledok.",
@@ -291,6 +306,10 @@ export const faq = {
       a: "S bežnými firemnými systémami: Microsoft 365, Google Workspace, CRM, ERP, účtovné a HR systémy či ATS (náborové systémy). Prepájame ich cez API, webhooky alebo platformy ako Power Automate či n8n. Konkrétnu možnosť prepojenia vždy overíme v audite.",
     },
     {
+      q: "Robíte aj aplikácie na mieru?",
+      a: "Áno. Ak hotové nástroje nestačia, navrhneme a vyvinieme internú, webovú alebo mobilnú aplikáciu či klientsky portál. Vývoj zabezpečujeme s naším vývojovým partnerom. Aplikácia patrí vám a napojíme ju na systémy, ktoré už používate.",
+    },
+    {
       q: "Ako dlho trvá projekt?",
       a: "Audit zvyčajne trvá od niekoľkých dní po niekoľko týždňov podľa veľkosti firmy a zložitosti procesov. Prvý pilot spúšťame tak, aby ste výsledok videli čo najskôr. Presný harmonogram dostanete po úvodnom rozhovore.",
     },
@@ -316,5 +335,5 @@ export const faq = {
 export const contact = {
   title: "Zistite, čo sa dá vo vašej firme automatizovať",
   lead: "Napíšte nám, čo vám berie najviac času. Ozveme sa do dvoch pracovných dní a dohodneme si úvodnú konzultáciu zadarmo.",
-  areas: ["Obchod a CRM", "HR a nábor", "Financie a administratíva", "Prevádzka", "Nákup a dodávatelia", "Reporting pre vedenie", "Zatiaľ neviem"],
+  areas: ["Obchod a CRM", "HR a nábor", "Financie a administratíva", "Prevádzka", "Nákup a dodávatelia", "Reporting pre vedenie", "Aplikácia na mieru", "Zatiaľ neviem"],
 };

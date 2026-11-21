@@ -3,12 +3,12 @@ import { pageMetadata } from "@/lib/seo";
 import { solutions } from "@/content/site";
 import { SolutionTabs } from "@/components/interactive/SolutionTabs";
 import { Integrations, Showcases } from "@/components/marketing/Sections";
-import { CtaBand, PageHero } from "@/components/marketing/Blocks";
+import { CtaBand, CustomApps, PageHero } from "@/components/marketing/Blocks";
 
 export const metadata: Metadata = pageMetadata({
   path: "/riesenia",
   title: "Riešenia",
-  description: "Automatizácia a AI pre obchod, HR, financie, prevádzku, nákup a vedenie firmy.",
+  description: "Automatizácia a AI pre obchod, HR, financie, prevádzku, nákup a vedenie firmy. Firemné aplikácie na mieru.",
 });
 
 export default function SolutionsPage() {
@@ -20,6 +20,7 @@ export default function SolutionsPage() {
           <SolutionTabs items={solutions.items} />
         </div>
       </section>
+      <CustomApps />
       <Showcases />
       <Integrations />
       <CtaBand />

@@ -1,4 +1,4 @@
-import { site, solutions } from "@/content/site";
+import { customApps, site, solutions } from "@/content/site";
 import { Logo } from "./Logo";
 import { CookieSettingsButton } from "../consent/ConsentManager";
 
@@ -20,6 +20,9 @@ export function Footer() {
                   <a href={`/riesenia#${s.id}`}>{s.label}</a>
                 </li>
               ))}
+              <li>
+                <a href={`/riesenia#${customApps.id}`}>{customApps.label}</a>
+              </li>
             </ul>
           </div>
           <div>
