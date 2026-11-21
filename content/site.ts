@@ -186,7 +186,7 @@ export const caseStudies: { title: string; lead: string; items: CaseStudy[] } = 
         headline: "5 hodín týždenne",
         text: "ušetrí každý obchodník na vyhľadávaní, preverovaní a zapisovaní leadov.",
       },
-      stack: ["Microsoft 365", "Grok bot", "CRM"],
+      stack: ["Grok bot", "Microsoft 365", "CRM"],
     },
     {
       area: "Obchod",
