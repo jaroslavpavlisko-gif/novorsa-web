@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
+import { trackLead } from "@/lib/tracking";
 import { sendContact, type ContactState } from "@/app/actions";
 import { contact } from "@/content/site";
 import { ArrowRight } from "../ui/Icons";
@@ -11,6 +12,10 @@ export function ContactForm() {
   const [state, action, pending] = useActionState(sendContact, initial);
   const err: NonNullable<ContactState["errors"]> = state.errors ?? {};
   const v: Record<string, string> = state.values ?? {};
+
+  useEffect(() => {
+    if (state.status === "ok") trackLead();
+  }, [state]);
 
   if (state.status === "ok") {
     return (

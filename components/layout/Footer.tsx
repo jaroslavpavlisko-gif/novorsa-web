@@ -1,5 +1,6 @@
 import { site, solutions } from "@/content/site";
 import { Logo } from "./Logo";
+import { CookieSettingsButton } from "../consent/ConsentManager";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -55,6 +56,7 @@ export function Footer() {
           <span className="footer__links">
             <a href="/ochrana-osobnych-udajov">Ochrana osobných údajov</a>
             <a href="/cookies">Cookies</a>
+            <CookieSettingsButton />
           </span>
         </div>
       </div>

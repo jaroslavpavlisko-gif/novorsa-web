@@ -1,11 +1,75 @@
 import type { Metadata } from "next";
 import { site } from "@/content/site";
+import { CookieSettingsButton } from "@/components/consent/ConsentManager";
+import { hasTracking, tracking } from "@/lib/tracking";
 
 export const metadata: Metadata = {
   title: "Cookies",
-  description: "Web Novorsa nepoužíva sledovacie ani marketingové cookies.",
+  description: "Aké cookies používa web Novorsa a ako môžete zmeniť svoj súhlas.",
   alternates: { canonical: "/cookies" },
 };
+
+type Row = { name: string; provider: string; purpose: string; duration: string };
+
+const necessary: Row[] = [
+  ...(hasTracking
+    ? [{ name: "novorsa_consent", provider: "Novorsa", purpose: "Uloží vašu voľbu v cookie lište.", duration: "6 mesiacov" }]
+    : []),
+  {
+    name: "Ochrana pred robotmi",
+    provider: "Vercel",
+    purpose: "Pri odoslaní formulára overí, že ho neodosiela robot. Môže v prehliadači uložiť technický údaj.",
+    duration: "relácia",
+  },
+];
+
+const analytics: Row[] = tracking.gaId
+  ? [
+      { name: "_ga", provider: "Google", purpose: "Rozlíši návštevníkov pre meranie návštevnosti.", duration: "2 roky" },
+      { name: "_ga_*", provider: "Google", purpose: "Uchováva stav aktuálnej návštevy.", duration: "2 roky" },
+    ]
+  : [];
+
+const marketing: Row[] = [
+  ...(tracking.googleAdsId
+    ? [{ name: "_gcl_au", provider: "Google", purpose: "Meranie konverzií z reklám Google Ads.", duration: "3 mesiace" }]
+    : []),
+  ...(tracking.metaPixelId
+    ? [{ name: "_fbp", provider: "Meta", purpose: "Meranie a zobrazovanie reklamy na Facebooku a Instagrame.", duration: "3 mesiace" }]
+    : []),
+  ...(tracking.linkedinPartnerId
+    ? [
+        { name: "li_fat_id, bcookie", provider: "LinkedIn", purpose: "Meranie konverzií a zobrazovanie reklamy na LinkedIne.", duration: "až 1 rok" },
+      ]
+    : []),
+];
+
+function Table({ rows }: { rows: Row[] }) {
+  return (
+    <div className="table-wrap">
+      <table className="cookie-table">
+        <thead>
+          <tr>
+            <th>Názov</th>
+            <th>Poskytovateľ</th>
+            <th>Účel</th>
+            <th>Platnosť</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr key={r.name}>
+              <td>{r.name}</td>
+              <td>{r.provider}</td>
+              <td>{r.purpose}</td>
+              <td>{r.duration}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
 export default function CookiesPage() {
   return (
@@ -13,26 +77,44 @@ export default function CookiesPage() {
       <article className="prose">
         <h1>Cookies</h1>
         <p>
-          Tento web nepoužíva sledovacie ani marketingové cookies. Preto vás nežiadame o súhlas cez cookie lištu.
+          Cookies sú malé súbory, ktoré web ukladá vo vašom prehliadači. Nevyhnutné cookies používame vždy, analytické a
+          marketingové len s vaším súhlasom.
+        </p>
+        {hasTracking && (
+          <p>
+            Svoj súhlas môžete kedykoľvek zmeniť: <CookieSettingsButton />
+          </p>
+        )}
+
+        <h2>Nevyhnutné</h2>
+        <p>Zabezpečujú fungovanie a bezpečnosť webu. Súhlas na ne nepotrebujeme.</p>
+        <Table rows={necessary} />
+
+        <h2>Štatistiky bez cookies</h2>
+        <p>
+          Používame aj Vercel Web Analytics, ktoré merajú návštevnosť bez cookies a bez ukladania čohokoľvek do vášho
+          prehliadača. Výsledkom sú len súhrnné čísla.
         </p>
 
-        <h2>Čo používame</h2>
-        <ul>
-          <li>
-            <strong>Štatistiky návštevnosti bez cookies</strong> (Vercel Web Analytics). Neukladajú nič do vášho
-            prehliadača a nevytvárajú profil návštevníka.
-          </li>
-          <li>
-            <strong>Technicky nevyhnutné údaje</strong>, bez ktorých by web nefungoval, napríklad pri odoslaní formulára.
-          </li>
-        </ul>
+        {analytics.length > 0 && (
+          <>
+            <h2>Analytické (so súhlasom)</h2>
+            <p>Pomáhajú nám pochopiť, ako návštevníci web používajú, aby sme ho mohli zlepšovať.</p>
+            <Table rows={analytics} />
+          </>
+        )}
 
-        <h2>Ak sa to zmení</h2>
+        {marketing.length > 0 && (
+          <>
+            <h2>Marketingové (so súhlasom)</h2>
+            <p>Merajú účinnosť reklamy a umožňujú zobrazovať relevantné ponuky na iných weboch a sociálnych sieťach.</p>
+            <Table rows={marketing} />
+          </>
+        )}
+
+        <h2>Viac informácií</h2>
         <p>
-          Ak by sme v budúcnosti pridali nástroje, ktoré cookies používajú (napr. Google Analytics alebo reklamné
-          pixely), pred ich spustením vás požiadame o súhlas a túto stránku aktualizujeme.
-        </p>
-        <p>
+          Ako spracúvame osobné údaje, nájdete v časti <a href="/ochrana-osobnych-udajov">Ochrana osobných údajov</a>.
           Otázky: <a href={`mailto:${site.email}`}>{site.email}</a>
         </p>
       </article>

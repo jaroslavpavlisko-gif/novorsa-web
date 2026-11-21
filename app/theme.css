@@ -1103,3 +1103,142 @@ h4 {
     align-self: start;
   }
 }
+
+/* Cookie lišta */
+.consent {
+  position: fixed;
+  z-index: 60;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  max-width: 520px;
+  background: var(--dark-2);
+  color: var(--on-dark);
+  border: 1px solid rgb(111 208 199 / 0.25);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 30px 60px -20px rgb(0 0 0 / 0.45);
+  display: grid;
+  gap: 14px;
+}
+
+.consent__title {
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.consent__text {
+  font-size: 14.5px;
+  color: var(--on-dark-muted);
+  line-height: 1.55;
+}
+
+.consent__text a {
+  color: var(--accent-on-dark);
+}
+
+.consent__options {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.consent__options label {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 14px;
+  color: var(--on-dark-muted);
+  cursor: pointer;
+}
+
+.consent__options strong {
+  display: block;
+  color: var(--on-dark);
+  font-weight: 500;
+}
+
+.consent__options input {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  accent-color: var(--accent-on-dark);
+  flex: none;
+}
+
+.consent__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.consent .btn--ghost {
+  color: var(--on-dark);
+  border-color: rgb(233 239 238 / 0.3);
+}
+
+.consent .btn--ghost:hover {
+  border-color: var(--on-dark);
+  color: #fff;
+}
+
+.consent .btn--primary {
+  background: var(--accent-on-dark);
+  color: var(--dark);
+}
+
+@media (min-width: 640px) {
+  .consent {
+    left: 24px;
+    bottom: 24px;
+    right: auto;
+  }
+}
+
+.footer__btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--on-dark-muted);
+  cursor: pointer;
+}
+
+.footer__btn:hover {
+  color: var(--on-dark);
+  text-decoration: underline;
+}
+
+/* Tabuľka cookies */
+.table-wrap {
+  overflow-x: auto;
+  margin: 12px 0 8px;
+}
+
+.cookie-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  min-width: 560px;
+}
+
+.cookie-table th,
+.cookie-table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.cookie-table th {
+  font-weight: 500;
+  color: var(--muted);
+  background: var(--tint);
+}
+
+.prose .footer__btn {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
