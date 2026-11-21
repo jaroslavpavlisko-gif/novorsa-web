@@ -208,6 +208,26 @@ export const caseStudies: { title: string; lead: string; items: CaseStudy[] } = 
       },
       stack: ["Claude", "Microsoft 365", "CRM"],
     },
+    {
+      area: "Prevádzka a HR",
+      title: "AI asistent pre tím prevádzky nad evidenciou zamestnancov",
+      company: "Personálna agentúra, dočasné pridelenie zamestnancov",
+      meta: [{ label: "Používatelia", value: "Tím prevádzky, 5 pobočiek" }],
+      goal: "Dať konzultantom prevádzky spoľahlivého asistenta, ktorý odpovedá nad firemnou evidenciou zamestnancov, pripravuje reporty a vypĺňa tlačivá. Každý pracuje so svojimi projektmi a len s nevyhnutnými osobnými údajmi.",
+      steps: [
+        "Napojenie na ročné evidencie zamestnancov v SharePointe s jednotnými pravidlami čítania údajov",
+        "Znalostná báza: mapa údajov, priradenie konzultantov k pobočkám a klientom, overené postupy z praxe",
+        "Spoločný projekt v ChatGPT pre celý tím s rovnakými zdrojmi a pravidlami",
+        "Rutiny, ktoré automaticky vyhodnocujú končiace pridelenia, výročia nástupu a budúce nástupy",
+        "Notifikácie konzultantom a príprava dokumentov: dohody o dočasnom pridelení a tlačivá na lekárske prehliadky",
+        "Kontrola človekom: o každom dokumente rozhoduje konzultant, právne otázky s odkazom na aktuálny Zákonník práce",
+      ],
+      result: {
+        headline: "Termíny bez stráženia",
+        text: "Konzultanti dostanú upozornenie na končiace pridelenia a blížiace sa prehliadky včas a spolu s pripravenými dokumentmi. Čas venujú klientom a zamestnancom, nie prehľadávaniu tabuliek.",
+      },
+      stack: ["ChatGPT", "Microsoft 365"],
+    },
   ],
 };
 
