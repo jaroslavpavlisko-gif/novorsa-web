@@ -110,6 +110,20 @@ export function Process({ head = true }: { head?: boolean }) {
             </li>
           ))}
         </ol>
+        {!head && (
+          <div className="audit-box">
+            <div className="audit-box__head">
+              <span className="badge badge--accent">Krok 2 · Audit</span>
+              <h3>Čo dostanete z auditu</h3>
+              <p>Audit je platený. Pevnú cenu si dohodneme vopred podľa rozsahu, bez prekvapení na faktúre.</p>
+            </div>
+            <ul className="audit-box__list">
+              <li><strong>Zoznam procesov</strong><span>zoradený podľa prínosu pre vašu firmu</span></li>
+              <li><strong>Odhad nákladov</strong><span>a uvoľnenej kapacity pri každej príležitosti</span></li>
+              <li><strong>Návrh prvého pilotu</strong><span>s rozsahom, termínom a cenou</span></li>
+            </ul>
+          </div>
+        )}
         <div className="human-note">
           <User />
           <p>
