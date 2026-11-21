@@ -255,10 +255,9 @@ export function Why({ head = true }: { head?: boolean }) {
               <p>{why.founder.text}</p>
               <p className="founder__projects-title">{why.founder.projectsTitle}</p>
               <ul className="founder__projects">
-                {caseStudies.items.map((c) => (
-                  <li key={c.title}>
-                    <a href="/riesenia#ukazky">{c.title}</a>
-                    <span>{c.company}</span>
+                {why.founder.projects.map((p) => (
+                  <li key={p}>
+                    <Check /> {p}
                   </li>
                 ))}
               </ul>

@@ -283,7 +283,13 @@ export const why = {
     initials: "JP",
     role: "Zakladateľ · procesy a automatizácia",
     text: "Jaroslav Pavlisko má 10 rokov praxe v ekonomickom a HR poradenstve so zameraním na riadenie firiem, optimalizáciu procesov a HR procesy. Silné procesné a analytické myslenie mu pomáha rýchlo nájsť miesta, kde firma stráca čas, a vyčísliť, čo prinesie ich zlepšenie. Novorsu založil, aby firmám pomohol využiť automatizáciu a AI tam, kde reálne šetria čas, s dôrazom na návratnosť a bezpečné nasadenie.",
-    projectsTitle: "Vybrané projekty",
+    projectsTitle: "Jeho úspešné implementácie",
+    projects: [
+      "Migrácia náborového systému (ATS)",
+      "Implementácia ERP systému",
+      "Automatizácia obchodných procesov",
+      "Zavedenie finančného reportingu",
+    ],
   },
   notFit: {
     title: "Kedy pre vás nie sme vhodní",
