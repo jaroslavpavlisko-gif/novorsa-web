@@ -49,16 +49,14 @@ export function Footer() {
           </div>
         </div>
         <div className="footer__bottom">
-          <span>© {year} Novorsa</span>
+          <span>
+            © {year} Novorsa · {site.company.name}
+          </span>
           <span className="footer__links">
             <a href="/ochrana-osobnych-udajov">Ochrana osobných údajov</a>
             <a href="/cookies">Cookies</a>
           </span>
         </div>
-        <p className="footer__legal">
-          Novorsa je obchodná značka spoločnosti {site.company.name} · {site.company.street}, {site.company.city} · IČO{" "}
-          {site.company.ico} · {site.company.register}
-        </p>
       </div>
     </footer>
   );
