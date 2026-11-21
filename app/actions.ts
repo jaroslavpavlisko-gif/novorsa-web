@@ -71,8 +71,15 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
   // Vercel BotID: neviditeľné overenie, že formulár odoslal človek, nie robot.
   let botCheckOk = true;
   try {
+    const started = Date.now();
     const verification = await checkBotId();
     if (verification.isBot) {
+      // Bez osobných údajov: len výsledok a trvanie, aby sa dali odhaliť falošné poplachy.
+      console.warn("BotID: požiadavka označená ako bot", {
+        ms: Date.now() - started,
+        verifiedBot: verification.isVerifiedBot ?? false,
+        bypassed: verification.bypassed ?? false,
+      });
       return {
         status: "error",
         message: "Správu sa nepodarilo overiť. Napíšte nám, prosím, priamo na info@novorsa.sk.",
