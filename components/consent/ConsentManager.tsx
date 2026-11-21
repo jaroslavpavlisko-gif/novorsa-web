@@ -14,6 +14,20 @@ import {
   type Consent,
 } from "@/lib/tracking";
 
+/** Zmaže cookies daného nástroja na tejto doméne aj na nadradených doménach (napr. .novorsa.sk). */
+function deleteCookies(prefixes: string[]) {
+  const names = document.cookie
+    .split("; ")
+    .map((c) => c.split("=")[0])
+    .filter((n) => prefixes.some((p) => n.startsWith(p)));
+  const parts = location.hostname.split(".");
+  const domains = [""];
+  for (let i = 0; i < parts.length - 1; i++) domains.push(`; domain=.${parts.slice(i).join(".")}`);
+  for (const name of names) {
+    for (const d of domains) document.cookie = `${name}=; Max-Age=0; Path=/${d}`;
+  }
+}
+
 /** Cookie lišta so súhlasom a načítanie meracích a marketingových nástrojov až po súhlase. */
 export function ConsentManager() {
   const [consent, setConsent] = useState<Consent | null>(null);
@@ -47,6 +61,8 @@ export function ConsentManager() {
     setDetails(false);
     // Odvolaný súhlas: už načítané nástroje sa dajú vypnúť len znovunačítaním stránky.
     if (prev && ((prev.analytics && !next.analytics) || (prev.marketing && !next.marketing))) {
+      if (prev.analytics && !next.analytics) deleteCookies(["_ga", "_gid"]);
+      if (prev.marketing && !next.marketing) deleteCookies(["_gcl", "_fbp", "_fbc", "li_", "bcookie", "lidc"]);
       window.location.reload();
     }
   };
@@ -154,7 +170,7 @@ export function ConsentManager() {
                 Nastavenia
               </button>
             )}
-            <button type="button" className="btn btn--ghost btn--sm" onClick={() => save(false, false)}>
+            <button type="button" className="btn btn--primary btn--sm" onClick={() => save(false, false)}>
               Odmietnuť
             </button>
             <button type="button" className="btn btn--primary btn--sm" onClick={() => save(true, true)}>

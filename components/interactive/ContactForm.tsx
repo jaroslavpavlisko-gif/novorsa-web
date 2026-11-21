@@ -113,19 +113,13 @@ export function ContactForm() {
         <input id="website" name="website" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <div className="input-wrap">
-        <label className="consent">
-          <input type="checkbox" name="consent" required {...field("consent")} />
-          <span>
-            Súhlasím so spracovaním osobných údajov na účel odpovede na môj dopyt podľa{" "}
-            <a href="/ochrana-osobnych-udajov" target="_blank" rel="noopener">
-              zásad ochrany osobných údajov
-            </a>
-            .
-          </span>
-        </label>
-        {err.consent && <span id="consent-error" className="error">{err.consent}</span>}
-      </div>
+      <p className="form__note">
+        Údaje použijeme na vybavenie vášho dopytu. Podrobnosti nájdete v{" "}
+        <a href="/ochrana-osobnych-udajov" target="_blank" rel="noopener">
+          zásadách ochrany osobných údajov
+        </a>
+        .
+      </p>
 
       <button className="btn btn--primary" type="submit" disabled={pending}>
         {pending ? "Odosielam…" : (

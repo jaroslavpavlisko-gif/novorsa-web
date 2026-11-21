@@ -7,7 +7,7 @@ import { contact } from "@/content/site";
 export type ContactState = {
   status: "idle" | "ok" | "error";
   message?: string;
-  errors?: Partial<Record<"firstName" | "lastName" | "company" | "ico" | "email" | "area" | "message" | "consent", string>>;
+  errors?: Partial<Record<"firstName" | "lastName" | "company" | "ico" | "email" | "area" | "message", string>>;
   values?: Record<string, string>;
 };
 
@@ -48,7 +48,6 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(values.email)) errors.email = "Skontrolujte, prosím, e-mailovú adresu.";
   if (!contact.areas.includes(values.area)) errors.area = "Vyberte oblasť.";
   if (values.message.length > 4000) errors.message = "Popis je príliš dlhý (max. 4 000 znakov).";
-  if (formData.get("consent") !== "on") errors.consent = "Bez súhlasu vám nemôžeme odpovedať.";
 
   if (Object.keys(errors).length > 0) {
     return { status: "error", message: "Skontrolujte, prosím, označené polia.", errors, values };

@@ -27,7 +27,7 @@ export function Footer() {
             <ul>
               <li><a href="/ako-pracujeme">Ako pracujeme</a></li>
               <li><a href="/riesenia#ukazky">Úspešné projekty</a></li>
-              <li><a href="/kalkulacka">Kalkulačka návratnosti</a></li>
+              <li><a href="/kalkulacka">Kalkulačka úspory času</a></li>
               <li><a href="/ako-pracujeme#otazky">Časté otázky</a></li>
               <li><a href="/o-nas">O nás</a></li>
               <li><a href="/kontakt">Kontakt</a></li>

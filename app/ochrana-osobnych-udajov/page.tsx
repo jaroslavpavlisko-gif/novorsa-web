@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { site } from "@/content/site";
 import { hasAnalytics, hasMarketing, tracking } from "@/lib/tracking";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/ochrana-osobnych-udajov",
   title: "Ochrana osobných údajov",
   description: "Ako Novorsa spracúva osobné údaje z kontaktného formulára a webu.",
-  alternates: { canonical: "/ochrana-osobnych-udajov" },
-};
+});
 
 export default function PrivacyPage() {
   const c = site.company;
@@ -56,8 +57,9 @@ export default function PrivacyPage() {
         <h2>Právny základ</h2>
         <ul>
           <li>
-            Údaje z formulára: vykonanie opatrení pred uzavretím zmluvy na vašu žiadosť a váš súhlas (čl. 6 ods. 1 písm. b)
-            a a) GDPR).
+            Údaje z formulára: vybavenie vášho dopytu, teda opatrenia pred uzavretím zmluvy na vašu žiadosť (čl. 6 ods. 1
+            písm. b) GDPR), a ak nás kontaktujete ako zástupca firmy, náš oprávnený záujem odpovedať na obchodný dopyt
+            (čl. 6 ods. 1 písm. f) GDPR).
           </li>
           <li>
             Ochrana pred robotmi, štatistiky bez cookies a technické záznamy: náš oprávnený záujem na bezpečnosti a
@@ -65,7 +67,8 @@ export default function PrivacyPage() {
           </li>
           {(hasAnalytics || hasMarketing) && (
             <li>
-              Analytické a marketingové cookies: váš súhlas (čl. 6 ods. 1 písm. a) GDPR a zákon o elektronických
+              {hasAnalytics && hasMarketing ? "Analytické a marketingové" : hasAnalytics ? "Analytické" : "Marketingové"}{" "}
+              cookies: váš súhlas (čl. 6 ods. 1 písm. a) GDPR a zákon o elektronických
               komunikáciách). Súhlas môžete kedykoľvek zmeniť cez odkaz „Nastavenia cookies“ v päte webu.
             </li>
           )}
@@ -99,7 +102,7 @@ export default function PrivacyPage() {
         <p>
           Niektorí z nich môžu údaje prenášať aj do USA. Prenos prebieha na základe rámca ochrany údajov medzi EÚ a USA
           (EU-U.S. Data Privacy Framework), ak je príjemca certifikovaný, alebo na základe štandardných zmluvných doložiek
-          schválených Európskou komisiou.
+          schválených Európskou komisiou. Kópiu týchto záruk vám na požiadanie poskytneme.
         </p>
 
         <h2>Vaše práva</h2>

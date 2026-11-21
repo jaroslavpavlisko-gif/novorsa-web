@@ -1242,3 +1242,21 @@ h4 {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+/* Formulár: informácia o spracovaní údajov namiesto súhlasu */
+.form__note {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* Úvodná schéma: čitateľnejšie popisy na tmavých kartách */
+.flow__meta,
+.flow__stat span {
+  color: #a9bdbc;
+  font-size: 13.5px;
+}
+
+.flow__top {
+  color: #a9bdbc;
+}

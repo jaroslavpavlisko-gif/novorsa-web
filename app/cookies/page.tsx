@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { site } from "@/content/site";
 import { CookieSettingsButton } from "@/components/consent/ConsentManager";
 import { hasTracking, tracking } from "@/lib/tracking";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/cookies",
   title: "Cookies",
   description: "Aké cookies používa web Novorsa a ako môžete zmeniť svoj súhlas.",
-  alternates: { canonical: "/cookies" },
-};
+});
 
 type Row = { name: string; provider: string; purpose: string; duration: string };
 
@@ -77,8 +78,14 @@ export default function CookiesPage() {
       <article className="prose">
         <h1>Cookies</h1>
         <p>
-          Cookies sú malé súbory, ktoré web ukladá vo vašom prehliadači. Nevyhnutné cookies používame vždy, analytické a
-          marketingové len s vaším súhlasom.
+          Cookies sú malé súbory, ktoré web ukladá vo vašom prehliadači. Nevyhnutné cookies používame vždy
+          {analytics.length > 0 && marketing.length > 0
+            ? ", analytické a marketingové len s vaším súhlasom."
+            : analytics.length > 0
+              ? ", analytické len s vaším súhlasom."
+              : marketing.length > 0
+                ? ", marketingové len s vaším súhlasom."
+                : "."}
         </p>
         {hasTracking && (
           <p>

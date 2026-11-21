@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { solutions } from "@/content/site";
 import { SolutionTabs } from "@/components/interactive/SolutionTabs";
 import { Integrations, Showcases } from "@/components/marketing/Sections";
 import { CtaBand, PageHero } from "@/components/marketing/Blocks";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/riesenia",
   title: "Riešenia",
   description: "Automatizácia a AI pre obchod, HR, financie, prevádzku, nákup a vedenie firmy.",
-  alternates: { canonical: "/riesenia" },
-};
+});
 
 export default function SolutionsPage() {
   return (
