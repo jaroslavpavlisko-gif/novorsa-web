@@ -284,7 +284,7 @@ export const faq = {
   items: [
     {
       q: "Je to bezpečné a v súlade s GDPR?",
-      a: "Pri každom projekte riešime, aké údaje sa spracúvajú, kde sú uložené a kto k nim má prístup. Spracúvame len nevyhnutné údaje, prednostne na serveroch v EÚ, a so spracovateľmi uzatvárame zmluvy. Konkrétne nastavenie vždy prispôsobíme vašim pravidlám.",
+      a: "Pri každom projekte riešime, aké údaje sa spracúvajú, kde sú uložené a kto k nim má prístup. Spracúvame len nevyhnutné údaje, prednostne na serveroch v EÚ. AI nástroje nasadzujeme spravidla priamo na vašich firemných účtoch, takže údaje zostávajú pod vašou kontrolou. Ak pri práci prídeme do styku s osobnými údajmi, uzatvoríme s vami zmluvu o ich spracúvaní. Konkrétne nastavenie vždy prispôsobíme vašim pravidlám.",
     },
     {
       q: "S akými systémami pracujete?",
