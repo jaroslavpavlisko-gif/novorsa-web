@@ -34,7 +34,7 @@ export function Hero() {
         <figure className="flow" aria-label="Príklad automatizovaného procesu: generovanie obchodných leadov od vyhľadania firmy po zápis do CRM">
           <div className="flow__top">
             <span>Automatizovaný proces · obchodné leady</span>
-            <span className="flow__live">beží online</span>
+            <span className="flow__live">Ukážka procesu</span>
           </div>
           <ol className="flow__steps">
             {steps.map((s, i) => (
