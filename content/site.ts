@@ -299,7 +299,7 @@ export const why = {
         name: "Daniela Kurek",
         initials: "DK",
         role: "Klientská podpora a poradenstvo",
-        text: "Daniela je vaším prvým kontaktom počas projektu aj po spustení. Má 7 rokov praxe v HR a dobre pozná firemné procesy a systémy. Pomôže s doladením a úpravami a technické požiadavky rieši priamo so zakladateľom a vývojovým tímom.",
+        text: "Daniela je vaším prvým kontaktom počas projektu aj po spustení. Má 8 rokov praxe v HR a dobre pozná firemné procesy a systémy. Pomôže s doladením a úpravami a technické požiadavky rieši priamo so zakladateľom a vývojovým tímom.",
       },
     ],
     partners: {
