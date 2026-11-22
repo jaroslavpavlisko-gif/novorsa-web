@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     locales.map((lang) => ({
       url: abs(path(lang, p.key)),
       changeFrequency: p.changeFrequency,
-      priority: lang === "sk" ? p.priority : Math.max(0.1, p.priority - 0.1),
+      priority: lang === "sk" ? p.priority : Math.round(Math.max(0.1, p.priority - 0.1) * 10) / 10,
       alternates: {
         languages: Object.fromEntries(Object.entries(languageAlternates(p.key)).map(([k, v]) => [k, abs(v)])),
       },
