@@ -244,8 +244,10 @@ export function Why({ head = true }: { head?: boolean }) {
             </li>
           ))}
         </ul>
-        <div className="why">
-          <div className="founder">
+        <div className="team">
+          <h2 className="team__title">{why.team.title}</h2>
+          <p className="team__lead">{why.team.lead}</p>
+          <div className="founder founder--wide">
             <div className="founder__photo founder__photo--initials" aria-hidden="true">
               {why.founder.initials}
             </div>
@@ -253,11 +255,38 @@ export function Why({ head = true }: { head?: boolean }) {
               <strong>{why.founder.name}</strong>
               <span className="role">{why.founder.role}</span>
               <p>{why.founder.text}</p>
+            </div>
+            <div>
               <p className="founder__projects-title">{why.founder.projectsTitle}</p>
               <ul className="founder__projects">
                 {why.founder.projects.map((p) => (
                   <li key={p}>
                     <Check /> {p}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="team__row">
+            {why.team.members.map((m) => (
+              <div key={m.name} className="founder">
+                <div className="founder__photo founder__photo--initials" aria-hidden="true">
+                  {m.initials}
+                </div>
+                <div>
+                  <strong>{m.name}</strong>
+                  <span className="role">{m.role}</span>
+                  <p>{m.text}</p>
+                </div>
+              </div>
+            ))}
+            <div className="partners">
+              <h3>{why.team.partners.title}</h3>
+              <p>{why.team.partners.text}</p>
+              <ul>
+                {why.team.partners.items.map((i) => (
+                  <li key={i}>
+                    <Check /> {i}
                   </li>
                 ))}
               </ul>

@@ -291,6 +291,23 @@ export const why = {
       "Zavedenie finančného reportingu",
     ],
   },
+  team: {
+    title: "Náš tím",
+    lead: "Malý tím, ktorý pozná vašu firmu. S klientom pracujeme priamo, bez sprostredkovateľov.",
+    members: [
+      {
+        name: "Daniela Kurek",
+        initials: "DK",
+        role: "Klientská podpora a poradenstvo",
+        text: "Daniela je vaším prvým kontaktom počas projektu aj po spustení. Má 7 rokov praxe v HR a dobre pozná firemné procesy a systémy. Pomôže s doladením a úpravami a technické požiadavky rieši priamo so zakladateľom a vývojovým tímom.",
+      },
+    ],
+    partners: {
+      title: "S kým spolupracujeme",
+      text: "Na projektoch spolupracujeme s overenými partnermi. Tím zostavíme podľa toho, čo projekt potrebuje.",
+      items: ["Vývoj softvéru a aplikácií", "Programovanie integrácií", "Serverové a cloudové nastavenia", "Dizajn"],
+    },
+  },
   notFit: {
     title: "Kedy pre vás nie sme vhodní",
     items: [
