@@ -17,9 +17,9 @@ export function LogoMark({ size = 40, onDark = false, rings = 2 }: LogoMarkProps
   );
 }
 
-export function Logo({ onDark = false }: { onDark?: boolean }) {
+export function Logo({ onDark = false, href = "/", label = "Novorsa" }: { onDark?: boolean; href?: string; label?: string }) {
   return (
-    <a href="/" className="logo" aria-label="Novorsa – úvodná stránka">
+    <a href={href} className="logo" aria-label={label}>
       <LogoMark size={44} onDark={onDark} rings={1} />
       <span className="logo__word">novorsa</span>
     </a>

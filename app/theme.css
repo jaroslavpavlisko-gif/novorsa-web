@@ -1413,3 +1413,44 @@ h4 {
   .team__row { grid-template-columns: 1fr 1fr; }
   .partners { padding: 36px; }
 }
+
+/* ===== Prepínač jazykov ===== */
+.lang-switch {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2px;
+  align-items: center;
+}
+.lang-switch a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 32px;
+  padding: 0 6px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--on-dark-muted);
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
+}
+.lang-switch a:hover { color: var(--on-dark); background: rgb(255 255 255 / 0.06); }
+.lang-switch a[aria-current="true"] { color: var(--on-dark); background: rgb(255 255 255 / 0.1); }
+.mobile-nav ul.lang-switch--mobile {
+  display: flex;
+  gap: 6px;
+  margin: 4px 0 16px;
+}
+.mobile-nav .lang-switch--mobile a {
+  min-height: 40px;
+  min-width: 52px;
+  border: 1px solid rgb(233 239 238 / 0.18);
+  justify-content: center;
+}
+@media (min-width: 1024px) {
+  .lang-switch:not(.lang-switch--mobile) { display: flex; margin-left: auto; margin-right: -8px; }
+}

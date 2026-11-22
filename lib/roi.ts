@@ -18,10 +18,14 @@ export function calculateRoi(i: RoiInput) {
   return { weeklyHours, annualHours, automatableHours, fte, capacityValue };
 }
 
-const nf = (digits: number) =>
-  new Intl.NumberFormat("sk-SK", { maximumFractionDigits: digits, minimumFractionDigits: digits });
-
-export const formatHours = (h: number) => `${nf(0).format(Math.round(h))} h`;
-export const formatFte = (f: number) => nf(1).format(f);
-export const formatEur = (v: number) =>
-  new Intl.NumberFormat("sk-SK", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(Math.round(v / 10) * 10);
+/** Formátovanie čísel podľa jazyka (sk-SK, cs-CZ, en-GB) a meny (EUR, CZK). */
+export function formatters(locale: string, currency: string) {
+  const nf = (digits: number) => new Intl.NumberFormat(locale, { maximumFractionDigits: digits, minimumFractionDigits: digits });
+  const round = currency === "CZK" ? 100 : 10;
+  return {
+    hours: (h: number) => `${nf(0).format(Math.round(h))} h`,
+    fte: (f: number) => nf(1).format(f),
+    money: (v: number) =>
+      new Intl.NumberFormat(locale, { style: "currency", currency, maximumFractionDigits: 0 }).format(Math.round(v / round) * round),
+  };
+}

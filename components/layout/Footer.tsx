@@ -1,46 +1,48 @@
-import { customApps, site, solutions } from "@/content/site";
+import { site } from "@/content/site";
+import { getDict } from "@/content";
+import { path, type Lang } from "@/lib/i18n";
 import { Logo } from "./Logo";
 import { CookieSettingsButton } from "../consent/ConsentManager";
 
-export function Footer() {
+export function Footer({ lang }: { lang: Lang }) {
+  const t = getDict(lang);
   const year = new Date().getFullYear();
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer__grid">
           <div style={{ display: "grid", gap: 16, alignContent: "start" }}>
-            <Logo onDark />
-            <p style={{ maxWidth: 340 }}>{site.tagline}. Najprv biznis a návratnosť, potom technológia.</p>
+            <Logo onDark href={path(lang, "home")} label={t.ui.logoAria} />
+            <p style={{ maxWidth: 340 }}>{t.footer.tagline}</p>
           </div>
           <div>
-            <h2>Riešenia</h2>
+            <h2>{t.footer.solutions}</h2>
             <ul>
-              {solutions.items.map((s) => (
+              {t.solutions.items.map((s) => (
                 <li key={s.id}>
-                  <a href={`/riesenia#${s.id}`}>{s.label}</a>
+                  <a href={path(lang, "solutions", s.id)}>{s.label}</a>
                 </li>
               ))}
               <li>
-                <a href={`/riesenia#${customApps.id}`}>{customApps.label}</a>
+                <a href={path(lang, "solutions", t.customApps.id)}>{t.customApps.label}</a>
               </li>
             </ul>
           </div>
           <div>
-            <h2>Firma</h2>
+            <h2>{t.footer.company}</h2>
             <ul>
-              <li><a href="/ako-pracujeme">Ako pracujeme</a></li>
-              <li><a href="/riesenia#ukazky">Úspešné projekty</a></li>
-              <li><a href="/kalkulacka">Kalkulačka úspory času</a></li>
-              <li><a href="/ako-pracujeme#otazky">Časté otázky</a></li>
-              <li><a href="/o-nas">O nás</a></li>
-              <li><a href="/kontakt">Kontakt</a></li>
+              {t.footer.links.map((l) => (
+                <li key={l.label}>
+                  <a href={path(lang, l.to, l.hash)}>{l.label}</a>
+                </li>
+              ))}
               {site.linkedin && (
                 <li><a href={site.linkedin} rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
               )}
             </ul>
           </div>
           <div>
-            <h2>Kontakt</h2>
+            <h2>{t.footer.contact}</h2>
             <address>
               <a href={`mailto:${site.email}`}>{site.email}</a>
               {site.phone && (
@@ -57,9 +59,9 @@ export function Footer() {
             © {year} Novorsa · {site.company.name}
           </span>
           <span className="footer__links">
-            <a href="/ochrana-osobnych-udajov">Ochrana osobných údajov</a>
-            <a href="/cookies">Cookies</a>
-            <CookieSettingsButton />
+            <a href={path(lang, "privacy")}>{t.footer.privacy}</a>
+            <a href={path(lang, "cookies")}>{t.footer.cookies}</a>
+            <CookieSettingsButton label={t.consent.footerButton} />
           </span>
         </div>
       </div>

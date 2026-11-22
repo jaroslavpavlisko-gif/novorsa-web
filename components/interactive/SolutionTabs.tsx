@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
-import type { Solution } from "@/content/site";
+import type { Solution } from "@/content";
 import { Check } from "../ui/Icons";
 
-export function SolutionTabs({ items }: { items: Solution[] }) {
+export function SolutionTabs({ items, label }: { items: Solution[]; label: string }) {
   const [active, setActive] = useState(0);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -49,7 +49,7 @@ export function SolutionTabs({ items }: { items: Solution[] }) {
 
   return (
     <div ref={rootRef} className="tabs">
-      <div role="tablist" aria-label="Oddelenia" className="tabs__list">
+      <div role="tablist" aria-label={label} className="tabs__list">
         {items.map((item, i) => (
           <button
             key={item.id}

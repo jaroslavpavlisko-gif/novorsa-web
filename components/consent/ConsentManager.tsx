@@ -13,6 +13,7 @@ import {
   writeConsent,
   type Consent,
 } from "@/lib/tracking";
+import type { Dict } from "@/content";
 
 /** Zmaže cookies daného nástroja na tejto doméne aj na nadradených doménach (napr. .novorsa.sk). */
 function deleteCookies(prefixes: string[]) {
@@ -29,7 +30,7 @@ function deleteCookies(prefixes: string[]) {
 }
 
 /** Cookie lišta so súhlasom a načítanie meracích a marketingových nástrojov až po súhlase. */
-export function ConsentManager() {
+export function ConsentManager({ t, cookiesHref }: { t: Dict["consent"]; cookiesHref: string }) {
   const [consent, setConsent] = useState<Consent | null>(null);
   const [open, setOpen] = useState(false);
   const [details, setDetails] = useState(false);
@@ -109,14 +110,14 @@ export function ConsentManager() {
       {open && (
         <div className="consent" role="dialog" aria-modal="false" aria-labelledby="consent-title">
           <h2 id="consent-title" className="consent__title">
-            Cookies a meranie návštevnosti
+            {t.title}
           </h2>
           <p className="consent__text">
-            Nevyhnutné cookies zabezpečujú fungovanie webu. S vaším súhlasom použijeme aj
-            {hasAnalytics && " analytické cookies na meranie návštevnosti"}
-            {hasAnalytics && hasMarketing && " a"}
-            {hasMarketing && " marketingové cookies na meranie a zobrazovanie reklamy"}. Súhlas môžete kedykoľvek zmeniť.{" "}
-            <a href="/cookies">Viac o cookies</a>
+            {t.textStart}
+            {hasAnalytics && t.textAnalytics}
+            {hasAnalytics && hasMarketing && t.textAnd}
+            {hasMarketing && t.textMarketing}
+            {t.textEnd} <a href={cookiesHref}>{t.more}</a>
           </p>
 
           {details && (
@@ -125,7 +126,7 @@ export function ConsentManager() {
                 <label>
                   <input type="checkbox" checked disabled />
                   <span>
-                    <strong>Nevyhnutné</strong> Fungovanie a bezpečnosť webu. Vždy zapnuté.
+                    <strong>{t.necessary}</strong> {t.necessaryText}
                   </span>
                 </label>
               </li>
@@ -138,7 +139,7 @@ export function ConsentManager() {
                       onChange={(e) => setDraft((d) => ({ ...d, analytics: e.target.checked }))}
                     />
                     <span>
-                      <strong>Analytické</strong> Meranie návštevnosti, aby sme vedeli web zlepšovať.
+                      <strong>{t.analytics}</strong> {t.analyticsText}
                     </span>
                   </label>
                 </li>
@@ -152,7 +153,7 @@ export function ConsentManager() {
                       onChange={(e) => setDraft((d) => ({ ...d, marketing: e.target.checked }))}
                     />
                     <span>
-                      <strong>Marketingové</strong> Meranie účinnosti reklamy a zobrazovanie relevantných ponúk.
+                      <strong>{t.marketing}</strong> {t.marketingText}
                     </span>
                   </label>
                 </li>
@@ -163,18 +164,18 @@ export function ConsentManager() {
           <div className="consent__actions">
             {details ? (
               <button type="button" className="btn btn--primary btn--sm" onClick={() => save(draft.analytics, draft.marketing)}>
-                Uložiť výber
+                {t.save}
               </button>
             ) : (
               <button type="button" className="btn btn--ghost btn--sm" onClick={() => setDetails(true)}>
-                Nastavenia
+                {t.settings}
               </button>
             )}
             <button type="button" className="btn btn--primary btn--sm" onClick={() => save(false, false)}>
-              Odmietnuť
+              {t.reject}
             </button>
             <button type="button" className="btn btn--primary btn--sm" onClick={() => save(true, true)}>
-              Prijať všetko
+              {t.accept}
             </button>
           </div>
         </div>
@@ -184,11 +185,11 @@ export function ConsentManager() {
 }
 
 /** Odkaz v päte, ktorým návštevník kedykoľvek zmení súhlas. */
-export function CookieSettingsButton() {
+export function CookieSettingsButton({ label }: { label: string }) {
   if (!hasTracking) return null;
   return (
     <button type="button" className="footer__btn" onClick={() => window.dispatchEvent(new Event(OPEN_SETTINGS_EVENT))}>
-      Nastavenia cookies
+      {label}
     </button>
   );
 }

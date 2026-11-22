@@ -1,15 +1,10 @@
-import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
 import { site } from "@/content/site";
+import { sk } from "@/content/sk";
+import { path } from "@/lib/i18n";
 import { hasAnalytics, hasMarketing, tracking } from "@/lib/tracking";
 
-export const metadata: Metadata = pageMetadata({
-  path: "/ochrana-osobnych-udajov",
-  title: "Ochrana osobných údajov",
-  description: "Ako Novorsa spracúva osobné údaje z kontaktného formulára a webu.",
-});
-
-export default function PrivacyPage() {
+/** Ochrana osobných údajov – slovenské znenie. */
+export function PrivacySk() {
   const c = site.company;
   return (
     <div className="container">
@@ -19,7 +14,7 @@ export default function PrivacyPage() {
 
         <h2>Prevádzkovateľ</h2>
         <p>
-          {c.name}, {c.street}, {c.city}, IČO {c.ico}, {c.register} (ďalej „my“). Novorsa je naša obchodná značka. Kontakt
+          {c.name}, {c.street}, {c.city}, IČO {c.ico}, {sk.site.register} (ďalej „my“). Novorsa je naša obchodná značka. Kontakt
           vo veciach osobných údajov: <a href={`mailto:${site.email}`}>{site.email}</a>.
         </p>
 
@@ -83,7 +78,7 @@ export default function PrivacyPage() {
           <li>Údaje z dopytu: najviac 24 mesiacov od poslednej komunikácie, ak z nej nevznikne zmluvný vzťah.</li>
           <li>Technické záznamy: najviac 30 dní.</li>
           {(hasAnalytics || hasMarketing) && (
-            <li>Údaje z cookies: podľa doby platnosti uvedenej na stránke <a href="/cookies">Cookies</a>.</li>
+            <li>Údaje z cookies: podľa doby platnosti uvedenej na stránke <a href={path("sk", "cookies")}>Cookies</a>.</li>
           )}
         </ul>
 

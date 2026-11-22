@@ -1,63 +1,62 @@
 "use client";
 
 import { useId, useState, type CSSProperties } from "react";
-import { calculateRoi, formatEur, formatFte, formatHours, type RoiInput } from "@/lib/roi";
+import { calculateRoi, formatters, type RoiInput } from "@/lib/roi";
+import type { Dict } from "@/content";
 import { ArrowRight } from "../ui/Icons";
 
-type FieldDef = {
-  key: keyof RoiInput;
-  label: string;
-  hint: string;
-  min: number;
-  max: number;
-  step: number;
-  format: (v: number) => string;
-};
+type FieldDef = { key: keyof RoiInput; min: number; max: number; step: number; format: (v: number) => string };
 
-const fields: FieldDef[] = [
-  { key: "people", label: "Koľko ľudí robí túto úlohu", hint: "Napríklad 3 ľudia v účtovníctve", min: 1, max: 50, step: 1, format: (v) => `${v}` },
-  { key: "minutesPerTask", label: "Koľko minút trvá jedna úloha", hint: "Jedno spracovanie, napr. jedna faktúra", min: 1, max: 120, step: 1, format: (v) => `${v} min` },
-  { key: "timesPerWeek", label: "Koľkokrát týždenne ju robí jeden človek", hint: "Opakovania na osobu za týždeň", min: 1, max: 200, step: 1, format: (v) => `${v}×` },
-  { key: "hourlyCost", label: "Cena hodiny práce vrátane odvodov", hint: "Celková cena práce pre firmu", min: 8, max: 80, step: 1, format: (v) => `${v} €` },
-  { key: "automationShare", label: "Koľko sa dá automatizovať", hint: "Konzervatívny odhad je 50 až 70 %", min: 0.1, max: 0.9, step: 0.05, format: (v) => `${Math.round(v * 100)} %` },
-];
-
-const initial: RoiInput = { people: 3, minutesPerTask: 8, timesPerWeek: 40, hourlyCost: 18, automationShare: 0.6 };
-
-export function RoiCalculator() {
-  const [values, setValues] = useState<RoiInput>(initial);
+export function RoiCalculator({ t, ctaHref }: { t: Dict["roi"]; ctaHref: string }) {
+  const [values, setValues] = useState<RoiInput>({
+    people: 3,
+    minutesPerTask: 8,
+    timesPerWeek: 40,
+    hourlyCost: t.rate.initial,
+    automationShare: 0.6,
+  });
   const r = calculateRoi(values);
+  const f = formatters(t.numberLocale, t.currency);
   const uid = useId();
+
+  const fields: FieldDef[] = [
+    { key: "people", min: 1, max: 50, step: 1, format: (v) => `${v}` },
+    { key: "minutesPerTask", min: 1, max: 120, step: 1, format: (v) => `${v} min` },
+    { key: "timesPerWeek", min: 1, max: 200, step: 1, format: (v) => `${v}×` },
+    { key: "hourlyCost", min: t.rate.min, max: t.rate.max, step: t.rate.step, format: (v) => `${v} ${t.rate.unit}` },
+    { key: "automationShare", min: 0.1, max: 0.9, step: 0.05, format: (v) => `${Math.round(v * 100)} %` },
+  ];
 
   return (
     <div className="roi">
-      <form className="roi__form" onSubmit={(e) => e.preventDefault()} aria-label="Vstupy kalkulačky">
-        {fields.map((f) => {
-          const id = `${uid}-${f.key}`;
-          const v = values[f.key];
-          const fill = ((v - f.min) / (f.max - f.min)) * 100;
+      <form className="roi__form" onSubmit={(e) => e.preventDefault()} aria-label={t.formAria}>
+        {fields.map((fd) => {
+          const id = `${uid}-${fd.key}`;
+          const v = values[fd.key];
+          const fill = ((v - fd.min) / (fd.max - fd.min)) * 100;
+          const text = t.fields[fd.key];
           return (
-            <div className="field" key={f.key}>
+            <div className="field" key={fd.key}>
               <div className="field__row">
-                <label htmlFor={id}>{f.label}</label>
+                <label htmlFor={id}>{text.label}</label>
                 <output className="field__value" htmlFor={id}>
-                  {f.format(v)}
+                  {fd.format(v)}
                 </output>
               </div>
               <input
                 id={id}
                 type="range"
-                min={f.min}
-                max={f.max}
-                step={f.step}
+                min={fd.min}
+                max={fd.max}
+                step={fd.step}
                 value={v}
-                aria-valuetext={f.format(v)}
+                aria-valuetext={fd.format(v)}
                 aria-describedby={`${id}-hint`}
                 style={{ "--fill": `${fill}%` } as CSSProperties}
-                onChange={(e) => setValues((prev) => ({ ...prev, [f.key]: Number(e.target.value) }))}
+                onChange={(e) => setValues((prev) => ({ ...prev, [fd.key]: Number(e.target.value) }))}
               />
               <span id={`${id}-hint`} className="field__hint">
-                {f.hint}
+                {text.hint}
               </span>
             </div>
           );
@@ -66,29 +65,30 @@ export function RoiCalculator() {
 
       <div className="roi__result" aria-live="polite">
         <div className="roi__big">
-          <span>Uvoľnená kapacita ročne</span>
-          <strong>{formatHours(r.automatableHours)}</strong>
+          <span>{t.big}</span>
+          <strong>{f.hours(r.automatableHours)}</strong>
         </div>
         <dl className="roi__rows">
           <div>
-            <dt>Ekvivalent úväzkov</dt>
-            <dd>{formatFte(r.fte)} FTE</dd>
+            <dt>{t.fte}</dt>
+            <dd>{f.fte(r.fte)} FTE</dd>
           </div>
           <div>
-            <dt>Hodnota uvoľnenej kapacity</dt>
-            <dd>{formatEur(r.capacityValue)} / rok</dd>
+            <dt>{t.value}</dt>
+            <dd>
+              {f.money(r.capacityValue)} {t.perYear}
+            </dd>
           </div>
           <div>
-            <dt>Súčasná ručná práca</dt>
-            <dd>{formatHours(r.annualHours)} / rok</dd>
+            <dt>{t.manual}</dt>
+            <dd>
+              {f.hours(r.annualHours)} {t.perYear}
+            </dd>
           </div>
         </dl>
-        <p className="roi__disclaimer">
-          Orientačný odhad, nie garantovaná úspora. Počítame so 48 pracovnými týždňami a úväzkom 1 920 hodín ročne.
-          Uvoľnená kapacita sa nerovná automaticky úspore nákladov.
-        </p>
-        <a className="btn btn--primary" href="/kontakt">
-          Overiť odhad na konzultácii <ArrowRight />
+        <p className="roi__disclaimer">{t.disclaimer}</p>
+        <a className="btn btn--primary" href={ctaHref}>
+          {t.cta} <ArrowRight />
         </a>
       </div>
     </div>

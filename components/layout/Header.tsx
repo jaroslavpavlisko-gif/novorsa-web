@@ -2,15 +2,45 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { nav } from "@/content/site";
+import { langLabel, langName, locales, parsePublicPath, path, type Lang } from "@/lib/i18n";
 import { Logo } from "./Logo";
 import { ArrowRight, Close, Menu } from "../ui/Icons";
 
-export function Header() {
+type HeaderProps = {
+  lang: Lang;
+  nav: { label: string; href: string }[];
+  ctaHref: string;
+  homeHref: string;
+  ui: { logoAria: string; navAria: string; mobileNavAria: string; menuOpen: string; menuClose: string; headerCta: string; langSwitchAria: string };
+};
+
+/** Prepínač jazykov: vedie na tú istú stránku v inom jazyku. */
+function LangSwitch({ lang, pathname, label, className }: { lang: Lang; pathname: string; label: string; className: string }) {
+  const { key } = parsePublicPath(pathname);
+  return (
+    <ul className={className} aria-label={label}>
+      {locales.map((l) => (
+        <li key={l}>
+          <a
+            href={path(l, key ?? "home")}
+            hrefLang={l === "cz" ? "cs" : l}
+            lang={l === "cz" ? "cs" : l}
+            title={langName[l]}
+            aria-current={l === lang ? "true" : undefined}
+          >
+            {langLabel[l]}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export function Header({ lang, nav, ctaHref, homeHref, ui }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const isCurrent = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
+  const isCurrent = (href: string) => href !== homeHref && (pathname === href || pathname.startsWith(`${href}/`));
 
   useEffect(() => setOpen(false), [pathname]);
 
@@ -33,8 +63,8 @@ export function Header() {
   return (
     <header className="header" data-scrolled={scrolled || open}>
       <div className="container header__inner">
-        <Logo onDark />
-        <nav className="nav" aria-label="Hlavná navigácia">
+        <Logo onDark href={homeHref} label={ui.logoAria} />
+        <nav className="nav" aria-label={ui.navAria}>
           <ul className="nav__list">
             {nav.map((item) => (
               <li key={item.href}>
@@ -45,22 +75,23 @@ export function Header() {
             ))}
           </ul>
         </nav>
-        <a className="btn btn--primary btn--sm header__cta" href="/kontakt">
-          Konzultácia zadarmo <ArrowRight size={16} />
+        <LangSwitch lang={lang} pathname={pathname} label={ui.langSwitchAria} className="lang-switch" />
+        <a className="btn btn--primary btn--sm header__cta" href={ctaHref}>
+          {ui.headerCta} <ArrowRight size={16} />
         </a>
         <button
           type="button"
           className="menu-btn"
           aria-expanded={open}
           aria-controls="mobile-nav"
-          aria-label={open ? "Zavrieť menu" : "Otvoriť menu"}
+          aria-label={open ? ui.menuClose : ui.menuOpen}
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <Close /> : <Menu />}
         </button>
       </div>
       {open && (
-        <nav id="mobile-nav" className="mobile-nav" aria-label="Mobilná navigácia">
+        <nav id="mobile-nav" className="mobile-nav" aria-label={ui.mobileNavAria}>
           <ul>
             {nav.map((item) => (
               <li key={item.href}>
@@ -70,8 +101,9 @@ export function Header() {
               </li>
             ))}
           </ul>
-          <a className="btn btn--primary" href="/kontakt" onClick={() => setOpen(false)}>
-            Konzultácia zadarmo <ArrowRight size={16} />
+          <LangSwitch lang={lang} pathname={pathname} label={ui.langSwitchAria} className="lang-switch lang-switch--mobile" />
+          <a className="btn btn--primary" href={ctaHref} onClick={() => setOpen(false)}>
+            {ui.headerCta} <ArrowRight size={16} />
           </a>
         </nav>
       )}

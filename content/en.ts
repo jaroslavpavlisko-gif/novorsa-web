@@ -1,0 +1,634 @@
+// English website copy. Same structure as the Slovak dictionary (sk.ts).
+
+import type { Dict } from "./sk";
+
+export const en: Dict = {
+  site: {
+    tagline: "Process automation and AI for businesses",
+    description:
+      "Novorsa maps where your company loses time on manual work and introduces automation, AI and system integration where it pays off.",
+    country: "Slovak Republic",
+    register: "registered in the Commercial Register of the Bratislava III Municipal Court, Section: Sro, Insert No. 170377/B",
+    ogAlt: "Novorsa – process automation and AI for businesses",
+  },
+
+  meta: {
+    home: { title: "Process automation and AI for businesses", description: "" },
+    solutions: {
+      title: "Solutions",
+      description: "Automation and AI for sales, HR, finance, operations, procurement and management. Custom business applications.",
+    },
+    process: {
+      title: "How we work",
+      description: "From the first conversation through an audit and a pilot to full rollout. Our six-step approach and FAQ.",
+    },
+    calculator: {
+      title: "Time savings calculator",
+      description: "Calculate how many hours a year one repetitive process takes and how much capacity automation could free up.",
+    },
+    about: {
+      title: "About us",
+      description: "Novorsa combines experience in business and HR consulting with process automation and AI.",
+    },
+    contact: { title: "Contact", description: "Book a free initial consultation. We will get back to you within two business days." },
+    privacy: { title: "Privacy policy", description: "How Novorsa processes personal data from the contact form and the website." },
+    cookies: { title: "Cookies", description: "Which cookies the Novorsa website uses and how you can change your consent." },
+  },
+
+  ui: {
+    skipLink: "Skip to content",
+    logoAria: "Novorsa – home page",
+    navAria: "Main navigation",
+    mobileNavAria: "Mobile navigation",
+    menuOpen: "Open menu",
+    menuClose: "Close menu",
+    headerCta: "Free consultation",
+    langSwitchAria: "Website language",
+    more: "More",
+    open: "Open",
+    howItWorks: "How it works",
+  },
+
+  nav: [
+    { label: "Solutions", to: "solutions" },
+    { label: "How we work", to: "process" },
+    { label: "Calculator", to: "calculator" },
+    { label: "About us", to: "about" },
+    { label: "Contact", to: "contact" },
+  ],
+
+  footer: {
+    tagline: "Process automation and AI for businesses. Business value and return first, technology second.",
+    solutions: "Solutions",
+    company: "Company",
+    contact: "Contact",
+    links: [
+      { label: "How we work", to: "process" },
+      { label: "Case studies", to: "solutions", hash: "ukazky" },
+      { label: "Time savings calculator", to: "calculator" },
+      { label: "FAQ", to: "process", hash: "otazky" },
+      { label: "About us", to: "about" },
+      { label: "Contact", to: "contact" },
+    ],
+    privacy: "Privacy policy",
+    cookies: "Cookies",
+  },
+
+  hero: {
+    eyebrow: "Process automation and AI for businesses",
+    title: "Your people are doing work that",
+    titleAccent: "technology can do.",
+    lead: "We map where your company loses time on manual work and introduce automation, AI and system integration where it truly pays off. Business value and return first, technology second.",
+    primaryCta: { label: "See what we can automate", to: "contact" },
+    secondaryCta: { label: "How we work", to: "process" },
+    note: "The initial consultation is free and without obligation.",
+    flow: {
+      aria: "Example of an automated process: generating sales leads from finding a company to recording it in the CRM",
+      top: "Automated process · sales leads",
+      live: "Process preview",
+      steps: [
+        { title: "Finding potential clients", meta: "registers · websites · databases by your criteria", tag: "AI", kind: "ai" },
+        { title: "Company analysis", meta: "financial health · history · planned activities", tag: "AI", kind: "ai" },
+        { title: "Approval by a salesperson", meta: "lead review in one click", tag: "human", kind: "human" },
+        { title: "Preparing materials and next steps", meta: "company profile · suggested outreach", tag: "AI", kind: "ai" },
+        { title: "Recorded in the CRM", meta: "complete history and tracking", tag: "done", kind: "done" },
+      ],
+      stats: [
+        { strong: "Runs nonstop", text: "no intervention needed" },
+        { strong: "A human decides", text: "on the final lead" },
+        { strong: "Full tracking", text: "minimal admin" },
+      ],
+    },
+  },
+
+  trust: {
+    aria: "What we stand for",
+    items: [
+      { title: "Data in the EU", text: "Wherever possible, we process data on servers in the European Union." },
+      { title: "The solution is yours", text: "No lock-in. You get all access rights and documentation." },
+      { title: "A human has the final say", text: "Critical steps are always approved by a responsible person." },
+      { title: "SK · CZ · EN", text: "We work in Slovak, Czech and English." },
+    ],
+  },
+
+  caseTeaser: {
+    eyebrow: "Case study",
+    title: "Automated processing of sales leads",
+    text: "A services company with 100 employees. New leads are collected, evaluated, recorded in the CRM and assigned to a salesperson automatically.",
+    link: "All case studies",
+    stats: [
+      { dt: "saved by each salesperson", dd: "5 hours a week" },
+      { dt: "implementation", dd: "2 days" },
+      { dt: "employees", dd: "100" },
+    ],
+  },
+
+  pains: {
+    eyebrow: "Where time gets lost",
+    title: "Does this sound like your company?",
+    lead: "Most companies don’t lose time on big things, but on dozens of small tasks that repeat every day.",
+    items: [
+      { title: "Retyping data", text: "Data from emails, PDFs and spreadsheets is copied into systems by hand." },
+      { title: "Approvals across channels", text: "Requests, orders and invoices travel through forwarded emails, messages and other channels, and nobody knows where they got stuck." },
+      { title: "Reports that take all day", text: "Management reports are assembled by hand from several sources every month." },
+      { title: "Slow replies to clients", text: "Enquiries and leads wait too long for a response and some of them get lost." },
+      { title: "Data that doesn’t match", text: "The same data lives in the CRM, accounting and spreadsheets, and it never quite adds up." },
+      { title: "HR and admin", text: "CVs, onboarding and employee requests take up most of people’s day." },
+    ],
+  },
+
+  beforeAfter: {
+    eyebrow: "Before and after",
+    title: "The same process, two ways",
+    lead: "Using sales lead generation as an example: from finding a company to recording it in the CRM.",
+    beforeLabel: "Today",
+    afterLabel: "With automation",
+    before: [
+      "Salespeople search for potential clients by hand",
+      "Company information is collected from various portals",
+      "Materials are incomplete and everyone prepares them differently",
+      "Data is entered into the CRM manually, if at all",
+    ],
+    after: [
+      "AI continuously finds companies that match your criteria",
+      "It prepares an analysis for each: finances, growth, planned activities",
+      "The salesperson approves the lead and gets materials with suggested next steps",
+      "Everything is recorded in the CRM with a complete history",
+    ],
+    beforeFoot: "More time on research than on selling",
+    afterFoot: "More time for actual selling",
+    note: "Illustrative example. Get a rough estimate of how much time you could save with our",
+    noteLink: "calculator",
+  },
+
+  outcomes: {
+    eyebrow: "Results",
+    title: "What changes",
+    mainTag: "The core benefit of every project",
+    items: [
+      {
+        title: "Capacity for value-adding work",
+        text: "Automated processes take over routine tasks. Your team focuses on work that requires professional judgement and client contact.",
+      },
+      {
+        title: "Faster response times",
+        text: "Enquiries, requests and approvals are handled continuously, without waiting in queues and inboxes.",
+      },
+      {
+        title: "Reliable, consistent data",
+        text: "Data moves between systems automatically. Errors go down and decisions are based on the same numbers.",
+      },
+      {
+        title: "Transparency and control",
+        text: "Every step records who did what and when. Bottlenecks in the process become visible in time.",
+      },
+      {
+        title: "Growth without growing overhead",
+        text: "The company can handle more business without a matching increase in admin and back-office work.",
+      },
+    ],
+  },
+
+  solutions: {
+    eyebrow: "Solutions",
+    title: "Solutions by department",
+    lead: "Automation is not an IT project. It is the answer to a specific problem in a specific department.",
+    tabsAria: "Departments",
+    items: [
+      {
+        id: "obchod",
+        label: "Sales",
+        title: "More qualified leads and a more efficient sales process",
+        text: "AI continuously finds and evaluates potential clients and prepares a company analysis and suggested approach. Salespeople focus only on the most promising ones.",
+        examples: ["Lead search and qualification", "Company analysis before first contact", "Automatic CRM entries and follow-ups", "Pipeline overview without manual entry"],
+      },
+      {
+        id: "hr",
+        label: "HR",
+        title: "Your HR team works with people, not paperwork",
+        text: "From the first CV to the last day at work: repetitive steps run on their own, decisions stay with people.",
+        examples: ["CV pre-screening by your criteria", "Step-by-step onboarding of new colleagues", "Leave requests and documents", "Answers to common employee questions"],
+      },
+      {
+        id: "financie",
+        label: "Finance",
+        title: "Automated document processing",
+        text: "Documents are read, matched, sent for approval and recorded in accounting. People only handle exceptions.",
+        examples: ["Data extraction from invoices", "Expense approvals with full history", "Payment matching", "Monthly management reporting"],
+      },
+      {
+        id: "prevadzka",
+        label: "Operations",
+        title: "Process management with visibility at every step",
+        text: "Routine tasks run automatically, information is gathered in one place and reaches the right people on time. Orders and projects stay under control from brief to handover.",
+        examples: ["Automation of routine tasks", "Collecting and handing over information between teams", "Project management for orders", "Overview of task and deadline status"],
+      },
+      {
+        id: "nakup",
+        label: "Procurement",
+        title: "Procurement with full visibility from request to order",
+        text: "Requests for quotes go out automatically, offers are compared in one place and orders go through approval without chasing.",
+        examples: ["Sending requests for quotes to suppliers", "Comparing price offers", "Order approvals", "Overview of suppliers and contracts"],
+      },
+      {
+        id: "vedenie",
+        label: "Management",
+        title: "The right numbers when you need them",
+        text: "Management reports are assembled from your systems automatically and include a short summary.",
+        examples: ["Dashboards from multiple systems", "Weekly summary of key figures", "Risk alerts", "Meeting materials without preparation"],
+      },
+    ],
+  },
+
+  customApps: {
+    id: "aplikacie",
+    badge: "Custom development",
+    label: "Custom applications",
+    title: "Custom business applications",
+    teaser: "When off-the-shelf tools aren’t enough, we build an application tailored to your process.",
+    text: "When off-the-shelf tools aren’t enough, we design and build an application tailored to your process. Together with our development partner, we deliver the whole project from design to launch and support.",
+    types: [
+      { title: "Internal applications", text: "approvals, records, planning and tools for teams" },
+      { title: "Client portals", text: "orders, documents and order status for your clients" },
+      { title: "Web and mobile apps", text: "for employees in the office and in the field" },
+      { title: "System integration", text: "one application on top of your CRM, ERP and other tools" },
+    ],
+    points: ["The application is yours", "Connected to the systems you already use", "With AI where it makes sense"],
+    cta: "Discuss your app idea",
+  },
+
+  workProcess: {
+    eyebrow: "Approach",
+    title: "How we work",
+    lead: "We start with a small, measurable step. We only continue once the first step has delivered results.",
+    srTitle: "Our approach in six steps",
+    steps: [
+      { title: "Initial conversation", text: "30 minutes about your company and where it hurts most. Free of charge.", out: "First estimate of potential" },
+      { title: "Audit and quantification", text: "We map your processes and quantify the time, cost and effort for each opportunity.", out: "Opportunity map and plan" },
+      { title: "Solution design", text: "We design the workflow, the systems and the points where a human decides.", out: "Architecture and budget" },
+      { title: "Pilot", text: "We launch the process with the highest return in live operation.", out: "Measurable result" },
+      { title: "Rollout", text: "We extend the solution, train your people and hand over the documentation.", out: "The solution is yours" },
+      { title: "Monitoring and improvement", text: "We monitor operation, handle exceptions and look for further savings.", out: "Regular report" },
+    ],
+    audit: {
+      badge: "Step 2 · Audit",
+      title: "What you get from the audit",
+      text: "The audit is paid. We agree on a fixed price upfront based on its scope, with no surprises on the invoice.",
+      items: [
+        { strong: "List of processes", text: "ranked by benefit for your company" },
+        { strong: "Cost estimate", text: "and freed-up capacity for each opportunity" },
+        { strong: "Proposal for the first pilot", text: "with scope, timeline and price" },
+      ],
+    },
+    humanStrong: "For important steps, a human decides.",
+    humanText:
+      "AI prepares the groundwork, but a responsible person always decides which lead to contact, whether a document is finished or what goes out to a client. Every step is logged.",
+  },
+
+  roi: {
+    eyebrow: "Time savings calculator",
+    title: "How much time does manual work cost you?",
+    lead: "Enter one repetitive process and see how much capacity automation could free up.",
+    aria: "Calculator",
+    formAria: "Calculator inputs",
+    numberLocale: "en-GB",
+    currency: "EUR",
+    rate: { min: 8, max: 80, step: 1, initial: 18, unit: "€" },
+    fields: {
+      people: { label: "How many people do this task", hint: "For example, 3 people in accounting" },
+      minutesPerTask: { label: "How many minutes one task takes", hint: "One item, e.g. one invoice" },
+      timesPerWeek: { label: "How many times a week one person does it", hint: "Repetitions per person per week" },
+      hourlyCost: { label: "Hourly labour cost incl. payroll taxes", hint: "Total cost of labour for the company" },
+      automationShare: { label: "How much can be automated", hint: "A conservative estimate is 50 to 70%" },
+    },
+    big: "Capacity freed up per year",
+    fte: "Full-time equivalents",
+    value: "Value of freed-up capacity",
+    manual: "Current manual work",
+    perYear: "/ year",
+    disclaimer:
+      "A rough estimate, not a guaranteed saving. We assume 48 working weeks and 1,920 hours per full-time position per year. Freed-up capacity does not automatically equal cost savings.",
+    cta: "Verify the estimate in a consultation",
+  },
+
+  caseStudies: {
+    eyebrow: "Case studies",
+    title: "Successful projects",
+    lead: "Selected projects from our practice.",
+    client: "Client",
+    result: "Result",
+    goal: "Brief",
+    solution: "Solution",
+    stackAria: "Tools used",
+    items: [
+      {
+        area: "Sales",
+        title: "Automated processing of sales leads",
+        company: "Services company, 100 employees",
+        meta: [{ label: "Implementation", value: "2 days" }],
+        goal: "Automatic processing of new leads and complete records in the CRM, without manual work by salespeople.",
+        steps: [
+          "Collecting data on potential clients from company sources",
+          "Analysing and scoring leads by the client’s criteria",
+          "Automatic entry into the CRM",
+          "Assignment to a salesperson with complete information",
+        ],
+        result: {
+          headline: "5 hours a week",
+          text: "saved by each salesperson on searching, vetting and recording leads.",
+        },
+        stack: ["Grok bot", "Microsoft 365", "CRM"],
+      },
+      {
+        area: "Sales",
+        title: "AI radar for top sales opportunities",
+        company: "Services company, 70 employees",
+        meta: [{ label: "Implementation", value: "2 weeks" }],
+        goal: "Find the top opportunities for one specific service. Not as many leads as possible, but the most promising ones: quality over quantity.",
+        steps: [
+          "Searching for companies based on signals of real need",
+          "Analysing operations and checking financial health",
+          "Scoring by the client’s criteria",
+          "Approval by a salesperson: a human decides on every company",
+          "Meeting materials and suggested outreach",
+          "Automatic entry of approved leads into the CRM with complete information and materials",
+        ],
+        result: {
+          headline: "Top vetted leads",
+          text: "The radar regularly identifies and prepares the most promising companies with a score, verified sources and suggested outreach. Salespeople spend their time in meetings, not on research.",
+        },
+        stack: ["Claude", "Microsoft 365", "CRM"],
+      },
+      {
+        area: "Operations",
+        title: "AI assistant for a team of consultants",
+        company: "Staffing agency, 60 employees",
+        meta: [{ label: "Implementation", value: "1 week" }],
+        goal: "A reliable assistant for the whole team to work with employee records and prepare reports and documents. Each consultant works with their own projects and only with the personal data they need.",
+        steps: [
+          "Connection to the central employee records in the cloud",
+          "Building a knowledge base: data map, unified rules and procedures",
+          "A shared ChatGPT project for the whole team",
+          "Regular routines that track important deadlines, plus notifications",
+          "Document preparation and approval by a consultant: a human decides on every output",
+        ],
+        result: {
+          headline: "Overview without searching",
+          text: "The team has an automated overview of employees, a system of notifications and regular reports, and ready-made materials and documents for legal obligations and for clients. They spend their time with clients and employees, not searching spreadsheets.",
+        },
+        stack: ["ChatGPT", "Microsoft 365"],
+      },
+    ],
+  },
+
+  integrations: {
+    eyebrow: "Integrations",
+    title: "We work with what you already have",
+    lead: "We choose technology based on the problem, not the other way round. Usually you don’t need a new system, just better connections between the ones you have.",
+    groups: [
+      {
+        title: "Your business systems",
+        text: "We connect the tools you already use every day.",
+        items: ["Microsoft 365", "Google Workspace", "CRM", "ERP and accounting", "HR systems", "ATS (recruiting systems)"],
+      },
+      {
+        title: "Process automation",
+        text: "Proven platforms that connect systems and orchestrate the flow of tasks.",
+        items: ["Power Automate", "n8n", "API integrations"],
+      },
+      {
+        title: "Artificial intelligence",
+        text: "We choose the model based on the task, security and where the data is processed.",
+        items: ["OpenAI (ChatGPT)", "Anthropic Claude", "Google Gemini", "xAI Grok", "Microsoft Copilot", "Mistral AI (EU)"],
+      },
+    ],
+  },
+
+  explore: {
+    eyebrow: "Next",
+    title: "What are you interested in?",
+    items: [
+      { to: "process", label: "How we work", title: "From conversation to solution in 6 steps", text: "We start with a small pilot and only continue when it delivers results." },
+      { to: "calculator", label: "Calculator", title: "How much time does manual work cost you?", text: "Quantify one process in a minute and see how much capacity you could free up." },
+      { to: "about", label: "About us", title: "Business first, technology second", text: "Who is behind Novorsa, and when we are not the right fit for you." },
+    ],
+  },
+
+  cta: {
+    title: "Find out what your company could automate",
+    text: "The initial consultation takes 30 minutes, is free and comes with no obligation.",
+    button: "Book a consultation",
+  },
+
+  why: {
+    title: "Why Novorsa",
+    lead: "Novorsa is built on experience in business and HR consulting. We understand how companies are run, not just the tools.",
+    srTitle: "What we stand for",
+    items: [
+      { title: "Business first", text: "We start with processes and numbers; technology comes only after that." },
+      { title: "Measurable return", text: "Every project has a goal and a way of measuring it agreed upfront." },
+      { title: "Security and control", text: "Access rights, activity logs and human approval for important steps." },
+      { title: "Documentation and ownership", text: "The solution, access rights and the manual are yours." },
+      { title: "Vendor independence", text: "We are not tied to any one tool; we choose the right one for you from the options available." },
+      { title: "Long-term support", text: "After launch, we monitor the solution and keep improving it." },
+    ],
+    founder: {
+      name: "Jaroslav Pavlisko",
+      initials: "JP",
+      role: "Founder · processes and automation",
+      text: "Jaroslav Pavlisko has 10 years of experience in business and HR consulting, focusing on company management, process optimisation and HR processes. His strong process-oriented and analytical thinking helps him quickly find where a company is losing time and quantify what improving it will bring. He founded Novorsa to help companies use automation and AI where it genuinely saves time, with an emphasis on return on investment and safe deployment.",
+      projectsTitle: "His successful implementations",
+      projects: [
+        "Migration of a recruiting system (ATS)",
+        "ERP system implementation",
+        "Sales process automation",
+        "Introduction of financial reporting",
+      ],
+    },
+    team: {
+      title: "Our team",
+      lead: "A small team that knows your company. We work with clients directly, without intermediaries.",
+      members: [
+        {
+          name: "Daniela Kurek",
+          initials: "DK",
+          role: "Client support and advisory",
+          text: "Daniela is your first point of contact during the project and after launch. She has 8 years of experience in HR and knows company processes and systems well. She helps with fine-tuning and changes, and handles technical requests directly with the founder and the development team.",
+        },
+      ],
+      partners: {
+        title: "Who we work with",
+        text: "We work with trusted partners on our projects and put the team together based on what each project needs.",
+        items: ["Software and app development", "Integration development", "Server and cloud setup", "Design"],
+      },
+    },
+    notFit: {
+      title: "When we are not the right fit",
+      items: [
+        "The process runs only a few times a month and takes a few minutes.",
+        "The process is still changing and it isn’t clear how it should work.",
+        "You are looking for the cheapest supplier of a single tool without any analysis.",
+      ],
+      text: "In those cases, we’d rather advise you on how to simplify the process first.",
+    },
+  },
+
+  faq: {
+    eyebrow: "Questions",
+    title: "Frequently asked questions",
+    items: [
+      {
+        q: "Is it secure and GDPR-compliant?",
+        a: "For every project we define what data is processed, where it is stored and who has access to it. We process only the data that is necessary, preferably on servers in the EU and in line with applicable law. We always adapt the specific setup to your policies.",
+      },
+      {
+        q: "Which systems do you work with?",
+        a: "With common business systems: Microsoft 365, Google Workspace, CRM, ERP, accounting and HR systems, and ATS (recruiting systems). We connect them via APIs, webhooks or platforms such as Power Automate or n8n. We always verify the specific integration options during the audit.",
+      },
+      {
+        q: "Do you also build custom applications?",
+        a: "Yes. If off-the-shelf tools aren’t enough, we design and build an internal, web or mobile application or a client portal. Development is delivered with our development partner. The application is yours and we connect it to the systems you already use.",
+      },
+      {
+        q: "How long does a project take?",
+        a: "An audit usually takes from a few days to a few weeks, depending on the size of the company and the complexity of its processes. We launch the first pilot so that you see results as soon as possible. You will get an exact timeline after the initial conversation.",
+      },
+      {
+        q: "What if the AI makes a mistake?",
+        a: "We plan for it. We deploy AI where errors can be caught in time, and a human always decides on important steps. We test the solution on your real cases before launch, and after launch we continuously evaluate and improve it.",
+      },
+      {
+        q: "Do we need our own IT department?",
+        a: "It isn’t necessary. We can handle the design, rollout and administration. If you have your own IT team, we are happy to work with them and hand over the documentation.",
+      },
+      {
+        q: "How much does it cost?",
+        a: "The initial consultation is free. The audit has a fixed price based on its scope, and we always quote further steps in advance. We compare the investment with the capacity it frees up, so you can see the return.",
+      },
+      {
+        q: "Who owns the finished solution?",
+        a: "You do. You get the access rights, the documentation and the option to keep developing the solution without us.",
+      },
+    ],
+  },
+
+  contact: {
+    eyebrow: "Free consultation",
+    title: "Find out what your company could automate",
+    lead: "Tell us what takes up most of your time. We will get back to you within two business days to arrange a free initial consultation.",
+    points: ["30 minutes, online or in person", "No obligation and no sales pressure", "You leave with a first estimate of what is worth automating"],
+    directEmail: "Prefer email?",
+    phone: "Phone:",
+    companyId: "Company ID (IČO)",
+    areas: ["Sales and CRM", "HR and recruiting", "Finance and administration", "Operations", "Procurement and suppliers", "Management reporting", "Custom application", "Not sure yet"],
+    areaUnknown: "Not sure yet",
+  },
+
+  form: {
+    firstName: "First name",
+    lastName: "Last name",
+    company: "Company",
+    ico: "Company ID",
+    email: "Email",
+    phone: "Phone number",
+    optional: "(optional)",
+    area: "What would you like to improve?",
+    areaPlaceholder: "Choose an area",
+    message: "What takes up most of your team’s time?",
+    messagePlaceholder: "E.g. we retype invoices into our accounting system by hand; it takes two people half a day every week.",
+    notePrefix: "We will use your details to handle your enquiry. You can find more information in our",
+    noteLink: "privacy policy",
+    submit: "Send and book a consultation",
+    sending: "Sending…",
+    successMore: "In the meantime, you can browse our",
+    successProjects: "case studies",
+    successOr: "or",
+    successCalc: "calculate another process",
+    errors: {
+      firstNameLong: "The first name is too long or contains invalid characters.",
+      lastNameLong: "The last name is too long or contains invalid characters.",
+      companyLong: "The company name is too long or contains invalid characters.",
+      emailLong: "The email address is too long.",
+      phone: "Please check the phone number.",
+      firstName: "Please enter your first name.",
+      lastName: "Please enter your last name.",
+      company: "Please enter your company name.",
+      ico: "Please enter a valid company ID (4 to 12 letters or digits).",
+      email: "Please check the email address.",
+      area: "Please choose an area.",
+      message: "The description is too long (max. 4,000 characters).",
+      summary: "Please check the highlighted fields.",
+      bot: "We couldn’t verify your message. Please write to us directly at info@novorsa.sk.",
+      rate: "You have sent too many messages. Please try again later.",
+      unavailable: "The form is temporarily unavailable. Please write to us directly at info@novorsa.sk.",
+      send: "We couldn’t send your message. Please try again or write to us at info@novorsa.sk.",
+      network: "We couldn’t send your message right now. Please try again in a few minutes or write to us at info@novorsa.sk.",
+    },
+    ok: "Thank you! Your message has arrived and we will get back to you within two business days.",
+    honeypotOk: "Thank you, we will get back to you within two business days.",
+  },
+
+  email: {
+    subject: "Thank you for your message | Novorsa",
+    thanks: "thank you for your message.",
+    interestArea: "We have registered your interest in our services in the area of {area} and {reply}.",
+    interestNoArea: "We have registered your interest in our services and {reply}.",
+    reply: "will get back to you within two business days",
+    addMore: "If you would like to add anything, simply reply to this email.",
+    regards: "Kind regards",
+    signature: "The Novorsa team",
+    brandOf: "Novorsa is a brand of",
+  },
+
+  consent: {
+    title: "Cookies and visitor analytics",
+    textStart: "Necessary cookies keep the website working. With your consent, we will also use",
+    textAnalytics: " analytics cookies to measure traffic",
+    textAnd: " and",
+    textMarketing: " marketing cookies to measure and show advertising",
+    textEnd: ". You can change your consent at any time.",
+    more: "More about cookies",
+    necessary: "Necessary",
+    necessaryText: "Website operation and security. Always on.",
+    analytics: "Analytics",
+    analyticsText: "Visitor measurement, so that we can improve the website.",
+    marketing: "Marketing",
+    marketingText: "Measuring advertising effectiveness and showing relevant offers.",
+    save: "Save selection",
+    settings: "Settings",
+    reject: "Reject",
+    accept: "Accept all",
+    footerButton: "Cookie settings",
+  },
+
+  cookiesPage: {
+    title: "Cookies",
+    intro: "Cookies are small files that a website stores in your browser. We always use necessary cookies",
+    introBoth: "; analytics and marketing cookies only with your consent.",
+    introAnalytics: "; analytics cookies only with your consent.",
+    introMarketing: "; marketing cookies only with your consent.",
+    change: "You can change your consent at any time:",
+    cols: { name: "Name", provider: "Provider", purpose: "Purpose", duration: "Expiry" },
+    necessaryTitle: "Necessary",
+    necessaryText: "They ensure the website works and is secure. We do not need your consent for them.",
+    statsTitle: "Cookieless statistics",
+    statsText:
+      "We also use Vercel Web Analytics, which measures traffic without cookies and without storing anything in your browser. The result is aggregate numbers only.",
+    analyticsTitle: "Analytics (with consent)",
+    analyticsText: "They help us understand how visitors use the website so that we can improve it.",
+    marketingTitle: "Marketing (with consent)",
+    marketingText: "They measure advertising effectiveness and make it possible to show relevant offers on other websites and social networks.",
+    moreTitle: "More information",
+    moreText: "You can find out how we process personal data in our",
+    questions: "Questions:",
+    rows: {
+      consent: { name: "novorsa_consent", purpose: "Stores your choice in the cookie banner.", duration: "6 months" },
+      bot: { name: "Bot protection", purpose: "When the form is submitted, checks that it is not being sent by a bot. May store technical data in the browser.", duration: "session" },
+      ga: { purpose: "Distinguishes visitors for traffic measurement.", duration: "2 years" },
+      gaSession: { purpose: "Stores the state of the current visit.", duration: "2 years" },
+      gads: { purpose: "Measures conversions from Google Ads.", duration: "3 months" },
+      meta: { purpose: "Measures and shows advertising on Facebook and Instagram.", duration: "3 months" },
+      linkedin: { purpose: "Measures conversions and shows advertising on LinkedIn.", duration: "up to 1 year" },
+    },
+  },
+};

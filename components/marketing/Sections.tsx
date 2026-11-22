@@ -1,4 +1,5 @@
-import { caseStudies, faq, integrations, outcomes, pains, trust, why, workProcess } from "@/content/site";
+import { getDict } from "@/content";
+import type { Lang } from "@/lib/i18n";
 import { Check, Globe, Key, Plus, Shield, User, outcomeIcons } from "../ui/Icons";
 
 export function SectionHead({ eyebrow, title, lead, id }: { eyebrow: string; title: string; lead?: string; id: string }) {
@@ -15,12 +16,13 @@ export function SectionHead({ eyebrow, title, lead, id }: { eyebrow: string; tit
 
 const trustIcons = [Shield, Key, User, Globe];
 
-export function TrustStrip() {
+export function TrustStrip({ lang }: { lang: Lang }) {
+  const { trust } = getDict(lang);
   return (
-    <section className="trust" aria-label="Na čom si zakladáme">
+    <section className="trust" aria-label={trust.aria}>
       <div className="container">
         <ul className="trust__list">
-          {trust.map((t, i) => {
+          {trust.items.map((t, i) => {
             const Icon = trustIcons[i % trustIcons.length];
             return (
               <li key={t.title} className="trust__item">
@@ -40,11 +42,12 @@ export function TrustStrip() {
   );
 }
 
-export function Pains() {
+export function Pains({ lang }: { lang: Lang }) {
+  const { pains } = getDict(lang);
   return (
     <section className="section" aria-labelledby="pains-title">
       <div className="container">
-        <SectionHead eyebrow="Kde sa stráca čas" title={pains.title} lead={pains.lead} id="pains-title" />
+        <SectionHead eyebrow={pains.eyebrow} title={pains.title} lead={pains.lead} id="pains-title" />
         <ul className="grid grid--3" style={{ listStyle: "none" }}>
           {pains.items.map((p, i) => (
             <li key={p.title} className="card">
@@ -60,11 +63,12 @@ export function Pains() {
 }
 
 /** Čo sa zmení: hlavný prínos vo veľkej karte, ostatné body v menších kartách. */
-export function Outcomes() {
+export function Outcomes({ lang }: { lang: Lang }) {
+  const { outcomes } = getDict(lang);
   return (
     <section className="section section--dark" aria-labelledby="outcomes-title">
       <div className="container">
-        <SectionHead eyebrow="Výsledok" title={outcomes.title} id="outcomes-title" />
+        <SectionHead eyebrow={outcomes.eyebrow} title={outcomes.title} id="outcomes-title" />
         <ul className="ogrid">
           {outcomes.items.map((o, i) => {
             const Icon = outcomeIcons[i % outcomeIcons.length];
@@ -85,15 +89,17 @@ export function Outcomes() {
   );
 }
 
-export function Process({ head = true }: { head?: boolean }) {
+export function Process({ lang, head = true }: { lang: Lang; head?: boolean }) {
+  const { workProcess } = getDict(lang);
+  const audit = workProcess.audit;
   return (
     <section id="ako-pracujeme" className="section section--dark" aria-labelledby="process-title">
       <div className="container">
         {head ? (
-          <SectionHead eyebrow="Postup" title={workProcess.title} lead={workProcess.lead} id="process-title" />
+          <SectionHead eyebrow={workProcess.eyebrow} title={workProcess.title} lead={workProcess.lead} id="process-title" />
         ) : (
           <h2 id="process-title" className="sr-only">
-            Postup v šiestich krokoch
+            {workProcess.srTitle}
           </h2>
         )}
         <ol className="steps">
@@ -113,23 +119,24 @@ export function Process({ head = true }: { head?: boolean }) {
         {!head && (
           <div className="audit-box">
             <div className="audit-box__head">
-              <span className="badge badge--accent">Krok 2 · Audit</span>
-              <h3>Čo dostanete z auditu</h3>
-              <p>Audit je platený. Pevnú cenu si dohodneme vopred podľa rozsahu, bez prekvapení na faktúre.</p>
+              <span className="badge badge--accent">{audit.badge}</span>
+              <h3>{audit.title}</h3>
+              <p>{audit.text}</p>
             </div>
             <ul className="audit-box__list">
-              <li><strong>Zoznam procesov</strong><span>zoradený podľa prínosu pre vašu firmu</span></li>
-              <li><strong>Odhad nákladov</strong><span>a uvoľnenej kapacity pri každej príležitosti</span></li>
-              <li><strong>Návrh prvého pilotu</strong><span>s rozsahom, termínom a cenou</span></li>
+              {audit.items.map((a) => (
+                <li key={a.strong}>
+                  <strong>{a.strong}</strong>
+                  <span>{a.text}</span>
+                </li>
+              ))}
             </ul>
           </div>
         )}
         <div className="human-note">
           <User />
           <p>
-            <strong>Pri dôležitých krokoch rozhoduje človek.</strong> AI pripraví podklady, ale o tom, ktorý lead
-            osloviť, či je dokument hotový alebo čo odíde klientovi, rozhodne vždy zodpovedná osoba. Každý krok má
-            záznam.
+            <strong>{workProcess.humanStrong}</strong> {workProcess.humanText}
           </p>
         </div>
       </div>
@@ -138,11 +145,12 @@ export function Process({ head = true }: { head?: boolean }) {
 }
 
 /** Úspešné projekty: stručné case study bez názvu klienta. */
-export function Showcases() {
+export function Showcases({ lang }: { lang: Lang }) {
+  const { caseStudies } = getDict(lang);
   return (
     <section id="ukazky" className="section section--surface" aria-labelledby="cases-title">
       <div className="container">
-        <SectionHead eyebrow="Z praxe" title={caseStudies.title} lead={caseStudies.lead} id="cases-title" />
+        <SectionHead eyebrow={caseStudies.eyebrow} title={caseStudies.title} lead={caseStudies.lead} id="cases-title" />
         <ul className="cases">
           {caseStudies.items.map((c) => (
             <li key={c.title} className="case">
@@ -151,7 +159,7 @@ export function Showcases() {
                 <h3>{c.title}</h3>
                 <dl className="case__meta">
                   <div>
-                    <dt>Klient</dt>
+                    <dt>{caseStudies.client}</dt>
                     <dd>{c.company}</dd>
                   </div>
                   {c.meta.map((m) => (
@@ -162,15 +170,15 @@ export function Showcases() {
                   ))}
                 </dl>
                 <div className="case__result">
-                  <span className="case__result-label">Výsledok</span>
+                  <span className="case__result-label">{caseStudies.result}</span>
                   <strong>{c.result.headline}</strong>
                   <p>{c.result.text}</p>
                 </div>
               </div>
               <div className="case__body">
-                <h4>Zadanie</h4>
+                <h4>{caseStudies.goal}</h4>
                 <p className="case__goal">{c.goal}</p>
-                <h4>Riešenie</h4>
+                <h4>{caseStudies.solution}</h4>
                 <ol className="case__steps">
                   {c.steps.map((s, i) => (
                     <li key={s}>
@@ -179,7 +187,7 @@ export function Showcases() {
                     </li>
                   ))}
                 </ol>
-                <ul className="stack" aria-label="Použité nástroje">
+                <ul className="stack" aria-label={caseStudies.stackAria}>
                   {c.stack.map((s) => (
                     <li key={s} className="badge">
                       {s}
@@ -195,11 +203,12 @@ export function Showcases() {
   );
 }
 
-export function Integrations() {
+export function Integrations({ lang }: { lang: Lang }) {
+  const { integrations } = getDict(lang);
   return (
     <section className="section" aria-labelledby="integrations-title">
       <div className="container">
-        <SectionHead eyebrow="Integrácie" title={integrations.title} lead={integrations.lead} id="integrations-title" />
+        <SectionHead eyebrow={integrations.eyebrow} title={integrations.title} lead={integrations.lead} id="integrations-title" />
         <ul className="igroups">
           {integrations.groups.map((g) => (
             <li key={g.title} className="igroup">
@@ -220,15 +229,16 @@ export function Integrations() {
   );
 }
 
-export function Why({ head = true }: { head?: boolean }) {
+export function Why({ lang, head = true }: { lang: Lang; head?: boolean }) {
+  const { why } = getDict(lang);
   return (
     <section className="section section--surface" aria-labelledby="why-title">
       <div className="container">
         {head ? (
-          <SectionHead eyebrow="Prečo my" title={why.title} lead={why.lead} id="why-title" />
+          <SectionHead eyebrow={why.title} title={why.title} lead={why.lead} id="why-title" />
         ) : (
           <h2 id="why-title" className="sr-only">
-            Na čom si zakladáme
+            {why.srTitle}
           </h2>
         )}
         <ul className="grid grid--3" style={{ listStyle: "none", marginBottom: 20 }}>
@@ -307,11 +317,12 @@ export function Why({ head = true }: { head?: boolean }) {
   );
 }
 
-export function Faq() {
+export function Faq({ lang }: { lang: Lang }) {
+  const { faq } = getDict(lang);
   return (
     <section id="otazky" className="section" aria-labelledby="faq-title">
       <div className="container">
-        <SectionHead eyebrow="Otázky" title={faq.title} id="faq-title" />
+        <SectionHead eyebrow={faq.eyebrow} title={faq.title} id="faq-title" />
         <div className="faq">
           {faq.items.map((f) => (
             <details key={f.q}>

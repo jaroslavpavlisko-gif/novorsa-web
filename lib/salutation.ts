@@ -24,7 +24,7 @@ const AMBIGUOUS = new Set(["saša", "sasa", "alex", "robin", "kim", "dominique",
 
 type Gender = "m" | "f" | null;
 
-function guessGender(firstName: string, lastName: string): Gender {
+export function guessGender(firstName: string, lastName: string): Gender {
   const f = firstName.trim().toLowerCase().split(/[\s-]+/)[0] ?? "";
   const l = lastName.trim().toLowerCase();
 
@@ -40,7 +40,7 @@ function guessGender(firstName: string, lastName: string): Gender {
 }
 
 /** Priezvisko s veľkým začiatočným písmenom, aj keď ho niekto napísal malými. */
-function properCase(s: string) {
+export function properCase(s: string) {
   return s
     .trim()
     .split(/(\s+|-)/)
@@ -52,4 +52,15 @@ export function salutation(firstName: string, lastName: string): string {
   const g = guessGender(firstName, lastName);
   if (!g || !lastName.trim()) return "Dobrý deň,";
   return `Dobrý deň, ${g === "m" ? "pán" : "pani"} ${properCase(lastName)},`;
+}
+
+/** Oslovenie podľa jazyka webu. Čeština: neutrálne „Dobrý den,“ (5. pád priezvisk sa nedá spoľahlivo odvodiť). */
+export function salutationFor(lang: "sk" | "cz" | "en", firstName: string, lastName: string): string {
+  if (lang === "cz") return "Dobrý den,";
+  if (lang === "en") {
+    const g = guessGender(firstName, lastName);
+    if (!g || !lastName.trim()) return "Hello,";
+    return `Dear ${g === "m" ? "Mr" : "Ms"} ${properCase(lastName)},`;
+  }
+  return salutation(firstName, lastName);
 }

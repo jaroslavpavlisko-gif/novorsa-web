@@ -1,0 +1,634 @@
+// České texty webu. Struktura je shodná se slovenským slovníkem (sk.ts).
+
+import type { Dict } from "./sk";
+
+export const cz: Dict = {
+  site: {
+    tagline: "Automatizace procesů a AI pro firmy",
+    description:
+      "Novorsa mapuje, kde vaše firma ztrácí čas ruční prací, a zavádí automatizaci, AI a propojení systémů tam, kde se to vyplatí.",
+    country: "Slovenská republika",
+    register: "zapsaná v obchodním rejstříku Městského soudu Bratislava III, oddíl: Sro, vložka č. 170377/B",
+    ogAlt: "Novorsa – automatizace procesů a AI pro firmy",
+  },
+
+  meta: {
+    home: { title: "Automatizace procesů a AI pro firmy", description: "" },
+    solutions: {
+      title: "Řešení",
+      description: "Automatizace a AI pro obchod, HR, finance, provoz, nákup a vedení firmy. Firemní aplikace na míru.",
+    },
+    process: {
+      title: "Jak pracujeme",
+      description: "Od úvodního rozhovoru přes audit a pilot až po zavedení. Postup v šesti krocích a časté otázky.",
+    },
+    calculator: {
+      title: "Kalkulačka úspory času",
+      description: "Vyčíslete, kolik hodin ročně vám zabere jeden opakovaný proces a jakou kapacitu může automatizace uvolnit.",
+    },
+    about: {
+      title: "O nás",
+      description: "Novorsa spojuje praxi v ekonomickém a HR poradenství s automatizací procesů a AI.",
+    },
+    contact: { title: "Kontakt", description: "Domluvte si úvodní konzultaci zdarma. Ozveme se do dvou pracovních dnů." },
+    privacy: { title: "Ochrana osobních údajů", description: "Jak Novorsa zpracovává osobní údaje z kontaktního formuláře a webu." },
+    cookies: { title: "Cookies", description: "Jaké cookies používá web Novorsa a jak můžete změnit svůj souhlas." },
+  },
+
+  ui: {
+    skipLink: "Přeskočit na obsah",
+    logoAria: "Novorsa – úvodní stránka",
+    navAria: "Hlavní navigace",
+    mobileNavAria: "Mobilní navigace",
+    menuOpen: "Otevřít menu",
+    menuClose: "Zavřít menu",
+    headerCta: "Konzultace zdarma",
+    langSwitchAria: "Jazyk webu",
+    more: "Více",
+    open: "Otevřít",
+    howItWorks: "Jak to funguje",
+  },
+
+  nav: [
+    { label: "Řešení", to: "solutions" },
+    { label: "Jak pracujeme", to: "process" },
+    { label: "Kalkulačka", to: "calculator" },
+    { label: "O nás", to: "about" },
+    { label: "Kontakt", to: "contact" },
+  ],
+
+  footer: {
+    tagline: "Automatizace procesů a AI pro firmy. Nejdřív byznys a návratnost, pak technologie.",
+    solutions: "Řešení",
+    company: "Firma",
+    contact: "Kontakt",
+    links: [
+      { label: "Jak pracujeme", to: "process" },
+      { label: "Úspěšné projekty", to: "solutions", hash: "ukazky" },
+      { label: "Kalkulačka úspory času", to: "calculator" },
+      { label: "Časté otázky", to: "process", hash: "otazky" },
+      { label: "O nás", to: "about" },
+      { label: "Kontakt", to: "contact" },
+    ],
+    privacy: "Ochrana osobních údajů",
+    cookies: "Cookies",
+  },
+
+  hero: {
+    eyebrow: "Automatizace procesů a AI pro firmy",
+    title: "Vaši lidé dělají práci, kterou může",
+    titleAccent: "dělat technologie.",
+    lead: "Zmapujeme, kde vaše firma ztrácí čas ruční prací, a zavedeme automatizaci, AI a propojení systémů tam, kde se to opravdu vyplatí. Nejdřív byznys a návratnost, pak technologie.",
+    primaryCta: { label: "Zjistit, co umíme automatizovat", to: "contact" },
+    secondaryCta: { label: "Jak pracujeme", to: "process" },
+    note: "Úvodní konzultace je zdarma a nezávazná.",
+    flow: {
+      aria: "Příklad automatizovaného procesu: generování obchodních leadů od vyhledání firmy po zápis do CRM",
+      top: "Automatizovaný proces · obchodní leady",
+      live: "Ukázka procesu",
+      steps: [
+        { title: "Vyhledání potenciálních klientů", meta: "rejstříky · weby · databáze podle vašich kritérií", tag: "AI", kind: "ai" },
+        { title: "Analýza společnosti", meta: "finanční zdraví · historie · plánované aktivity", tag: "AI", kind: "ai" },
+        { title: "Schválení obchodníkem", meta: "vyhodnocení leadu jedním kliknutím", tag: "člověk", kind: "human" },
+        { title: "Příprava podkladů a postupu", meta: "profil firmy · návrh oslovení", tag: "AI", kind: "ai" },
+        { title: "Zápis do CRM", meta: "kompletní historie a tracking", tag: "hotovo", kind: "done" },
+      ],
+      stats: [
+        { strong: "Běží nonstop", text: "bez nutnosti zásahů" },
+        { strong: "Člověk rozhoduje", text: "o finálním leadu" },
+        { strong: "Kompletní tracking", text: "minimum administrativy" },
+      ],
+    },
+  },
+
+  trust: {
+    aria: "Na čem si zakládáme",
+    items: [
+      { title: "Data v EU", text: "Kde je to možné, zpracováváme data na serverech v Evropské unii." },
+      { title: "Řešení patří vám", text: "Žádná závislost na nás. Dostanete přístupy i dokumentaci." },
+      { title: "Člověk má poslední slovo", text: "Kritické kroky vždy schvaluje odpovědná osoba." },
+      { title: "SK · CZ · EN", text: "Pracujeme slovensky, česky i anglicky." },
+    ],
+  },
+
+  caseTeaser: {
+    eyebrow: "Z praxe",
+    title: "Automatizované zpracování obchodních leadů",
+    text: "Firma v oblasti služeb se 100 zaměstnanci. Nové leady se samy shromáždí, vyhodnotí, zapíšou do CRM a přidělí obchodníkovi.",
+    link: "Všechny úspěšné projekty",
+    stats: [
+      { dt: "ušetří každý obchodník", dd: "5 hodin týdně" },
+      { dt: "implementace", dd: "2 dny" },
+      { dt: "zaměstnanců", dd: "100" },
+    ],
+  },
+
+  pains: {
+    eyebrow: "Kde se ztrácí čas",
+    title: "Poznáváte v tom svou firmu?",
+    lead: "Většina firem neztrácí čas na velkých věcech, ale na desítkách drobných úkonů, které se opakují každý den.",
+    items: [
+      { title: "Přepisování údajů", text: "Údaje z e-mailů, PDF a tabulek se ručně přenášejí do systémů." },
+      { title: "Schvalování různými kanály", text: "Žádosti, objednávky a faktury putují přes přeposílané e-maily, zprávy a další kanály a nikdo neví, kde se zasekly." },
+      { title: "Reporty na celý den", text: "Přehledy pro vedení se každý měsíc skládají ručně z několika zdrojů." },
+      { title: "Pomalá odpověď klientům", text: "Poptávky a leady čekají na reakci příliš dlouho a část z nich se ztratí." },
+      { title: "Údaje, které si odporují", text: "Stejné údaje žijí v CRM, účetnictví a tabulkách a navzájem nesedí." },
+      { title: "HR a administrativa", text: "Životopisy, nástupy a žádosti zaměstnanců zabírají lidem většinu dne." },
+    ],
+  },
+
+  beforeAfter: {
+    eyebrow: "Před a po",
+    title: "Tentýž proces, dva způsoby",
+    lead: "Na příkladu generování obchodních leadů: od vyhledání firmy po zápis do CRM.",
+    beforeLabel: "Dnes",
+    afterLabel: "S automatizací",
+    before: [
+      "Potenciální klienty obchodníci hledají ručně",
+      "Informace o firmách se sbírají z různých portálů",
+      "Podklady jsou neúplné a každý je připravuje jinak",
+      "Údaje se do CRM zapisují ručně, pokud vůbec",
+    ],
+    after: [
+      "AI průběžně vyhledává firmy podle vašich kritérií",
+      "Ke každé připraví analýzu: finance, vývoj, plánované aktivity",
+      "Obchodník schválí lead a dostane podklady s návrhem postupu",
+      "Vše se zapíše do CRM s kompletní historií",
+    ],
+    beforeFoot: "Více času nad rešerší než nad obchodem",
+    afterFoot: "Více času na skutečný obchod",
+    note: "Ilustrační příklad. Kolik času byste ušetřili vy, si orientačně vyčíslíte v",
+    noteLink: "kalkulačce",
+  },
+
+  outcomes: {
+    eyebrow: "Výsledek",
+    title: "Co se změní",
+    mainTag: "Hlavní přínos každého projektu",
+    items: [
+      {
+        title: "Kapacita pro práci s přidanou hodnotou",
+        text: "Rutinní úkony převezmou automatizované procesy. Tým se soustředí na činnosti, které vyžadují odborný úsudek a kontakt s klientem.",
+      },
+      {
+        title: "Kratší doba reakce",
+        text: "Poptávky, žádosti a schvalování se zpracovávají průběžně, bez čekání ve frontách a e-mailových schránkách.",
+      },
+      {
+        title: "Spolehlivé a konzistentní údaje",
+        text: "Údaje se mezi systémy přenášejí automaticky. Klesá chybovost a rozhodnutí stojí na stejných číslech.",
+      },
+      {
+        title: "Transparentnost a kontrola",
+        text: "Každý krok má záznam o tom, kdo, co a kdy udělal. Úzká místa v procesu jsou viditelná včas.",
+      },
+      {
+        title: "Růst bez růstu režie",
+        text: "Firma zvládne větší objem zakázek bez úměrného nárůstu administrativy a back-office.",
+      },
+    ],
+  },
+
+  solutions: {
+    eyebrow: "Řešení",
+    title: "Řešení podle oddělení",
+    lead: "Automatizace není projekt IT. Je to odpověď na konkrétní problém konkrétního oddělení.",
+    tabsAria: "Oddělení",
+    items: [
+      {
+        id: "obchod",
+        label: "Obchod",
+        title: "Více kvalifikovaných leadů a efektivnější obchodní proces",
+        text: "AI průběžně vyhledává a vyhodnocuje potenciální klienty, připraví analýzu firmy a návrh postupu. Obchodník se věnuje jen těm nejperspektivnějším.",
+        examples: ["Vyhledávání a kvalifikace leadů", "Analýza firmy před prvním kontaktem", "Automatický zápis a follow-up v CRM", "Přehled pipeline bez ručního zápisu"],
+      },
+      {
+        id: "hr",
+        label: "HR",
+        title: "HR tým se věnuje lidem, ne papírům",
+        text: "Od prvního životopisu po poslední den v práci: opakované kroky běží samy, rozhodnutí zůstávají na lidech.",
+        examples: ["Předvýběr životopisů podle kritérií", "Onboarding nového kolegy krok za krokem", "Žádosti o dovolenou a dokumenty", "Odpovědi na časté otázky zaměstnanců"],
+      },
+      {
+        id: "financie",
+        label: "Finance",
+        title: "Automatizované zpracování dokladů",
+        text: "Doklady se přečtou, přiřadí, pošlou ke schválení a zapíšou do účetnictví. Člověk řeší jen výjimky.",
+        examples: ["Vytěžování údajů z faktur", "Schvalování výdajů s historií", "Párování plateb", "Měsíční reporting pro vedení"],
+      },
+      {
+        id: "prevadzka",
+        label: "Provoz",
+        title: "Řízení procesů s přehledem v každém kroku",
+        text: "Rutinní úkoly běží automaticky, informace se sbírají na jednom místě a dostanou se ke správným lidem včas. Zakázky a projekty máte pod kontrolou od zadání po předání.",
+        examples: ["Automatizace rutinních úkolů", "Sdružování a předávání informací mezi týmy", "Projektové řízení zakázek", "Přehled o stavu úkolů a termínů"],
+      },
+      {
+        id: "nakup",
+        label: "Nákup a dodavatelé",
+        title: "Nákup s přehledem od poptávky po objednávku",
+        text: "Poptávky se rozešlou automaticky, nabídky se porovnají na jednom místě a objednávka projde schválením bez nahánění.",
+        examples: ["Rozesílání poptávek dodavatelům", "Porovnání cenových nabídek", "Schvalování objednávek", "Přehled o dodavatelích a smlouvách"],
+      },
+      {
+        id: "vedenie",
+        label: "Vedení",
+        title: "Správná čísla, když je potřebujete",
+        text: "Manažerské přehledy se skládají z vašich systémů automaticky a obsahují i stručné shrnutí.",
+        examples: ["Dashboardy z více systémů", "Týdenní shrnutí klíčových čísel", "Upozornění na rizika", "Podklady na porady bez přípravy"],
+      },
+    ],
+  },
+
+  customApps: {
+    id: "aplikacie",
+    badge: "Vývoj na míru",
+    label: "Aplikace na míru",
+    title: "Firemní aplikace na míru",
+    teaser: "Když hotové nástroje nestačí, vyvineme aplikaci přesně pro váš proces.",
+    text: "Když hotové nástroje nestačí, navrhneme a vyvineme aplikaci přesně pro váš proces. Společně s naším vývojovým partnerem zajistíme celý projekt od návrhu až po spuštění a podporu.",
+    types: [
+      { title: "Interní aplikace", text: "schvalování, evidence, plánování a nástroje pro týmy" },
+      { title: "Klientské portály", text: "objednávky, dokumenty a stav zakázek pro vaše klienty" },
+      { title: "Webové a mobilní aplikace", text: "pro zaměstnance v kanceláři i v terénu" },
+      { title: "Propojení systémů", text: "jedna aplikace nad CRM, ERP a dalšími nástroji" },
+    ],
+    points: ["Aplikace patří vám", "Napojená na systémy, které už používáte", "S AI tam, kde dává smysl"],
+    cta: "Probrat nápad na aplikaci",
+  },
+
+  workProcess: {
+    eyebrow: "Postup",
+    title: "Jak pracujeme",
+    lead: "Začínáme malým, měřitelným krokem. Dál pokračujeme jen tehdy, když první krok přinesl výsledek.",
+    srTitle: "Postup v šesti krocích",
+    steps: [
+      { title: "Úvodní rozhovor", text: "30 minut o vaší firmě a o tom, kde to nejvíc bolí. Zdarma.", out: "První odhad potenciálu" },
+      { title: "Audit a vyčíslení", text: "Zmapujeme procesy a ke každé příležitosti vyčíslíme čas, náklady a náročnost.", out: "Mapa příležitostí a plán" },
+      { title: "Návrh řešení", text: "Navrhneme postup, systémy a místa, kde rozhoduje člověk.", out: "Architektura a rozpočet" },
+      { title: "Pilot", text: "Jeden proces s nejvyšší návratností spustíme v ostrém provozu.", out: "Měřitelný výsledek" },
+      { title: "Zavedení", text: "Rozšíříme řešení, zaškolíme lidi a předáme dokumentaci.", out: "Řešení patří vám" },
+      { title: "Monitoring a zlepšování", text: "Sledujeme chod, řešíme výjimky a hledáme další úspory.", out: "Pravidelný report" },
+    ],
+    audit: {
+      badge: "Krok 2 · Audit",
+      title: "Co získáte z auditu",
+      text: "Audit je placený. Pevnou cenu si domluvíme předem podle rozsahu, bez překvapení na faktuře.",
+      items: [
+        { strong: "Seznam procesů", text: "seřazený podle přínosu pro vaši firmu" },
+        { strong: "Odhad nákladů", text: "a uvolněné kapacity u každé příležitosti" },
+        { strong: "Návrh prvního pilotu", text: "s rozsahem, termínem a cenou" },
+      ],
+    },
+    humanStrong: "U důležitých kroků rozhoduje člověk.",
+    humanText:
+      "AI připraví podklady, ale o tom, který lead oslovit, zda je dokument hotový nebo co odejde klientovi, rozhodne vždy odpovědná osoba. Každý krok má záznam.",
+  },
+
+  roi: {
+    eyebrow: "Kalkulačka úspory času",
+    title: "Kolik času vám zabírá ruční práce?",
+    lead: "Zadejte jeden opakovaný proces a podívejte se, jakou kapacitu by mohla automatizace uvolnit.",
+    aria: "Kalkulačka",
+    formAria: "Vstupy kalkulačky",
+    numberLocale: "cs-CZ",
+    currency: "CZK",
+    rate: { min: 200, max: 2000, step: 25, initial: 450, unit: "Kč" },
+    fields: {
+      people: { label: "Kolik lidí dělá tento úkol", hint: "Například 3 lidé v účetnictví" },
+      minutesPerTask: { label: "Kolik minut trvá jeden úkol", hint: "Jedno zpracování, např. jedna faktura" },
+      timesPerWeek: { label: "Kolikrát týdně ho dělá jeden člověk", hint: "Opakování na osobu za týden" },
+      hourlyCost: { label: "Cena hodiny práce včetně odvodů", hint: "Celková cena práce pro firmu" },
+      automationShare: { label: "Kolik se dá automatizovat", hint: "Konzervativní odhad je 50 až 70 %" },
+    },
+    big: "Uvolněná kapacita ročně",
+    fte: "Ekvivalent úvazků",
+    value: "Hodnota uvolněné kapacity",
+    manual: "Současná ruční práce",
+    perYear: "/ rok",
+    disclaimer:
+      "Orientační odhad, nikoli garantovaná úspora. Počítáme se 48 pracovními týdny a úvazkem 1 920 hodin ročně. Uvolněná kapacita se automaticky nerovná úspoře nákladů.",
+    cta: "Ověřit odhad na konzultaci",
+  },
+
+  caseStudies: {
+    eyebrow: "Z praxe",
+    title: "Úspěšné projekty",
+    lead: "Vybrané projekty z naší praxe.",
+    client: "Klient",
+    result: "Výsledek",
+    goal: "Zadání",
+    solution: "Řešení",
+    stackAria: "Použité nástroje",
+    items: [
+      {
+        area: "Obchod",
+        title: "Automatizované zpracování obchodních leadů",
+        company: "Firma v oblasti služeb, 100 zaměstnanců",
+        meta: [{ label: "Implementace", value: "2 dny" }],
+        goal: "Automatické zpracování nových leadů a jejich kompletní evidence v CRM, bez ruční práce obchodníků.",
+        steps: [
+          "Sběr dat o potenciálních klientech z firemních zdrojů",
+          "Analýza a vyhodnocení leadů podle kritérií klienta",
+          "Automatický zápis do CRM",
+          "Přidělení obchodníkovi s kompletními informacemi",
+        ],
+        result: {
+          headline: "5 hodin týdně",
+          text: "ušetří každý obchodník na vyhledávání, prověřování a zapisování leadů.",
+        },
+        stack: ["Grok bot", "Microsoft 365", "CRM"],
+      },
+      {
+        area: "Obchod",
+        title: "AI radar top obchodních příležitostí",
+        company: "Firma v oblasti služeb, 70 zaměstnanců",
+        meta: [{ label: "Implementace", value: "2 týdny" }],
+        goal: "Najít top příležitosti pro jednu specifickou službu. Ne co nejvíc leadů, ale ty nejperspektivnější: kvalita místo kvantity.",
+        steps: [
+          "Vyhledávání firem podle signálů skutečné potřeby",
+          "Analýza provozu a prověření finančního zdraví",
+          "Bodové hodnocení podle kritérií klienta",
+          "Schválení obchodníkem: o každé firmě rozhoduje člověk",
+          "Podklady na schůzku a návrh oslovení",
+          "Automatický zápis schválených leadů do CRM s kompletními informacemi a podklady",
+        ],
+        result: {
+          headline: "Top prověřené leady",
+          text: "Radar pravidelně identifikuje a připraví nejperspektivnější firmy se skóre, ověřenými zdroji a návrhem oslovení. Obchodník věnuje čas schůzkám, ne rešerši.",
+        },
+        stack: ["Claude", "Microsoft 365", "CRM"],
+      },
+      {
+        area: "Provoz",
+        title: "AI asistent pro tým konzultantů",
+        company: "Personální agentura, 60 zaměstnanců",
+        meta: [{ label: "Implementace", value: "1 týden" }],
+        goal: "Vytvoření spolehlivého asistenta pro celý tým na práci s evidencí zaměstnanců, přípravu reportů a dokumentů. Každý konzultant pracuje se svými projekty a jen s nezbytnými osobními údaji.",
+        steps: [
+          "Napojení na centrální evidenci zaměstnanců v cloudu",
+          "Vytvoření znalostní báze: mapa údajů, sjednocení pravidel a postupů",
+          "Společný projekt v ChatGPT pro celý tým",
+          "Pravidelné rutiny, které hlídají důležité termíny, a nastavení notifikací",
+          "Příprava dokumentů a jejich schválení konzultantem: o každém výstupu rozhoduje člověk",
+        ],
+        result: {
+          headline: "Přehled bez prohledávání",
+          text: "Tým má automatizovaný přehled o zaměstnancích, systém notifikací a pravidelných reportů a připravené podklady a dokumenty pro povinnosti podle legislativy i pro klienty. Čas věnuje klientům a zaměstnancům, ne prohledávání tabulek.",
+        },
+        stack: ["ChatGPT", "Microsoft 365"],
+      },
+    ],
+  },
+
+  integrations: {
+    eyebrow: "Integrace",
+    title: "Pracujeme s tím, co už máte",
+    lead: "Technologii vybíráme podle problému, ne naopak. Většinou nepotřebujete nový systém, ale propojit ty stávající.",
+    groups: [
+      {
+        title: "Vaše firemní systémy",
+        text: "Propojíme nástroje, které už denně používáte.",
+        items: ["Microsoft 365", "Google Workspace", "CRM", "ERP a účetnictví", "HR systémy", "ATS (náborové systémy)"],
+      },
+      {
+        title: "Automatizace procesů",
+        text: "Ověřené platformy, které propojují systémy a řídí tok úkolů.",
+        items: ["Power Automate", "n8n", "API propojení"],
+      },
+      {
+        title: "Umělá inteligence",
+        text: "Model vybíráme podle úkolu, bezpečnosti a místa zpracování dat.",
+        items: ["OpenAI (ChatGPT)", "Anthropic Claude", "Google Gemini", "xAI Grok", "Microsoft Copilot", "Mistral AI (EU)"],
+      },
+    ],
+  },
+
+  explore: {
+    eyebrow: "Dále",
+    title: "Co vás zajímá?",
+    items: [
+      { to: "process", label: "Jak pracujeme", title: "Od rozhovoru k řešení v 6 krocích", text: "Začínáme malým pilotem a pokračujeme, jen když přináší výsledek." },
+      { to: "calculator", label: "Kalkulačka", title: "Kolik času vám zabírá ruční práce?", text: "Vyčíslete jeden proces za minutu a uvidíte, jakou kapacitu můžete uvolnit." },
+      { to: "about", label: "O nás", title: "Nejdřív byznys, pak technologie", text: "Kdo za Novorsou stojí a kdy pro vás naopak nejsme vhodní." },
+    ],
+  },
+
+  cta: {
+    title: "Zjistěte, co se dá ve vaší firmě automatizovat",
+    text: "Úvodní konzultace trvá 30 minut, je zdarma a nezávazná.",
+    button: "Domluvit konzultaci",
+  },
+
+  why: {
+    title: "Proč Novorsa",
+    lead: "Za Novorsou stojí praxe v ekonomickém a HR poradenství. Rozumíme samotnému řízení firmy, nejen nástrojům.",
+    srTitle: "Na čem si zakládáme",
+    items: [
+      { title: "Nejdřív byznys", text: "Začínáme procesem a čísly, technologie přichází na řadu až potom." },
+      { title: "Měřitelná návratnost", text: "Každý projekt má předem dohodnutý cíl a způsob měření." },
+      { title: "Bezpečnost a kontrola", text: "Přístupová práva, záznamy o činnosti a schválení člověkem u důležitých kroků." },
+      { title: "Dokumentace a vlastnictví", text: "Řešení, přístupy i návod patří vám." },
+      { title: "Nezávislost na dodavatelích", text: "Nejsme vázáni na jeden nástroj, z více dostupných vybíráme ten správný pro vás." },
+      { title: "Dlouhodobá podpora", text: "Po spuštění řešení sledujeme a dále zlepšujeme." },
+    ],
+    founder: {
+      name: "Jaroslav Pavlisko",
+      initials: "JP",
+      role: "Zakladatel · procesy a automatizace",
+      text: "Jaroslav Pavlisko má 10 let praxe v ekonomickém a HR poradenství se zaměřením na řízení firem, optimalizaci procesů a HR procesy. Silné procesní a analytické myšlení mu pomáhá rychle najít místa, kde firma ztrácí čas, a vyčíslit, co přinese jejich zlepšení. Novorsu založil, aby firmám pomohl využít automatizaci a AI tam, kde reálně šetří čas, s důrazem na návratnost a bezpečné nasazení.",
+      projectsTitle: "Jeho úspěšné implementace",
+      projects: [
+        "Migrace náborového systému (ATS)",
+        "Implementace ERP systému",
+        "Automatizace obchodních procesů",
+        "Zavedení finančního reportingu",
+      ],
+    },
+    team: {
+      title: "Náš tým",
+      lead: "Malý tým, který zná vaši firmu. S klientem pracujeme přímo, bez prostředníků.",
+      members: [
+        {
+          name: "Daniela Kurek",
+          initials: "DK",
+          role: "Klientská podpora a poradenství",
+          text: "Daniela je vaším prvním kontaktem během projektu i po spuštění. Má 8 let praxe v HR a dobře zná firemní procesy a systémy. Pomůže s doladěním a úpravami a technické požadavky řeší přímo se zakladatelem a vývojovým týmem.",
+        },
+      ],
+      partners: {
+        title: "S kým spolupracujeme",
+        text: "Na projektech spolupracujeme s ověřenými partnery. Tým sestavíme podle toho, co projekt potřebuje.",
+        items: ["Vývoj softwaru a aplikací", "Programování integrací", "Serverová a cloudová nastavení", "Design"],
+      },
+    },
+    notFit: {
+      title: "Kdy pro vás nejsme vhodní",
+      items: [
+        "Proces běží jen několikrát měsíčně a zabere pár minut.",
+        "Proces se ještě mění a není jasné, jak má fungovat.",
+        "Hledáte nejlevnějšího dodavatele jednoho nástroje bez analýzy.",
+      ],
+      text: "V takových případech vám raději poradíme, jak proces nejdřív zjednodušit.",
+    },
+  },
+
+  faq: {
+    eyebrow: "Otázky",
+    title: "Časté otázky",
+    items: [
+      {
+        q: "Je to bezpečné a v souladu s GDPR?",
+        a: "U každého projektu řešíme, jaké údaje se zpracovávají, kde jsou uložené a kdo k nim má přístup. Zpracováváme jen nezbytné údaje, přednostně na serverech v EU a v souladu s platnou legislativou. Konkrétní nastavení vždy přizpůsobíme vašim pravidlům.",
+      },
+      {
+        q: "S jakými systémy pracujete?",
+        a: "S běžnými firemními systémy: Microsoft 365, Google Workspace, CRM, ERP, účetní a HR systémy nebo ATS (náborové systémy). Propojujeme je přes API, webhooky nebo platformy jako Power Automate či n8n. Konkrétní možnost propojení vždy ověříme v auditu.",
+      },
+      {
+        q: "Děláte i aplikace na míru?",
+        a: "Ano. Pokud hotové nástroje nestačí, navrhneme a vyvineme interní, webovou nebo mobilní aplikaci či klientský portál. Vývoj zajišťujeme s naším vývojovým partnerem. Aplikace patří vám a napojíme ji na systémy, které už používáte.",
+      },
+      {
+        q: "Jak dlouho trvá projekt?",
+        a: "Audit obvykle trvá od několika dnů po několik týdnů podle velikosti firmy a složitosti procesů. První pilot spouštíme tak, abyste výsledek viděli co nejdříve. Přesný harmonogram dostanete po úvodním rozhovoru.",
+      },
+      {
+        q: "Co když se AI splete?",
+        a: "Počítáme s tím. AI nasazujeme tam, kde chybu včas zachytíme, a u důležitých kroků vždy rozhoduje člověk. Řešení před spuštěním testujeme na vašich reálných případech a po spuštění ho průběžně vyhodnocujeme a zlepšujeme.",
+      },
+      {
+        q: "Potřebujeme vlastní IT oddělení?",
+        a: "Není to nutné. Návrh, zavedení i správu umíme zajistit my. Pokud máte vlastní IT, rádi s ním spolupracujeme a předáme mu dokumentaci.",
+      },
+      {
+        q: "Kolik to stojí?",
+        a: "Úvodní konzultace je zdarma. Audit má pevnou cenu podle rozsahu a další kroky naceníme vždy předem. Investici porovnáváme s uvolněnou kapacitou, abyste viděli návratnost.",
+      },
+      {
+        q: "Komu patří hotové řešení?",
+        a: "Vám. Dostanete přístupy, dokumentaci i možnost řešení dále rozvíjet bez nás.",
+      },
+    ],
+  },
+
+  contact: {
+    eyebrow: "Konzultace zdarma",
+    title: "Zjistěte, co se dá ve vaší firmě automatizovat",
+    lead: "Napište nám, co vám zabírá nejvíc času. Ozveme se do dvou pracovních dnů a domluvíme si úvodní konzultaci zdarma.",
+    points: ["30 minut, online nebo osobně", "Bez závazků a prodejního tlaku", "Odejdete s prvním odhadem, co se vyplatí automatizovat"],
+    directEmail: "Raději e-mail?",
+    phone: "Telefon:",
+    companyId: "IČO",
+    areas: ["Obchod a CRM", "HR a nábor", "Finance a administrativa", "Provoz", "Nákup a dodavatelé", "Reporting pro vedení", "Aplikace na míru", "Zatím nevím"],
+    areaUnknown: "Zatím nevím",
+  },
+
+  form: {
+    firstName: "Jméno",
+    lastName: "Příjmení",
+    company: "Společnost",
+    ico: "IČO",
+    email: "E-mail",
+    phone: "Telefonní číslo",
+    optional: "(nepovinné)",
+    area: "Co chcete zlepšit?",
+    areaPlaceholder: "Vyberte oblast",
+    message: "Co vašemu týmu zabírá nejvíc času?",
+    messagePlaceholder: "Např. faktury přepisujeme ručně do účetnictví, dvěma lidem to zabere půl dne týdně.",
+    notePrefix: "Údaje použijeme k vyřízení vašeho dotazu. Podrobnosti najdete v",
+    noteLink: "zásadách ochrany osobních údajů",
+    submit: "Odeslat a domluvit konzultaci",
+    sending: "Odesílám…",
+    successMore: "Mezitím si můžete projít",
+    successProjects: "úspěšné projekty",
+    successOr: "nebo",
+    successCalc: "vyčíslit další proces",
+    errors: {
+      firstNameLong: "Jméno je příliš dlouhé nebo obsahuje nepovolené znaky.",
+      lastNameLong: "Příjmení je příliš dlouhé nebo obsahuje nepovolené znaky.",
+      companyLong: "Název společnosti je příliš dlouhý nebo obsahuje nepovolené znaky.",
+      emailLong: "E-mailová adresa je příliš dlouhá.",
+      phone: "Zkontrolujte prosím telefonní číslo.",
+      firstName: "Napište prosím své jméno.",
+      lastName: "Napište prosím své příjmení.",
+      company: "Napište prosím název společnosti.",
+      ico: "IČO má 6 až 8 číslic.",
+      email: "Zkontrolujte prosím e-mailovou adresu.",
+      area: "Vyberte oblast.",
+      message: "Popis je příliš dlouhý (max. 4 000 znaků).",
+      summary: "Zkontrolujte prosím označená pole.",
+      bot: "Zprávu se nepodařilo ověřit. Napište nám prosím přímo na info@novorsa.sk.",
+      rate: "Odeslali jste příliš mnoho zpráv. Zkuste to prosím později.",
+      unavailable: "Formulář je dočasně nedostupný. Napište nám prosím přímo na info@novorsa.sk.",
+      send: "Zprávu se nepodařilo odeslat. Zkuste to znovu nebo nám napište na info@novorsa.sk.",
+      network: "Zprávu se teď nepodařilo odeslat. Zkuste to za pár minut nebo nám napište na info@novorsa.sk.",
+    },
+    ok: "Děkujeme! Zpráva dorazila a ozveme se do dvou pracovních dnů.",
+    honeypotOk: "Děkujeme, ozveme se do dvou pracovních dnů.",
+  },
+
+  email: {
+    subject: "Děkujeme za zprávu | Novorsa",
+    thanks: "děkujeme za Vaši zprávu.",
+    interestArea: "Váš zájem o naše služby v oblasti {area} evidujeme a {reply}.",
+    interestNoArea: "Váš zájem o naše služby evidujeme a {reply}.",
+    reply: "ozveme se Vám do dvou pracovních dnů",
+    addMore: "Pokud chcete něco doplnit, stačí odpovědět na tento e-mail.",
+    regards: "S pozdravem",
+    signature: "tým Novorsa",
+    brandOf: "Novorsa je značka společnosti",
+  },
+
+  consent: {
+    title: "Cookies a měření návštěvnosti",
+    textStart: "Nezbytné cookies zajišťují fungování webu. S vaším souhlasem použijeme také",
+    textAnalytics: " analytické cookies pro měření návštěvnosti",
+    textAnd: " a",
+    textMarketing: " marketingové cookies pro měření a zobrazování reklamy",
+    textEnd: ". Souhlas můžete kdykoli změnit.",
+    more: "Více o cookies",
+    necessary: "Nezbytné",
+    necessaryText: "Fungování a bezpečnost webu. Vždy zapnuté.",
+    analytics: "Analytické",
+    analyticsText: "Měření návštěvnosti, abychom mohli web zlepšovat.",
+    marketing: "Marketingové",
+    marketingText: "Měření účinnosti reklamy a zobrazování relevantních nabídek.",
+    save: "Uložit výběr",
+    settings: "Nastavení",
+    reject: "Odmítnout",
+    accept: "Přijmout vše",
+    footerButton: "Nastavení cookies",
+  },
+
+  cookiesPage: {
+    title: "Cookies",
+    intro: "Cookies jsou malé soubory, které web ukládá ve vašem prohlížeči. Nezbytné cookies používáme vždy",
+    introBoth: ", analytické a marketingové pouze s vaším souhlasem.",
+    introAnalytics: ", analytické pouze s vaším souhlasem.",
+    introMarketing: ", marketingové pouze s vaším souhlasem.",
+    change: "Svůj souhlas můžete kdykoli změnit:",
+    cols: { name: "Název", provider: "Poskytovatel", purpose: "Účel", duration: "Platnost" },
+    necessaryTitle: "Nezbytné",
+    necessaryText: "Zajišťují fungování a bezpečnost webu. Souhlas k nim nepotřebujeme.",
+    statsTitle: "Statistiky bez cookies",
+    statsText:
+      "Používáme také Vercel Web Analytics, které měří návštěvnost bez cookies a bez ukládání čehokoli do vašeho prohlížeče. Výsledkem jsou jen souhrnná čísla.",
+    analyticsTitle: "Analytické (se souhlasem)",
+    analyticsText: "Pomáhají nám pochopit, jak návštěvníci web používají, abychom ho mohli zlepšovat.",
+    marketingTitle: "Marketingové (se souhlasem)",
+    marketingText: "Měří účinnost reklamy a umožňují zobrazovat relevantní nabídky na jiných webech a sociálních sítích.",
+    moreTitle: "Více informací",
+    moreText: "Jak zpracováváme osobní údaje, najdete v části",
+    questions: "Dotazy:",
+    rows: {
+      consent: { name: "novorsa_consent", purpose: "Uloží vaši volbu v cookie liště.", duration: "6 měsíců" },
+      bot: { name: "Ochrana před roboty", purpose: "Při odeslání formuláře ověří, že ho neodesílá robot. Může v prohlížeči uložit technický údaj.", duration: "relace" },
+      ga: { purpose: "Rozliší návštěvníky pro měření návštěvnosti.", duration: "2 roky" },
+      gaSession: { purpose: "Uchovává stav aktuální návštěvy.", duration: "2 roky" },
+      gads: { purpose: "Měření konverzí z reklam Google Ads.", duration: "3 měsíce" },
+      meta: { purpose: "Měření a zobrazování reklamy na Facebooku a Instagramu.", duration: "3 měsíce" },
+      linkedin: { purpose: "Měření konverzí a zobrazování reklamy na LinkedInu.", duration: "až 1 rok" },
+    },
+  },
+};

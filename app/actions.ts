@@ -3,8 +3,10 @@
 import { headers } from "next/headers";
 import { checkBotId } from "botid/server";
 import { checkRateLimit } from "@vercel/firewall";
-import { contact, site } from "@/content/site";
-import { salutation } from "@/lib/salutation";
+import { site } from "@/content/site";
+import { getDict, type Dict } from "@/content";
+import { isLang, htmlLang, type Lang } from "@/lib/i18n";
+import { salutationFor } from "@/lib/salutation";
 import { LIMITS } from "@/lib/formLimits";
 import { EMAIL_LOGO_PNG_BASE64 } from "@/lib/emailLogo";
 
@@ -32,6 +34,10 @@ const escape = (s: string) =>
 
 export async function sendContact(_prev: ContactState, formData: FormData): Promise<ContactState> {
   const get = (k: string) => String(formData.get(k) ?? "").trim();
+  const langRaw = get("lang");
+  const lang: Lang = isLang(langRaw) ? langRaw : "sk";
+  const t = getDict(lang);
+  const e = t.form.errors;
   const values = {
     firstName: get("firstName"),
     lastName: get("lastName"),
@@ -44,28 +50,28 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
   };
 
   // Honeypot: človek toto pole nevidí, robot ho vyplní.
-  if (get("website")) return { status: "ok", message: "Ďakujeme, ozveme sa do dvoch pracovných dní." };
+  if (get("website")) return { status: "ok", message: t.form.honeypotOk };
 
   const errors: ContactState["errors"] = {};
   // Jednoriadkové polia: bez zalomení riadkov a riadiacich znakov, s horným limitom dĺžky.
   const singleLine = (s: string) => !/[\u0000-\u001f\u007f]/.test(s);
   const tooLong = (s: string, max: number) => s.length > max || !singleLine(s);
-  if (tooLong(values.firstName, LIMITS.firstName)) errors.firstName = "Meno je príliš dlhé alebo obsahuje nepovolené znaky.";
-  if (tooLong(values.lastName, LIMITS.lastName)) errors.lastName = "Priezvisko je príliš dlhé alebo obsahuje nepovolené znaky.";
-  if (tooLong(values.company, LIMITS.company)) errors.company = "Názov spoločnosti je príliš dlhý alebo obsahuje nepovolené znaky.";
-  if (tooLong(values.email, LIMITS.email)) errors.email = "E-mailová adresa je príliš dlhá.";
+  if (tooLong(values.firstName, LIMITS.firstName)) errors.firstName = e.firstNameLong;
+  if (tooLong(values.lastName, LIMITS.lastName)) errors.lastName = e.lastNameLong;
+  if (tooLong(values.company, LIMITS.company)) errors.company = e.companyLong;
+  if (tooLong(values.email, LIMITS.email)) errors.email = e.emailLong;
   if (tooLong(values.phone, LIMITS.phone) || (values.phone && !/^[+\d\s()/-]{6,}$/.test(values.phone)))
-    errors.phone = "Skontrolujte, prosím, telefónne číslo.";
-  if (!errors.firstName && values.firstName.length < 2) errors.firstName = "Napíšte, prosím, svoje meno.";
-  if (!errors.lastName && values.lastName.length < 2) errors.lastName = "Napíšte, prosím, svoje priezvisko.";
-  if (!errors.company && values.company.length < 2) errors.company = "Napíšte, prosím, názov spoločnosti.";
-  if (values.ico && !/^\d{6,8}$/.test(values.ico.replace(/\s/g, ""))) errors.ico = "IČO má 6 až 8 číslic.";
-  if (!errors.email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(values.email)) errors.email = "Skontrolujte, prosím, e-mailovú adresu.";
-  if (!contact.areas.includes(values.area)) errors.area = "Vyberte oblasť.";
-  if (values.message.length > LIMITS.message) errors.message = "Popis je príliš dlhý (max. 4 000 znakov).";
+    errors.phone = e.phone;
+  if (!errors.firstName && values.firstName.length < 2) errors.firstName = e.firstName;
+  if (!errors.lastName && values.lastName.length < 2) errors.lastName = e.lastName;
+  if (!errors.company && values.company.length < 2) errors.company = e.company;
+  if (values.ico && !icoValid(lang, values.ico)) errors.ico = e.ico;
+  if (!errors.email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(values.email)) errors.email = e.email;
+  if (!t.contact.areas.includes(values.area)) errors.area = e.area;
+  if (values.message.length > LIMITS.message) errors.message = e.message;
 
   if (Object.keys(errors).length > 0) {
-    return { status: "error", message: "Skontrolujte, prosím, označené polia.", errors, values };
+    return { status: "error", message: e.summary, errors, values };
   }
 
   // Vercel BotID: neviditeľné overenie, že formulár odoslal človek, nie robot.
@@ -82,7 +88,7 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
       });
       return {
         status: "error",
-        message: "Správu sa nepodarilo overiť. Napíšte nám, prosím, priamo na info@novorsa.sk.",
+        message: e.bot,
         values,
       };
     }
@@ -96,7 +102,7 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
   const h = await headers();
   const ip = h.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
   if (rateLimited(ip)) {
-    return { status: "error", message: "Odoslali ste priveľa správ. Skúste to, prosím, neskôr.", values };
+    return { status: "error", message: e.rate, values };
   }
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -107,7 +113,7 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
     console.error("Kontaktný formulár: chýbajú premenné RESEND_API_KEY, CONTACT_TO alebo CONTACT_FROM.");
     return {
       status: "error",
-      message: "Formulár je dočasne nedostupný. Napíšte nám, prosím, priamo na info@novorsa.sk.",
+      message: e.unavailable,
       values,
     };
   }
@@ -119,6 +125,7 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
     ["E-mail", values.email],
     ["Telefón", values.phone || "–"],
     ["Oblasť", values.area],
+    ["Jazyk webu", lang.toUpperCase()],
   ];
   const html = `<h2>Nový dopyt z webu Novorsa</h2><table cellpadding="6">${rows
     .map(([k, v]) => `<tr><td><strong>${k}</strong></td><td>${escape(v)}</td></tr>`)
@@ -133,7 +140,7 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
         from,
         to: [to],
         reply_to: values.email,
-        subject: `Dopyt z webu: ${values.company} – ${values.area}`,
+        subject: `Dopyt z webu${lang === "sk" ? "" : ` [${lang.toUpperCase()}]`}: ${values.company} – ${values.area}`,
         html,
         text,
       }),
@@ -145,7 +152,7 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
   } catch {
     return {
       status: "error",
-      message: "Správu sa nepodarilo odoslať. Skúste to znova alebo nám napíšte na info@novorsa.sk.",
+      message: e.send,
       values,
     };
   }
@@ -163,9 +170,9 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
           from: `Novorsa <${to}>`,
           to: [values.email],
           reply_to: to,
-          subject: "Ďakujeme za správu | Novorsa",
-          html: confirmationHtml(values.firstName, values.lastName, values.area),
-          text: confirmationText(values.firstName, values.lastName, values.area),
+          subject: t.email.subject,
+          html: confirmationHtml(lang, t, values.firstName, values.lastName, values.area),
+          text: confirmationText(lang, t, values.firstName, values.lastName, values.area),
           attachments: [
             { filename: "novorsa.png", content: EMAIL_LOGO_PNG_BASE64, content_id: "novorsa-logo", content_type: "image/png" },
           ],
@@ -177,7 +184,7 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
     }
   }
 
-  return { status: "ok", message: "Ďakujeme! Správa dorazila a ozveme sa do dvoch pracovných dní." };
+  return { status: "ok", message: t.form.ok };
 }
 
 /** Spoločný limit potvrdení na jednu adresu cez Vercel Firewall; pri výpadku záložný limit v pamäti. */
@@ -196,46 +203,49 @@ async function confirmationLimited(email: string, h: Awaited<ReturnType<typeof h
   }
 }
 
-/** Veta o prijatí dopytu; pri „Zatiaľ neviem“ bez názvu oblasti. */
-function interestSentence(area: string, html: boolean) {
-  const known = area && area !== "Zatiaľ neviem";
-  const a = html ? `<strong>${escape(area)}</strong>` : area;
-  const end = html
-    ? "evidujeme a <strong>ozveme sa Vám do dvoch pracovných dní</strong>."
-    : "evidujeme a ozveme sa Vám do dvoch pracovných dní.";
-  return known ? `Váš záujem o naše služby v oblasti ${a} ${end}` : `Váš záujem o naše služby ${end}`;
+/** IČO: na SK a CZ verzii 6 až 8 číslic, na anglickej aj zahraničné identifikátory. */
+function icoValid(lang: Lang, ico: string) {
+  return lang === "en" ? /^[A-Za-z0-9 -]{4,12}$/.test(ico) : /^\d{6,8}$/.test(ico.replace(/\s/g, ""));
 }
 
-function confirmationText(firstName: string, lastName: string, area: string) {
-  return `${salutation(firstName, lastName)}
+/** Veta o prijatí dopytu; pri „Zatiaľ neviem“ bez názvu oblasti. */
+function interestSentence(t: Dict, area: string, html: boolean) {
+  const known = area && area !== t.contact.areaUnknown;
+  const a = html ? `<strong>${escape(area)}</strong>` : area;
+  const reply = html ? `<strong>${t.email.reply}</strong>` : t.email.reply;
+  return (known ? t.email.interestArea : t.email.interestNoArea).replace("{area}", a).replace("{reply}", reply);
+}
 
-ďakujeme za Vašu správu. ${interestSentence(area, false)}
+function confirmationText(lang: Lang, t: Dict, firstName: string, lastName: string, area: string) {
+  return `${salutationFor(lang, firstName, lastName)}
 
-Ak chcete niečo doplniť, stačí odpovedať na tento e-mail.
+${t.email.thanks} ${interestSentence(t, area, false)}
 
-S pozdravom
+${t.email.addMore}
 
-tím Novorsa
+${t.email.regards}
+
+${t.email.signature}
 
 ${site.email} · ${site.phone} · novorsa.sk
-Novorsa je značka spoločnosti ${site.company.name}`;
+${t.email.brandOf} ${site.company.name}`;
 }
 
-function confirmationHtml(firstName: string, lastName: string, area: string) {
-  return `<!doctype html><html lang="sk"><body style="margin:0;background:#f3f6f5;font-family:Arial,Helvetica,sans-serif;color:#14191a">
+function confirmationHtml(lang: Lang, t: Dict, firstName: string, lastName: string, area: string) {
+  return `<!doctype html><html lang="${htmlLang[lang]}"><body style="margin:0;background:#f3f6f5;font-family:Arial,Helvetica,sans-serif;color:#14191a">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f3f6f5;padding:32px 12px"><tr><td align="center">
 <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden">
 <tr><td style="background:#0f6e6e;padding:22px 32px"><img src="cid:novorsa-logo" width="165" height="45" alt="novorsa" style="display:block;border:0;color:#ffffff;font-size:24px;font-weight:bold"></td></tr>
 <tr><td style="height:4px;background:#6fd0c7;line-height:4px;font-size:0">&nbsp;</td></tr>
 <tr><td style="padding:32px;font-size:15px;line-height:1.6">
-<p style="margin:0 0 16px">${escape(salutation(firstName, lastName))}</p>
-<p style="margin:0 0 16px">ďakujeme za Vašu správu. ${interestSentence(area, true)}</p>
-<p style="margin:0 0 24px">Ak chcete niečo doplniť, stačí odpovedať na tento e-mail.</p>
-<p style="margin:0 0 16px">S pozdravom</p>
-<p style="margin:0"><strong>tím Novorsa</strong></p>
+<p style="margin:0 0 16px">${escape(salutationFor(lang, firstName, lastName))}</p>
+<p style="margin:0 0 16px">${t.email.thanks} ${interestSentence(t, area, true)}</p>
+<p style="margin:0 0 24px">${t.email.addMore}</p>
+<p style="margin:0 0 16px">${t.email.regards}</p>
+<p style="margin:0"><strong>${t.email.signature}</strong></p>
 </td></tr>
 <tr><td style="padding:18px 32px;background:#e5efed;font-size:12.5px;color:#5b6264;line-height:1.6">
 <a href="mailto:${site.email}" style="color:#0f6e6e">${site.email}</a> · <a href="tel:${site.phone.replace(/\s/g, "")}" style="color:#0f6e6e">${site.phone}</a> · <a href="https://novorsa.sk" style="color:#0f6e6e">novorsa.sk</a><br>
-Novorsa je značka spoločnosti ${escape(site.company.name)}
+${t.email.brandOf} ${escape(site.company.name)}
 </td></tr></table></td></tr></table></body></html>`;
 }
