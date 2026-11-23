@@ -382,6 +382,25 @@ export const sk = {
         },
         stack: ["ChatGPT", "Microsoft 365"],
       },
+      {
+        area: "HR",
+        title: "Automatické týždenné reporty z náboru",
+        company: "Firma v oblasti služieb, 200 zamestnancov",
+        meta: [{ label: "Implementácia", value: "1 týždeň" }],
+        goal: "Pravidelný a spoľahlivý prehľad o stave náboru bez ručného skladania reportov z ATS.",
+        steps: [
+          "Napojenie na ATS cez API",
+          "Týždenné vyhodnotenie otvorených pozícií, kandidátov a fáz náboru",
+          "Reporty pre HR: otvorené pozície, počet kandidátov, fázy procesu, čakajúci feedback od hiring manažérov, nástupy a úspešnosť náboru",
+          "Uloženie reportov na SharePoint a záloha zdrojových dát",
+          "Súhrnný report pre vybraný tím priamo v\u00a0kanáli Microsoft Teams",
+        ],
+        result: {
+          headline: "Prehľad náboru každý týždeň",
+          text: "HR aj vedenie majú každý týždeň aktuálne čísla o\u00a0nábore na jednom mieste. Je vidieť, kde proces stojí, kde sa čaká na feedback od hiring manažéra a\u00a0aká je úspešnosť náboru. Bez ručného skladania reportov.",
+        },
+        stack: ["Grok bot", "Microsoft 365", "ATS"],
+      },
     ],
   },
 

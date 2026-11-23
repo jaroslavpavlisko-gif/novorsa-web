@@ -378,6 +378,25 @@ export const en: Dict = {
         },
         stack: ["ChatGPT", "Microsoft 365"],
       },
+      {
+        area: "HR",
+        title: "Automated weekly recruitment reports",
+        company: "Services company, 200 employees",
+        meta: [{ label: "Implementation", value: "1 week" }],
+        goal: "A regular, reliable overview of recruitment without manually assembling reports from the ATS.",
+        steps: [
+          "Connection to the ATS via API",
+          "Weekly review of open positions, candidates and recruitment stages",
+          "Reports for HR: open positions, number of candidates, process stages, pending feedback from hiring managers, new starters and hiring success rate",
+          "Reports saved to SharePoint, with a backup of the source data",
+          "Summary report for the selected team delivered straight to a Microsoft Teams channel",
+        ],
+        result: {
+          headline: "Recruitment overview every week",
+          text: "HR and management get up-to-date recruitment figures in one place every week. They can see where the process stands, where feedback from a hiring manager is pending and how successful hiring is. No more assembling reports by hand.",
+        },
+        stack: ["Grok bot", "Microsoft 365", "ATS"],
+      },
     ],
   },
 

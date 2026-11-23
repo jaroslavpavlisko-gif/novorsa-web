@@ -378,6 +378,25 @@ export const cz: Dict = {
         },
         stack: ["ChatGPT", "Microsoft 365"],
       },
+      {
+        area: "HR",
+        title: "Automatické týdenní reporty z náboru",
+        company: "Firma v oblasti služeb, 200 zaměstnanců",
+        meta: [{ label: "Implementace", value: "1 týden" }],
+        goal: "Pravidelný a spolehlivý přehled o stavu náboru bez ručního skládání reportů z ATS.",
+        steps: [
+          "Napojení na ATS přes API",
+          "Týdenní vyhodnocení otevřených pozic, kandidátů a fází náboru",
+          "Reporty pro HR: otevřené pozice, počet kandidátů, fáze procesu, čekající feedback od hiring manažerů, nástupy a úspěšnost náboru",
+          "Uložení reportů na SharePoint a záloha zdrojových dat",
+          "Souhrnný report pro vybraný tým přímo v\u00a0kanálu Microsoft Teams",
+        ],
+        result: {
+          headline: "Přehled náboru každý týden",
+          text: "HR i vedení mají každý týden aktuální čísla o\u00a0náboru na jednom místě. Je vidět, kde proces stojí, kde se čeká na feedback od hiring manažera a\u00a0jaká je úspěšnost náboru. Bez ručního skládání reportů.",
+        },
+        stack: ["Grok bot", "Microsoft 365", "ATS"],
+      },
     ],
   },
 
