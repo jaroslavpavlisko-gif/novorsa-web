@@ -1474,3 +1474,6 @@ h4 {
   .teaser { padding: 24px 20px; }
   .teaser__stat { padding: 16px; }
 }
+
+/* Označený text: petrolejové pozadie s bielym písmom, čitateľné na svetlých aj tmavých plochách */
+::selection { background: #0f6e6e; color: #ffffff; }
