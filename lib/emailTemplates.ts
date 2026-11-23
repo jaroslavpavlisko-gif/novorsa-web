@@ -5,6 +5,13 @@ import { salutationFor } from "@/lib/salutation";
 
 // Potvrdzujúci e-mail pre odosielateľa formulára (HTML a textová verzia).
 
+/** Web v pätičke e-mailu podľa jazyka. Odkaz vedie na funkčnú adresu, kým domény .cz a .com nepresmerujeme. */
+const website: Record<Lang, { label: string; href: string }> = {
+  sk: { label: "novorsa.sk", href: "https://novorsa.sk" },
+  cz: { label: "novorsa.cz", href: "https://novorsa.sk/cz" },
+  en: { label: "novorsa.com", href: "https://novorsa.sk/en" },
+};
+
 function escape(s: string) {
   return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
 }
@@ -26,7 +33,7 @@ ${t.email.regards}
 
 ${t.email.signature}
 
-${site.email} · ${site.phone} · novorsa.sk
+${site.email} · ${site.phone} · ${website[lang].label}
 ${t.email.brandOf} ${site.company.name}`;
 }
 
@@ -45,7 +52,7 @@ ${areaLine(t, area, true)}
 <p style="margin:0"><strong>${t.email.signature}</strong></p>
 </td></tr>
 <tr><td style="padding:18px 32px;background:#e5efed;font-size:12.5px;color:#5b6264;line-height:1.6">
-<a href="mailto:${site.email}" style="color:#0f6e6e">${site.email}</a> · <a href="tel:${site.phone.replace(/\s/g, "")}" style="color:#0f6e6e">${site.phone}</a> · <a href="https://novorsa.sk" style="color:#0f6e6e">novorsa.sk</a><br>
+<a href="mailto:${site.email}" style="color:#0f6e6e">${site.email}</a> · <a href="tel:${site.phone.replace(/\s/g, "")}" style="color:#0f6e6e">${site.phone}</a> · <a href="${website[lang].href}" style="color:#0f6e6e">${website[lang].label}</a><br>
 ${t.email.brandOf} ${escape(site.company.name)}
 </td></tr></table></td></tr></table></body></html>`;
 }
