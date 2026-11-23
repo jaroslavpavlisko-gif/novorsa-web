@@ -15,7 +15,7 @@ export function PrivacyEn() {
         <h2>Controller</h2>
         <p>
           {c.name}, {c.street}, {c.city}, Slovak Republic, company ID (IČO) {c.ico}, {en.site.register} (“we”). Novorsa is
-          our trade name. Contact for personal data matters: <a href={`mailto:${site.email}`}>{site.email}</a>.
+          a brand of {c.name}. Contact for personal data matters: <a href={`mailto:${site.email}`}>{site.email}</a>.
         </p>
 
         <h2>What data we process and why</h2>

@@ -28,10 +28,10 @@ function Table({ rows, cols }: { rows: Row[]; cols: Cols }) {
         <tbody>
           {rows.map((r) => (
             <tr key={r.name}>
-              <td>{r.name}</td>
-              <td>{r.provider}</td>
-              <td>{r.purpose}</td>
-              <td>{r.duration}</td>
+              <td data-label={cols.name}>{r.name}</td>
+              <td data-label={cols.provider}>{r.provider}</td>
+              <td data-label={cols.purpose}>{r.purpose}</td>
+              <td data-label={cols.duration}>{r.duration}</td>
             </tr>
           ))}
         </tbody>

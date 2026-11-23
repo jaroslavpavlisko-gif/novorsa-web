@@ -14,7 +14,7 @@ export function PrivacySk() {
 
         <h2>Prevádzkovateľ</h2>
         <p>
-          {c.name}, {c.street}, {c.city}, IČO {c.ico}, {sk.site.register} (ďalej „my“). Novorsa je naša obchodná značka. Kontakt
+          {c.name}, {c.street}, {c.city}, IČO {c.ico}, {sk.site.register} (ďalej „my“). Novorsa je značka spoločnosti {c.name}. Kontakt
           vo veciach osobných údajov: <a href={`mailto:${site.email}`}>{site.email}</a>.
         </p>
 

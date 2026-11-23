@@ -79,7 +79,7 @@ export const en: Dict = {
     title: "Your people are doing work that",
     titleAccent: "technology can do.",
     lead: "We map where your company loses time on manual work and introduce automation, AI and system integration where it truly pays off. Business value and return first, technology second.",
-    primaryCta: { label: "See what we can automate", to: "contact" },
+    primaryCta: { label: "Request a consultation", to: "contact" },
     secondaryCta: { label: "How we work", to: "process" },
     note: "The initial consultation is free and without obligation.",
     flow: {
@@ -87,16 +87,16 @@ export const en: Dict = {
       top: "Automated process · sales leads",
       live: "Process preview",
       steps: [
-        { title: "Finding potential clients", meta: "registers · websites · databases by your criteria", tag: "AI", kind: "ai" },
+        { title: "Finding companies that match your criteria", meta: "company registers, websites and databases", tag: "AI", kind: "ai" },
         { title: "Company analysis", meta: "financial health · history · planned activities", tag: "AI", kind: "ai" },
         { title: "Approval by a salesperson", meta: "lead review in one click", tag: "human", kind: "human" },
         { title: "Preparing materials and next steps", meta: "company profile · suggested outreach", tag: "AI", kind: "ai" },
-        { title: "Recorded in the CRM", meta: "complete history and tracking", tag: "done", kind: "done" },
+        { title: "Recorded in the CRM", meta: "history of outreach and next steps", tag: "done", kind: "done" },
       ],
       stats: [
-        { strong: "Runs nonstop", text: "no intervention needed" },
-        { strong: "A human decides", text: "on the final lead" },
-        { strong: "Full tracking", text: "minimal admin" },
+        { strong: "Automated research", text: "runs continuously" },
+        { strong: "Your sales team", text: "approves each lead" },
+        { strong: "Every step visible", text: "minimal admin" },
       ],
     },
   },
@@ -228,14 +228,14 @@ export const en: Dict = {
         label: "Procurement",
         title: "Procurement with full visibility from request to order",
         text: "Requests for quotes go out automatically, offers are compared in one place and orders go through approval without chasing.",
-        examples: ["Sending requests for quotes to suppliers", "Comparing price offers", "Order approvals", "Overview of suppliers and contracts"],
+        examples: ["Sending requests for quotes to suppliers", "Comparing supplier quotes", "Order approvals", "Overview of suppliers and contracts"],
       },
       {
         id: "vedenie",
         label: "Management",
         title: "The right numbers when you need them",
         text: "Management reports are assembled from your systems automatically and include a short summary.",
-        examples: ["Dashboards from multiple systems", "Weekly summary of key figures", "Risk alerts", "Meeting materials without preparation"],
+        examples: ["Dashboards from multiple systems", "Weekly summary of key figures", "Risk alerts", "Automatically prepared meeting briefs"],
       },
     ],
   },
@@ -263,7 +263,7 @@ export const en: Dict = {
     lead: "We start with a small, measurable step. We only continue once the first step has delivered results.",
     srTitle: "Our approach in six steps",
     steps: [
-      { title: "Initial conversation", text: "30 minutes about your company and where it hurts most. Free of charge.", out: "First estimate of potential" },
+      { title: "Initial conversation", text: "In a free 30-minute call, we discuss which tasks take up the most time in your company.", out: "First estimate of potential" },
       { title: "Audit and quantification", text: "We map your processes and quantify the time, cost and effort for each opportunity.", out: "Opportunity map and plan" },
       { title: "Solution design", text: "We design the workflow, the systems and the points where a human decides.", out: "Architecture and budget" },
       { title: "Pilot", text: "We launch the process with the highest return in live operation.", out: "Measurable result" },
@@ -287,7 +287,7 @@ export const en: Dict = {
 
   roi: {
     eyebrow: "Time savings calculator",
-    title: "How much time does manual work cost you?",
+    title: "How much time does your team spend on manual work?",
     lead: "Enter one repetitive process and see how much capacity automation could free up.",
     aria: "Calculator",
     formAria: "Calculator inputs",
@@ -296,8 +296,8 @@ export const en: Dict = {
     rate: { min: 8, max: 80, step: 1, initial: 18, unit: "€" },
     fields: {
       people: { label: "How many people do this task", hint: "For example, 3 people in accounting" },
-      minutesPerTask: { label: "How many minutes one task takes", hint: "One item, e.g. one invoice" },
-      timesPerWeek: { label: "How many times a week one person does it", hint: "Repetitions per person per week" },
+      minutesPerTask: { label: "Time per task (minutes)", hint: "One item, e.g. one invoice" },
+      timesPerWeek: { label: "Repetitions per person per week", hint: "" },
       hourlyCost: { label: "Hourly labour cost incl. payroll taxes", hint: "Total cost of labour for the company" },
       automationShare: { label: "How much can be automated", hint: "A conservative estimate is 50 to 70%" },
     },
@@ -409,7 +409,7 @@ export const en: Dict = {
     title: "What are you interested in?",
     items: [
       { to: "process", label: "How we work", title: "From conversation to solution in 6 steps", text: "We start with a small pilot and only continue when it delivers results." },
-      { to: "calculator", label: "Calculator", title: "How much time does manual work cost you?", text: "Quantify one process in a minute and see how much capacity you could free up." },
+      { to: "calculator", label: "Calculator", title: "How much time does your team spend on manual work?", text: "Quantify one process in a minute and see how much capacity you could free up." },
       { to: "about", label: "About us", title: "Business first, technology second", text: "Who is behind Novorsa, and when we are not the right fit for you." },
     ],
   },
@@ -487,7 +487,7 @@ export const en: Dict = {
       },
       {
         q: "Do you also build custom applications?",
-        a: "Yes. If off-the-shelf tools aren’t enough, we design and build an internal, web or mobile application or a client portal. Development is delivered with our development partner. The application is yours and we connect it to the systems you already use.",
+        a: "Yes. If off-the-shelf tools aren’t enough, we design and build an internal, web or mobile application or a client portal. We build the application with our development partner. The application is yours and we connect it to the systems you already use.",
       },
       {
         q: "How long does a project take?",
@@ -538,12 +538,12 @@ export const en: Dict = {
     messagePlaceholder: "E.g. we retype invoices into our accounting system by hand; it takes two people half a day every week.",
     notePrefix: "We will use your details to handle your enquiry. You can find more information in our",
     noteLink: "privacy policy",
-    submit: "Send and book a consultation",
+    submit: "Request a consultation",
     sending: "Sending…",
     successMore: "In the meantime, you can browse our",
     successProjects: "case studies",
     successOr: "or",
-    successCalc: "calculate another process",
+    successCalc: "estimate savings for another process",
     errors: {
       firstNameLong: "The first name is too long or contains invalid characters.",
       lastNameLong: "The last name is too long or contains invalid characters.",
@@ -570,10 +570,9 @@ export const en: Dict = {
 
   email: {
     subject: "Thank you for your message | Novorsa",
-    thanks: "thank you for your message.",
-    interestArea: "We have registered your interest in our services in the area of {area} and {reply}.",
-    interestNoArea: "We have registered your interest in our services and {reply}.",
-    reply: "will get back to you within two business days",
+    thanks: "Thank you for your enquiry.",
+    reply: "We’ll get back to you within two business days.",
+    areaLabel: "Selected area:",
     addMore: "If you would like to add anything, simply reply to this email.",
     regards: "Kind regards",
     signature: "The Novorsa team",

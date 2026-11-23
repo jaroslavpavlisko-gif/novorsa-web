@@ -1454,3 +1454,23 @@ h4 {
 @media (min-width: 1024px) {
   .lang-switch:not(.lang-switch--mobile) { display: flex; margin-left: auto; margin-right: -8px; }
 }
+
+/* Popisy krokov v úvodnej schéme sa zalomia namiesto skrátenia „…“ */
+.flow__meta { white-space: normal; overflow: visible; text-overflow: clip; }
+
+/* Tabuľky cookies na mobile: každá položka pod sebou, bez vodorovného posúvania */
+@media (max-width: 640px) {
+  .cookie-table { min-width: 0; }
+  .cookie-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .cookie-table tr { display: block; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .cookie-table td { display: grid; grid-template-columns: 7.5em 1fr; gap: 8px; padding: 4px 0; border: 0; }
+  .cookie-table td::before { content: attr(data-label); font-weight: 500; color: var(--muted); }
+}
+
+/* Referencia na úvode: na úzkych mobiloch menší vnútorný okraj, dlhé slová sa zalomia */
+.teaser { grid-template-columns: minmax(0, 1fr); }
+.teaser__title { overflow-wrap: break-word; hyphens: auto; }
+@media (max-width: 400px) {
+  .teaser { padding: 24px 20px; }
+  .teaser__stat { padding: 16px; }
+}

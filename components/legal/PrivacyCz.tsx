@@ -15,7 +15,7 @@ export function PrivacyCz() {
         <h2>Správce</h2>
         <p>
           {c.name}, {c.street}, {c.city}, Slovenská republika, IČO {c.ico}, {cz.site.register} (dále jen „my“). Novorsa je
-          naše obchodní značka. Kontakt ve věcech osobních údajů: <a href={`mailto:${site.email}`}>{site.email}</a>.
+          značka společnosti {c.name}. Kontakt ve věcech osobních údajů: <a href={`mailto:${site.email}`}>{site.email}</a>.
         </p>
 
         <h2>Jaké údaje zpracováváme a proč</h2>

@@ -23,7 +23,7 @@ export function RoiCalculator({ t, ctaHref }: { t: Dict["roi"]; ctaHref: string 
     { key: "people", min: 1, max: 50, step: 1, format: (v) => `${v}` },
     { key: "minutesPerTask", min: 1, max: 120, step: 1, format: (v) => `${v} min` },
     { key: "timesPerWeek", min: 1, max: 200, step: 1, format: (v) => `${v}×` },
-    { key: "hourlyCost", min: t.rate.min, max: t.rate.max, step: t.rate.step, format: (v) => `${v} ${t.rate.unit}` },
+    { key: "hourlyCost", min: t.rate.min, max: t.rate.max, step: t.rate.step, format: (v) => f.rate(v) },
     { key: "automationShare", min: 0.1, max: 0.9, step: 0.05, format: (v) => `${Math.round(v * 100)} %` },
   ];
 
@@ -51,13 +51,15 @@ export function RoiCalculator({ t, ctaHref }: { t: Dict["roi"]; ctaHref: string 
                 step={fd.step}
                 value={v}
                 aria-valuetext={fd.format(v)}
-                aria-describedby={`${id}-hint`}
+                aria-describedby={text.hint ? `${id}-hint` : undefined}
                 style={{ "--fill": `${fill}%` } as CSSProperties}
                 onChange={(e) => setValues((prev) => ({ ...prev, [fd.key]: Number(e.target.value) }))}
               />
-              <span id={`${id}-hint`} className="field__hint">
-                {text.hint}
-              </span>
+              {text.hint && (
+                <span id={`${id}-hint`} className="field__hint">
+                  {text.hint}
+                </span>
+              )}
             </div>
           );
         })}

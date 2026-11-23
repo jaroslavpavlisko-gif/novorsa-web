@@ -25,6 +25,7 @@ export function formatters(locale: string, currency: string) {
   return {
     hours: (h: number) => `${nf(0).format(Math.round(h))} h`,
     fte: (f: number) => nf(1).format(f),
+    rate: (v: number) => new Intl.NumberFormat(locale, { style: "currency", currency, maximumFractionDigits: 0 }).format(v),
     money: (v: number) =>
       new Intl.NumberFormat(locale, { style: "currency", currency, maximumFractionDigits: 0 }).format(Math.round(v / round) * round),
   };
