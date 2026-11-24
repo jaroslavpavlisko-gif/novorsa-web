@@ -19,6 +19,7 @@ export const langName: Record<Lang, string> = { sk: "Slovensky", cz: "Česky", e
 export const routes = {
   home: { sk: "", cz: "", en: "" },
   solutions: { sk: "riesenia", cz: "reseni", en: "solutions" },
+  apps: { sk: "aplikacie", cz: "aplikace", en: "apps" },
   process: { sk: "ako-pracujeme", cz: "jak-pracujeme", en: "how-we-work" },
   calculator: { sk: "kalkulacka", cz: "kalkulacka", en: "calculator" },
   about: { sk: "o-nas", cz: "o-nas", en: "about" },

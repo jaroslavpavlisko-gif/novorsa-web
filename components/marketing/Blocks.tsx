@@ -58,7 +58,7 @@ export function SolutionsTeaser({ lang }: { lang: Lang }) {
             </li>
           ))}
         </ul>
-        <a className="apps-link" href={path(lang, "solutions", customApps.id)}>
+        <a className="apps-link" href={path(lang, "apps")}>
           <span>
             <span className="link-card__label">{customApps.label}</span>
             <span className="apps-link__title">{customApps.teaser}</span>
@@ -72,11 +72,31 @@ export function SolutionsTeaser({ lang }: { lang: Lang }) {
   );
 }
 
-/** Firemné aplikácie na mieru: prierezová služba pod oddeleniami. */
+/** Odkaz na stránku Aplikácie (na stránke Riešenia). */
+export function AppsLink({ lang }: { lang: Lang }) {
+  const { customApps } = getDict(lang);
+  return (
+    <section id={customApps.id} className="section section--flush-top" aria-label={customApps.label}>
+      <div className="container">
+        <a className="apps-link" href={path(lang, "apps")}>
+          <span>
+            <span className="link-card__label">{customApps.label}</span>
+            <span className="apps-link__title">{customApps.teaser}</span>
+          </span>
+          <span className="link-card__more">
+            {customApps.more} <ArrowRight size={16} />
+          </span>
+        </a>
+      </div>
+    </section>
+  );
+}
+
+/** Firemné aplikácie na mieru: typy aplikácií a výhody (na stránke Aplikácie). */
 export function CustomApps({ lang }: { lang: Lang }) {
   const { customApps } = getDict(lang);
   return (
-    <section id={customApps.id} className="section section--flush-top" aria-labelledby="apps-title">
+    <section className="section section--flush-top" aria-labelledby="apps-title">
       <div className="container">
         <div className="apps">
           <div className="apps__intro">

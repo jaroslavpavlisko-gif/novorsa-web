@@ -1477,3 +1477,11 @@ h4 {
 
 /* Označený text: petrolejové pozadie s bielym písmom, čitateľné na svetlých aj tmavých plochách */
 ::selection { background: #0f6e6e; color: #ffffff; }
+
+/* Hlavička so 6 položkami: texty sa nezalamujú; na menších notebookoch sa skryje tlačidlo konzultácie
+   (konzultácia je dostupná cez Kontakt) a zúžia sa okraje odkazov. */
+.nav__link, .header__cta { white-space: nowrap; }
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .header__cta { display: none; }
+  .nav__link { padding: 0 10px; }
+}

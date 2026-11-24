@@ -24,7 +24,7 @@ export function Footer({ lang }: { lang: Lang }) {
                 </li>
               ))}
               <li>
-                <a href={path(lang, "solutions", t.customApps.id)}>{t.customApps.label}</a>
+                <a href={path(lang, "apps")}>{t.customApps.label}</a>
               </li>
             </ul>
           </div>

@@ -6,6 +6,7 @@ import { languageAlternates } from "@/lib/seo";
 const pages: { key: RouteKey; priority: number; changeFrequency: "monthly" | "yearly" }[] = [
   { key: "home", priority: 1, changeFrequency: "monthly" },
   { key: "solutions", priority: 0.9, changeFrequency: "monthly" },
+  { key: "apps", priority: 0.8, changeFrequency: "monthly" },
   { key: "process", priority: 0.8, changeFrequency: "monthly" },
   { key: "calculator", priority: 0.7, changeFrequency: "monthly" },
   { key: "about", priority: 0.7, changeFrequency: "monthly" },

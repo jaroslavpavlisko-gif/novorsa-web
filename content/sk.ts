@@ -34,6 +34,10 @@ export const sk = {
       title: "O nás",
       description: "Novorsa spája prax v ekonomickom a HR poradenstve s automatizáciou procesov a AI.",
     },
+    apps: {
+      title: "Aplikácie na mieru",
+      description: "Firemné aplikácie pre HR, obchod a financie: interné nástroje, klientske portály, webové a mobilné aplikácie napojené na vaše systémy.",
+    },
     contact: { title: "Kontakt", description: "Dohodnite si úvodnú konzultáciu zadarmo. Ozveme sa do dvoch pracovných dní." },
     privacy: { title: "Ochrana osobných údajov", description: "Ako Novorsa spracúva osobné údaje z kontaktného formulára a webu." },
     cookies: { title: "Cookies", description: "Aké cookies používa web Novorsa a ako môžete zmeniť svoj súhlas." },
@@ -55,6 +59,7 @@ export const sk = {
 
   nav: [
     { label: "Riešenia", to: "solutions" },
+    { label: "Aplikácie", to: "apps" },
     { label: "Ako pracujeme", to: "process" },
     { label: "Kalkulačka", to: "calculator" },
     { label: "O nás", to: "about" },
@@ -259,6 +264,41 @@ export const sk = {
     ],
     points: ["Aplikácia patrí vám", "Napojená na systémy, ktoré už používate", "S AI tam, kde dáva zmysel"],
     cta: "Prebrať nápad na aplikáciu",
+    more: "Viac o aplikáciách",
+  },
+
+  appsPage: {
+    eyebrow: "Aplikácie na mieru",
+    title: "Aplikácie pre HR, obchod a financie",
+    lead: "Keď hotové nástroje nestačia, navrhneme a vyvinieme aplikáciu presne pre váš proces. Napojenú na systémy, ktoré už používate, s AI tam, kde dáva zmysel.",
+    areasEyebrow: "Zameranie",
+    areasTitle: "Kde aplikácie pomáhajú najviac",
+    areasLead: "Sústreďujeme sa na oblasti, ktorým rozumieme z praxe. Príklady aplikácií, ktoré vieme postaviť:",
+    areas: [
+      { title: "HR", text: "Od náboru po nástup a každodennú agendu zamestnancov.", items: ["Onboarding nových zamestnancov", "Žiadosti a dokumenty zamestnancov", "Prehľad náboru a kandidátov", "Interný portál pre zamestnancov"] },
+      { title: "Obchod", text: "Viac času na klientov, menej administratívy okolo obchodu.", items: ["Klientsky portál", "Príprava ponúk", "Prehľad obchodných príležitostí", "Rozšírenia CRM"] },
+      { title: "Financie", text: "Doklady, schvaľovanie a čísla na jednom mieste.", items: ["Schvaľovanie výdavkov a objednávok", "Evidencia a spracovanie dokladov", "Reporting pre vedenie", "Prepojenie s účtovníctvom a ERP"] },
+    ],
+    processEyebrow: "Postup",
+    processTitle: "Ako vzniká aplikácia",
+    processLead: "Vyvíjame po častiach. Výsledok vidíte priebežne, nie až na konci.",
+    steps: [
+      { title: "Úvodný rozhovor", text: "Prejdeme, čo má aplikácia riešiť a pre koho. Zadarmo.", out: "Prvý odhad rozsahu" },
+      { title: "Analýza a návrh", text: "Zmapujeme proces a navrhneme obrazovky a napojenia na vaše systémy.", out: "Návrh a pevná cena" },
+      { title: "Vývoj po častiach", text: "Aplikáciu staviame po etapách a pravidelne vám ukazujeme hotové časti.", out: "Priebežné ukážky" },
+      { title: "Testovanie s vašimi ľuďmi", text: "Aplikáciu vyskúšajú ľudia, ktorí s ňou budú pracovať.", out: "Overená aplikácia" },
+      { title: "Spustenie a zaškolenie", text: "Spustíme aplikáciu, zaškolíme používateľov a odovzdáme dokumentáciu.", out: "Aplikácia v prevádzke" },
+      { title: "Podpora a rozvoj", text: "Riešime požiadavky a aplikáciu ďalej rozvíjame podľa potreby.", out: "Dlhodobá podpora" },
+    ],
+    faqTitle: "Časté otázky k aplikáciám",
+    faq: [
+      { q: "Koľko stojí aplikácia na mieru?", a: "Závisí od rozsahu. Po analýze a návrhu dostanete pevnú cenu, ktorá sa bez vášho súhlasu nemení." },
+      { q: "Ako dlho trvá vývoj?", a: "Podľa rozsahu aplikácie. Presný harmonogram dostanete spolu s návrhom a prvé funkčné časti uvidíte priebežne počas vývoja." },
+      { q: "Komu patrí hotová aplikácia?", a: "Pri vývoji na mieru je aplikácia vaša. Vlastnícke práva a prístup k zdrojovému kódu presne upraví zmluva." },
+      { q: "Dá sa aplikácia napojiť na naše systémy?", a: "Áno. Napájame aplikácie na Microsoft 365, CRM, ERP, účtovné, HR a náborové systémy cez API. Možnosti prepojenia overíme v analýze." },
+      { q: "Kto aplikáciu vyvíja?", a: "Návrh a riadenie projektu robíme my, vývoj zabezpečujeme s naším overeným vývojovým partnerom. Máte jedného partnera, ktorý zodpovedá za celý výsledok." },
+      { q: "Čo po spustení?", a: "Aplikáciu podporujeme, riešime požiadavky používateľov a podľa potreby ju ďalej rozvíjame." },
+    ],
   },
 
   workProcess: {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getDict } from "@/content";
 import { SolutionTabs } from "@/components/interactive/SolutionTabs";
 import { Integrations, Showcases } from "@/components/marketing/Sections";
-import { CtaBand, CustomApps, PageHero } from "@/components/marketing/Blocks";
+import { AppsLink, CtaBand, PageHero } from "@/components/marketing/Blocks";
 import { langFrom, pageMetadata, type LangParams } from "@/lib/seo";
 
 export async function generateMetadata(props: LangParams): Promise<Metadata> {
@@ -20,7 +20,7 @@ export default async function SolutionsPage(props: LangParams) {
           <SolutionTabs items={solutions.items} label={solutions.tabsAria} />
         </div>
       </section>
-      <CustomApps lang={lang} />
+      <AppsLink lang={lang} />
       <Showcases lang={lang} />
       <Integrations lang={lang} />
       <CtaBand lang={lang} />

@@ -30,6 +30,10 @@ export const cz: Dict = {
       title: "O nás",
       description: "Novorsa spojuje praxi v ekonomickém a HR poradenství s automatizací procesů a AI.",
     },
+    apps: {
+      title: "Aplikace na míru",
+      description: "Firemní aplikace pro HR, obchod a finance: interní nástroje, klientské portály, webové a mobilní aplikace napojené na vaše systémy.",
+    },
     contact: { title: "Kontakt", description: "Domluvte si úvodní konzultaci zdarma. Ozveme se do dvou pracovních dnů." },
     privacy: { title: "Ochrana osobních údajů", description: "Jak Novorsa zpracovává osobní údaje z kontaktního formuláře a webu." },
     cookies: { title: "Cookies", description: "Jaké cookies používá web Novorsa a jak můžete změnit svůj souhlas." },
@@ -51,6 +55,7 @@ export const cz: Dict = {
 
   nav: [
     { label: "Řešení", to: "solutions" },
+    { label: "Aplikace", to: "apps" },
     { label: "Jak pracujeme", to: "process" },
     { label: "Kalkulačka", to: "calculator" },
     { label: "O nás", to: "about" },
@@ -255,6 +260,41 @@ export const cz: Dict = {
     ],
     points: ["Aplikace patří vám", "Napojená na systémy, které už používáte", "S AI tam, kde dává smysl"],
     cta: "Probrat nápad na aplikaci",
+    more: "Více o aplikacích",
+  },
+
+  appsPage: {
+    eyebrow: "Aplikace na míru",
+    title: "Aplikace pro HR, obchod a finance",
+    lead: "Když hotové nástroje nestačí, navrhneme a vyvineme aplikaci přesně pro váš proces. Napojenou na systémy, které už používáte, s AI tam, kde dává smysl.",
+    areasEyebrow: "Zaměření",
+    areasTitle: "Kde aplikace pomáhají nejvíc",
+    areasLead: "Soustředíme se na oblasti, kterým rozumíme z praxe. Příklady aplikací, které umíme postavit:",
+    areas: [
+      { title: "HR", text: "Od náboru po nástup a každodenní agendu zaměstnanců.", items: ["Onboarding nových zaměstnanců", "Žádosti a dokumenty zaměstnanců", "Přehled náboru a kandidátů", "Interní portál pro zaměstnance"] },
+      { title: "Obchod", text: "Více času na klienty, méně administrativy kolem obchodu.", items: ["Klientský portál", "Příprava nabídek", "Přehled obchodních příležitostí", "Rozšíření CRM"] },
+      { title: "Finance", text: "Doklady, schvalování a čísla na jednom místě.", items: ["Schvalování výdajů a objednávek", "Evidence a zpracování dokladů", "Reporting pro vedení", "Propojení s účetnictvím a ERP"] },
+    ],
+    processEyebrow: "Postup",
+    processTitle: "Jak vzniká aplikace",
+    processLead: "Vyvíjíme po částech. Výsledek vidíte průběžně, ne až na konci.",
+    steps: [
+      { title: "Úvodní rozhovor", text: "Projdeme, co má aplikace řešit a pro koho. Zdarma.", out: "První odhad rozsahu" },
+      { title: "Analýza a návrh", text: "Zmapujeme proces a navrhneme obrazovky a napojení na vaše systémy.", out: "Návrh a pevná cena" },
+      { title: "Vývoj po částech", text: "Aplikaci stavíme po etapách a pravidelně vám ukazujeme hotové části.", out: "Průběžné ukázky" },
+      { title: "Testování s vašimi lidmi", text: "Aplikaci vyzkoušejí lidé, kteří s ní budou pracovat.", out: "Ověřená aplikace" },
+      { title: "Spuštění a zaškolení", text: "Spustíme aplikaci, zaškolíme uživatele a předáme dokumentaci.", out: "Aplikace v provozu" },
+      { title: "Podpora a rozvoj", text: "Řešíme požadavky a aplikaci dále rozvíjíme podle potřeby.", out: "Dlouhodobá podpora" },
+    ],
+    faqTitle: "Časté otázky k aplikacím",
+    faq: [
+      { q: "Kolik stojí aplikace na míru?", a: "Záleží na rozsahu. Po analýze a návrhu dostanete pevnou cenu, která se bez vašeho souhlasu nemění." },
+      { q: "Jak dlouho trvá vývoj?", a: "Podle rozsahu aplikace. Přesný harmonogram dostanete spolu s návrhem a první funkční části uvidíte průběžně během vývoje." },
+      { q: "Komu patří hotová aplikace?", a: "Při vývoji na míru je aplikace vaše. Vlastnická práva a přístup ke zdrojovému kódu přesně upraví smlouva." },
+      { q: "Dá se aplikace napojit na naše systémy?", a: "Ano. Napojujeme aplikace na Microsoft 365, CRM, ERP, účetní, HR a náborové systémy přes API. Možnosti propojení ověříme v analýze." },
+      { q: "Kdo aplikaci vyvíjí?", a: "Návrh a řízení projektu děláme my, vývoj zajišťujeme s naším ověřeným vývojovým partnerem. Máte jednoho partnera, který odpovídá za celý výsledek." },
+      { q: "Co po spuštění?", a: "Aplikaci podporujeme, řešíme požadavky uživatelů a podle potřeby ji dále rozvíjíme." },
+    ],
   },
 
   workProcess: {

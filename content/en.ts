@@ -30,6 +30,10 @@ export const en: Dict = {
       title: "About us",
       description: "Novorsa combines experience in business and HR consulting with process automation and AI.",
     },
+    apps: {
+      title: "Custom applications",
+      description: "Business applications for HR, sales and finance: internal tools, client portals, web and mobile apps connected to your systems.",
+    },
     contact: { title: "Contact", description: "Book a free initial consultation. We will get back to you within two business days." },
     privacy: { title: "Privacy policy", description: "How Novorsa processes personal data from the contact form and the website." },
     cookies: { title: "Cookies", description: "Which cookies the Novorsa website uses and how you can change your consent." },
@@ -51,6 +55,7 @@ export const en: Dict = {
 
   nav: [
     { label: "Solutions", to: "solutions" },
+    { label: "Apps", to: "apps" },
     { label: "How we work", to: "process" },
     { label: "Calculator", to: "calculator" },
     { label: "About us", to: "about" },
@@ -255,6 +260,41 @@ export const en: Dict = {
     ],
     points: ["The application is yours", "Connected to the systems you already use", "With AI where it makes sense"],
     cta: "Discuss your app idea",
+    more: "More about applications",
+  },
+
+  appsPage: {
+    eyebrow: "Custom applications",
+    title: "Applications for HR, sales and finance",
+    lead: "When off-the-shelf tools aren’t enough, we design and build an application tailored to your process. Connected to the systems you already use, with AI where it makes sense.",
+    areasEyebrow: "Focus",
+    areasTitle: "Where applications help most",
+    areasLead: "We focus on areas we know from practice. Examples of applications we can build:",
+    areas: [
+      { title: "HR", text: "From recruitment to onboarding and everyday employee admin.", items: ["Onboarding of new employees", "Employee requests and documents", "Recruitment and candidate overview", "Internal employee portal"] },
+      { title: "Sales", text: "More time for clients, less admin around sales.", items: ["Client portal", "Preparing quotes", "Sales opportunity overview", "CRM extensions"] },
+      { title: "Finance", text: "Documents, approvals and numbers in one place.", items: ["Expense and order approvals", "Document records and processing", "Management reporting", "Integration with accounting and ERP"] },
+    ],
+    processEyebrow: "Approach",
+    processTitle: "How an application is built",
+    processLead: "We develop in stages. You see results along the way, not just at the end.",
+    steps: [
+      { title: "Initial conversation", text: "We discuss what the application should solve and for whom. Free of charge.", out: "First estimate of scope" },
+      { title: "Analysis and design", text: "We map the process and design the screens and connections to your systems.", out: "Design and fixed price" },
+      { title: "Development in stages", text: "We build the application step by step and regularly show you finished parts.", out: "Regular previews" },
+      { title: "Testing with your people", text: "The application is tried out by the people who will use it.", out: "Validated application" },
+      { title: "Launch and training", text: "We launch the application, train users and hand over the documentation.", out: "Application in use" },
+      { title: "Support and development", text: "We handle requests and keep developing the application as needed.", out: "Long-term support" },
+    ],
+    faqTitle: "FAQ about applications",
+    faq: [
+      { q: "How much does a custom application cost?", a: "It depends on the scope. After the analysis and design, you get a fixed price that won’t change without your approval." },
+      { q: "How long does development take?", a: "It depends on the scope of the application. You get an exact timeline together with the design, and you see the first working parts during development." },
+      { q: "Who owns the finished application?", a: "With custom development, the application is yours. Ownership rights and access to the source code are set out precisely in the contract." },
+      { q: "Can the application connect to our systems?", a: "Yes. We connect applications to Microsoft 365, CRM, ERP, accounting, HR and recruiting systems via APIs. We verify the integration options during the analysis." },
+      { q: "Who develops the application?", a: "We handle the design and project management; development is delivered with our trusted development partner. You have one partner responsible for the whole result." },
+      { q: "What happens after launch?", a: "We support the application, handle user requests and keep developing it as needed." },
+    ],
   },
 
   workProcess: {
