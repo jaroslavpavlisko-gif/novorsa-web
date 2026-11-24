@@ -36,7 +36,7 @@ export const sk = {
     },
     apps: {
       title: "Aplikácie na mieru",
-      description: "Firemné aplikácie pre HR, obchod a financie: interné nástroje, klientske portály, webové a mobilné aplikácie napojené na vaše systémy.",
+      description: "Firemné aplikácie na mieru: interné nástroje, klientske portály, webové a mobilné aplikácie napojené na vaše systémy.",
     },
     contact: { title: "Kontakt", description: "Dohodnite si úvodnú konzultáciu zadarmo. Ozveme sa do dvoch pracovných dní." },
     privacy: { title: "Ochrana osobných údajov", description: "Ako Novorsa spracúva osobné údaje z kontaktného formulára a webu." },
@@ -269,11 +269,11 @@ export const sk = {
 
   appsPage: {
     eyebrow: "Aplikácie na mieru",
-    title: "Aplikácie pre HR, obchod a financie",
+    title: "Aplikácie, ktoré sedia na vaše procesy",
     lead: "Keď hotové nástroje nestačia, navrhneme a vyvinieme aplikáciu presne pre váš proces. Napojenú na systémy, ktoré už používate, s AI tam, kde dáva zmysel.",
     areasEyebrow: "Zameranie",
     areasTitle: "Kde aplikácie pomáhajú najviac",
-    areasLead: "Sústreďujeme sa na oblasti, ktorým rozumieme z praxe. Príklady aplikácií, ktoré vieme postaviť:",
+    areasLead: "Aplikáciu postavíme pre akúkoľvek oblasť firmy. Najviac skúseností máme z HR, obchodu a financií. Príklady aplikácií, ktoré vieme postaviť:",
     areas: [
       { title: "HR", text: "Od náboru po nástup a každodennú agendu zamestnancov.", items: ["Onboarding nových zamestnancov", "Žiadosti a dokumenty zamestnancov", "Prehľad náboru a kandidátov", "Interný portál pre zamestnancov"] },
       { title: "Obchod", text: "Viac času na klientov, menej administratívy okolo obchodu.", items: ["Klientsky portál", "Príprava ponúk", "Prehľad obchodných príležitostí", "Rozšírenia CRM"] },

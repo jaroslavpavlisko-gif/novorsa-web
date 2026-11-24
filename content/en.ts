@@ -32,7 +32,7 @@ export const en: Dict = {
     },
     apps: {
       title: "Custom applications",
-      description: "Business applications for HR, sales and finance: internal tools, client portals, web and mobile apps connected to your systems.",
+      description: "Custom business applications: internal tools, client portals, web and mobile apps connected to your systems.",
     },
     contact: { title: "Contact", description: "Book a free initial consultation. We will get back to you within two business days." },
     privacy: { title: "Privacy policy", description: "How Novorsa processes personal data from the contact form and the website." },
@@ -265,11 +265,11 @@ export const en: Dict = {
 
   appsPage: {
     eyebrow: "Custom applications",
-    title: "Applications for HR, sales and finance",
+    title: "Applications that fit the way you work",
     lead: "When off-the-shelf tools aren’t enough, we design and build an application tailored to your process. Connected to the systems you already use, with AI where it makes sense.",
     areasEyebrow: "Focus",
     areasTitle: "Where applications help most",
-    areasLead: "We focus on areas we know from practice. Examples of applications we can build:",
+    areasLead: "We build applications for any part of your business. Our deepest experience is in HR, sales and finance. Examples of applications we can build:",
     areas: [
       { title: "HR", text: "From recruitment to onboarding and everyday employee admin.", items: ["Onboarding of new employees", "Employee requests and documents", "Recruitment and candidate overview", "Internal employee portal"] },
       { title: "Sales", text: "More time for clients, less admin around sales.", items: ["Client portal", "Preparing quotes", "Sales opportunity overview", "CRM extensions"] },

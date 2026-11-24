@@ -32,7 +32,7 @@ export const cz: Dict = {
     },
     apps: {
       title: "Aplikace na míru",
-      description: "Firemní aplikace pro HR, obchod a finance: interní nástroje, klientské portály, webové a mobilní aplikace napojené na vaše systémy.",
+      description: "Firemní aplikace na míru: interní nástroje, klientské portály, webové a mobilní aplikace napojené na vaše systémy.",
     },
     contact: { title: "Kontakt", description: "Domluvte si úvodní konzultaci zdarma. Ozveme se do dvou pracovních dnů." },
     privacy: { title: "Ochrana osobních údajů", description: "Jak Novorsa zpracovává osobní údaje z kontaktního formuláře a webu." },
@@ -265,11 +265,11 @@ export const cz: Dict = {
 
   appsPage: {
     eyebrow: "Aplikace na míru",
-    title: "Aplikace pro HR, obchod a finance",
+    title: "Aplikace, které sedí na vaše procesy",
     lead: "Když hotové nástroje nestačí, navrhneme a vyvineme aplikaci přesně pro váš proces. Napojenou na systémy, které už používáte, s AI tam, kde dává smysl.",
     areasEyebrow: "Zaměření",
     areasTitle: "Kde aplikace pomáhají nejvíc",
-    areasLead: "Soustředíme se na oblasti, kterým rozumíme z praxe. Příklady aplikací, které umíme postavit:",
+    areasLead: "Aplikaci postavíme pro jakoukoli oblast firmy. Nejvíc zkušeností máme z HR, obchodu a financí. Příklady aplikací, které umíme postavit:",
     areas: [
       { title: "HR", text: "Od náboru po nástup a každodenní agendu zaměstnanců.", items: ["Onboarding nových zaměstnanců", "Žádosti a dokumenty zaměstnanců", "Přehled náboru a kandidátů", "Interní portál pro zaměstnance"] },
       { title: "Obchod", text: "Více času na klienty, méně administrativy kolem obchodu.", items: ["Klientský portál", "Příprava nabídek", "Přehled obchodních příležitostí", "Rozšíření CRM"] },
