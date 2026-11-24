@@ -1485,3 +1485,22 @@ h4 {
   .header__cta { display: none; }
   .nav__link { padding: 0 10px; }
 }
+
+/* Cookie lišta na mobile: kompaktnejšia, Odmietnuť a Prijať vedľa seba v rovnakej veľkosti,
+   Nastavenia pod nimi cez celú šírku. */
+@media (max-width: 639px) {
+  .consent {
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    padding: 18px;
+    gap: 10px;
+    max-height: calc(100dvh - 24px);
+    overflow-y: auto;
+  }
+  .consent__title { font-size: 16px; }
+  .consent__text { font-size: 13.5px; line-height: 1.5; }
+  .consent__actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .consent__actions .btn { width: 100%; justify-content: center; min-height: 44px; }
+  .consent__actions > :first-child { grid-column: 1 / -1; order: 3; }
+}
