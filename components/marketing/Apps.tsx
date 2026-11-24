@@ -10,7 +10,7 @@ export function AppsAreas({ lang }: { lang: Lang }) {
     <section className="section section--flush-top" aria-labelledby="apps-areas-title">
       <div className="container">
         <SectionHead eyebrow={a.areasEyebrow} title={a.areasTitle} lead={a.areasLead} id="apps-areas-title" />
-        <ul className="igroups">
+        <ul className="igroups igroups--2">
           {a.areas.map((g) => (
             <li key={g.title} className="igroup">
               <h3>{g.title}</h3>
